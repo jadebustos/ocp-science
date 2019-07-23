@@ -1,0 +1,82 @@
+---
+- hosts: all
+  gather_facts: true
+  any_errors_fatal: true
+  tags:
+  - always
+
+- hosts:
+  - mgrs[0]
+  become: true
+  roles:
+  - ceph-mgr
+
+- hosts:
+  - ceph-grafana
+  become: true
+  roles:
+  - ceph-prometheus
+  tags:
+  - prometheus
+
+- hosts:
+  - ceph-grafana
+  become: true
+  roles:
+  - ceph-graphite
+
+- hosts:
+  - ceph-grafana
+  become: true
+  roles:
+  - ceph-grafana
+  tags:
+  - grafana
+
+- hosts:
+  - ceph-grafana
+  # These are roles used by ceph-ansible
+  - mons
+  - agents
+  - osds
+  - mdss
+  - rgws
+  - nfss
+  - restapis
+  - rbdmirrors
+  - clients
+  - mgrs
+  - iscsis
+  # This role is (so far) only used for testing
+  - cluster
+  become: true
+  roles:
+  - ceph-node-exporter
+  tags:
+  - node-exporter
+
+- hosts:
+  # These are roles used by ceph-ansible
+  - mons
+  - agents
+  - osds
+  - mdss
+  - rgws
+  - nfss
+  - restapis
+  - rbdmirrors
+  - clients
+  - mgrs
+  # This role is (so far) only used for testing
+  - cluster
+  become: true
+  roles:
+  - ceph-collectd
+
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Print dashboard URL
+      debug:
+        msg: "All done! You may access your dashboard at http://{{ groups['ceph-grafana'][0] }}:3000/ with your pre-defined user and password (admin/admin by default). Note that initially the dashboard will be incomplete; after a few minutes it should have enough data collected to function properly."

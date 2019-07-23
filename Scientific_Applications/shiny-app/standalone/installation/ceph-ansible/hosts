@@ -1,0 +1,17 @@
+[mons]
+ceph1.redhatforummad.com
+ceph2.redhatforummad.com
+ceph3.redhatforummad.com
+
+[osds]
+ceph1.redhatforummad.com
+ceph2.redhatforummad.com
+ceph3.redhatforummad.com
+
+[mgrs]
+ceph1.redhatforummad.com
+ceph2.redhatforummad.com
+ceph3.redhatforummad.com
+
+[rgws]
+ceph1.redhatforummad.com
