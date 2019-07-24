@@ -1,0 +1,5 @@
+install.packages('shiny', repos='https://cran.rediris.es/')
+install.packages('shinydashboard', repos='https://cran.rediris.es/')
+install.packages('memoise', repos='https://cran.rediris.es/')
+install.packages('tm', repos='https://cran.rediris.es/')
+install.packages('wordcloud', repos='https://cran.rediris.es/')

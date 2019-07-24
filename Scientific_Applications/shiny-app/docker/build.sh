@@ -1,0 +1,15 @@
+#!/bin/bash
+FILEPATH=$(readlink -f $0)
+BASEDIR=${FILEPATH%/*}
+
+#IMAGE_REGISTRY=${IMAGE_REGISTRY:-$1}
+#IMAGE_LIBRARY=${IMAGE_LIBRARY:-$2}
+#IMAGE_REPOSITORY=${IMAGE_REPOSITORY:-$3}
+#IMAGE_TAG=${IMAGE_TAG:-$4}
+#IMAGE_FULL_TAG=${IMAGE_REGISTRY}/${IMAGE_LIBRARY}/${IMAGE_REPOSITORY}:${IMAGE_TAG}
+IMAGE_NAME=${IMAGE_NAME:-$1}
+IMAGE_TAG=${IMAGE_TAG:-$2}
+
+echo "Building backup docker image .."
+
+docker build --no-cache=true -t ${IMAGE_NAME}:${IMAGE_TAG} --network host .
