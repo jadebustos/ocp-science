@@ -1,5 +1,5 @@
 # Pi calculation
 
-In the [pi/standalone directory](pi/standalone) there is the code to deploy the code.
+In the [standalone directory](standalone) there is the code to deploy the code.
 
-In the [pi/docker directory](pi/docker) there is the dockerized version.
+In the [docker directory](docker) there is the dockerized version.
