@@ -106,7 +106,7 @@ List users:
 # 
 ```
 
-** ADD HOW TO CREATE A POOL FOR RADOS**
+**ADD HOW TO CREATE A POOL FOR RADOS**
 
 ## S3 operations
 
