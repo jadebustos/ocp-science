@@ -106,7 +106,25 @@ List users:
 # 
 ```
 
-**ADD HOW TO CREATE A POOL FOR RADOS**
+Creating the rados gateway pool:
+
+```
+# ceph osd pool create rhte-pool.rgw.control {pg-num} [{pgp-num}
+# ceph osd pool create rhte-pool.rgw.data.root {pg-num} [{pgp-num}
+# ceph osd pool create rhte-pool.rgw.gc {pg-num} [{pgp-num}
+# ceph osd pool create rhte-pool.rgw.log {pg-num} [{pgp-num}
+# ceph osd pool create rhte-pool.rgw.intent-log {pg-num} [{pgp-num}
+# ceph osd pool create rhte-pool.rgw.usage {pg-num} [{pgp-num}
+# ceph osd pool create rhte-pool.rgw.users.keys {pg-num} [{pgp-num}
+# ceph osd pool create rhte-pool.rgw.users.email {pg-num} [{pgp-num}
+# ceph osd pool create rhte-pool.rgw.users.swift {pg-num} [{pgp-num}
+# ceph osd pool create rhte-pool.rgw.users.uid {pg-num} [{pgp-num}
+# ceph osd pool create rhte-pool.rgw.buckets.index {pg-num} [{pgp-num}
+# ceph osd pool create rhte-pool.rgw.buckets.data {pg-num} [{pgp-num}
+# ceph osd pool create rhte-pool.rgw.meta {pg-num} [{pgp-num}]
+```
+
+Use the [PG Calculator](https://ceph.com/pgcalc/) to get **pg-num**.
 
 ## S3 operations
 
