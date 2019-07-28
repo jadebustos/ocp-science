@@ -52,17 +52,17 @@ rhte-cluster-zookeeper-2                      2/2       Running   0          111
 
 Create a topic with a replication factor of 1 and 1 partition
 ```
-oc apply -f topic.yml
+oc apply -f topic.yml -n rhte2019
 ```
 
 Verify its creation with:
 
 ```
-$ oc get kafkatopics
+$ oc get kafkatopics -n rhte2019
 NAME      PARTITIONS   REPLICATION FACTOR
 rhte      5            1
 
-$ oc rsh -c kafka rhte-cluster-kafka-0 bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic rhte
+$ oc rsh -n rhte2019 -c kafka rhte-cluster-kafka-0 bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic rhte
 OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
 Topic:rhte      PartitionCount:3        ReplicationFactor:1     Configs:message.format.version=2.2-IV1
         Topic: rhte     Partition: 0    Leader: 2       Replicas: 2     Isr: 2
@@ -72,9 +72,20 @@ Topic:rhte      PartitionCount:3        ReplicationFactor:1     Configs:message.
 
 The traces above shows that a new `rhte` topic is created with a Replication factor of 1 and composed by 3 partitions.
 
+The provided kafka-cluster resource includes an option to make the operator create a route that will be be used for access kafka brokers from outside OCP cluster:
+```
+$ oc get route -n rhte2019
+NAME                           HOST/PORT                                                                PATH      SERVICES                                PORT      TERMINATION   WILDCARD
+rhte-cluster-kafka-0           rhte-cluster-kafka-0-rhte2019.apps.cluster.testing.com                   rhte-cluster-kafka-0                    9094      passthrough   None
+rhte-cluster-kafka-1           rhte-cluster-kafka-1-rhte2019.apps.cluster.testing.com                   rhte-cluster-kafka-1                    9094      passthrough   None
+rhte-cluster-kafka-2           rhte-cluster-kafka-2-rhte2019.apps.cluster.testing.com                   rhte-cluster-kafka-2                    9094      passthrough   None
+```
+
+Broker's routes must be used in the steps below
+
 ## Send a picture to the previous topic
 
-We can send a picture to the precious create topic using several methods. Some of them are included
+We can send a picture to the previous created topic using several methods. Some of them are included:
 
 - python2 client (kafka module is required)
 ```
