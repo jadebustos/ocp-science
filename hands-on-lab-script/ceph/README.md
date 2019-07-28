@@ -116,3 +116,14 @@ List users:
 * Students can use this [script](scripts/s3uploadfiles.py) to upload a file to a bucket.
 * Students can use this [script](scripts/s3downloadfile.py) to download a file from a bucket.
 * Students can use this [script](scripts/s3listbucket.py) to list a bucket's content.
+
+## Data to be uploaded
+
+Students will have to upload the following data to a bucket:
+
+* [ansible.txt.gz](data/ansible.txt.gz)
+* [ceph.txt.gz](data/ceph.txt.gz)
+* [ocp.txt.gz](data/ocp.txt.gz)
+* [osp.txt.gz](data/osp.txt.gz)
+* [rhv.txt.gz](data/rhv.txt.gz)
+
