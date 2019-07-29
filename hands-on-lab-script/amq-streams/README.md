@@ -3,15 +3,18 @@
 ## Deploying Kafka Cluster operator
 
 Create `amq-streams` project:
+
 ```
 oc new-project amq-streams
 ```
 
 Configure cluster operator to watch all namespaces:
+
 - Edit the 050-Deployment-strimzi-cluster-operator.yaml file.
 - Set the value of the STRIMZI_NAMESPACE environment variable to *
 
 Since we have configured the Cluster Operator to watch all namespaces, it's required to configure additional ClusterRoleBindings to grant cluster-wide access to the Cluste Operator.
+
 ```
 oc adm policy add-cluster-role-to-user strimzi-cluster-operator-namespaced --serviceaccount strimzi-cluster-operator -n amq-streams
 oc adm policy add-cluster-role-to-user strimzi-entity-operator --serviceaccount strimzi-cluster-operator -n amq-streams
@@ -50,7 +53,8 @@ rhte-cluster-zookeeper-2                      2/2       Running   0          111
 
 ## Create new topic
 
-Create a topic with a replication factor of 1 and 1 partition
+Create a topic with a replication factor of 1 and 1 partition:
+
 ```
 oc apply -f topic.yml -n rhte2019
 ```
@@ -73,6 +77,7 @@ Topic:rhte      PartitionCount:3        ReplicationFactor:1     Configs:message.
 The traces above shows that a new `rhte` topic is created with a Replication factor of 1 and composed by 3 partitions.
 
 The provided kafka-cluster resource includes an option to make the operator create a route that will be be used for access kafka brokers from outside OCP cluster:
+
 ```
 $ oc get route -n rhte2019
 NAME                           HOST/PORT                                                                PATH      SERVICES                                PORT      TERMINATION   WILDCARD
@@ -87,13 +92,15 @@ Broker's routes must be used in the steps below
 
 We can send a picture to the previous created topic using several methods. Some of them are included:
 
-- python2 client (kafka module is required)
+- [python2 client](clients/kafka_producer.py) (kafka module is required):
+
 ```
 dnf install python2-kafka
 python2 kafka_producer.py  --brokers <kafka_broker_list> --file dog.jpg --use-tls --topic rhte
 ```
 
-- Golang client
+- [Golang client](clients/kafkaClient.go):
+
 ```
 go get github.com/Shopify/sarama
 go build kafkaClient.go
