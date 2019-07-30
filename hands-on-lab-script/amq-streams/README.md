@@ -8,12 +8,8 @@ Create `amq-streams` project:
 $ oc new-project amq-streams
 ```
 
-Configure cluster operator to watch all namespaces:
-
-- Edit the `resources/cluster-operator/050-Deployment-strimzi-cluster-operator.yaml` file.
-- Set the value of the **STRIMZI_NAMESPACE** environment variable to *
-
-Since we have configured the Cluster Operator to watch all namespaces, it's required to configure additional ClusterRoleBindings to grant cluster-wide access to the Cluste Operator.
+This amq-streams cluster operator is Configured to watch to watch all namespaces since the **STRIMZI_NAMESPACE** environment variable from the operator yaml deployment file has the value *
+As we have configured the Cluster Operator to watch all namespaces, it's also required to configure additional ClusterRoleBindings to grant cluster-wide access to the Cluste Operator.
 
 ```
 $ oc adm policy add-cluster-role-to-user strimzi-cluster-operator-namespaced --serviceaccount strimzi-cluster-operator -n amq-streams
@@ -29,8 +25,8 @@ $ oc apply -f resources/cluster-operator/ -n amq-streams
 
 ## Create a kafka cluster
 
-This lab is not focused on creating a valid production architecture, so we'll use ephemeral backed volumes for our kafka cluster.
-Ephemeral storage is commonly used for testint purposes
+This lab is not focused on creating a valid production architecture, so we'll use ephemeral backed volumes (emptyDir) for our kafka cluster.
+Ephemeral storage is commonly used for testing purposes
 
 ```
 $ oc new-project rhte2019
@@ -74,16 +70,18 @@ Topic:rhte      PartitionCount:3        ReplicationFactor:1     Configs:message.
         Topic: rhte     Partition: 2    Leader: 1       Replicas: 1     Isr: 1
 ```
 
-The traces above shows that a new `rhte` topic is created with a Replication factor of 1 and composed by 3 partitions.
+The traces above indicate that a new `rhte` topic is created with a Replication factor of 1 and composed by 1 partition.
+As stated previously, this environment is being created for learning purposes thus the previous topic was created as simple as possible: 1 replica + 1 partition
 
 The provided kafka-cluster resource includes an option to make the operator create a route that will be be used for access kafka brokers from outside OCP cluster:
 
 ```
 $ oc get route -n rhte2019
-NAME                           HOST/PORT                                                                PATH      SERVICES                                PORT      TERMINATION   WILDCARD
+NAME                           HOST/PORT                                                      PATH      SERVICES                                PORT      TERMINATION   WILDCARD
 rhte-cluster-kafka-0           rhte-cluster-kafka-0-rhte2019.apps.cluster.testing.com                   rhte-cluster-kafka-0                    9094      passthrough   None
 rhte-cluster-kafka-1           rhte-cluster-kafka-1-rhte2019.apps.cluster.testing.com                   rhte-cluster-kafka-1                    9094      passthrough   None
 rhte-cluster-kafka-2           rhte-cluster-kafka-2-rhte2019.apps.cluster.testing.com                   rhte-cluster-kafka-2                    9094      passthrough   None
+rhte-cluster-kafka-bootstrap   rhte-cluster-kafka-bootstrap-rhte2019.apps.cluster.testing.com           rhte-cluster-kafka-external-bootstrap   9094      passthrough   None
 ```
 
 Broker's routes must be used in the steps below
