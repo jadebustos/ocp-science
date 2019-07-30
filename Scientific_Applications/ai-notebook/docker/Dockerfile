@@ -8,7 +8,7 @@ LABEL maintainer="RHTE 2019 <github.com@jadebustos/ocp-science.git>" \
 # OpenShift Labels
 LABEL io.k8s.description="Jupyter notebook image_classifier" \
       io.k8s.display-name="Shiny Server" \
-      io.openshift.expose-services="8888" \
+      io.openshift.expose-services="8080/tcp:http" \
       io.openshift.tags="Jupyter"
 
 # Install all OS dependencies for notebook server that starts but lacks all
@@ -34,11 +34,11 @@ ENV CONDA_DIR=/opt/conda \
     LANG=en_US.UTF-8 \
     LANGUAGE=en_US.UTF-8
 ENV PATH=$CONDA_DIR/bin:$PATH \
-    HOME=/root
+    HOME=/opt/work
 
 # Enable prompt color in the skeleton .bashrc and create dirs
 RUN sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' /etc/skel/.bashrc && \
-    mkdir -p ${HOME}/work/data && \
+    mkdir -p ${HOME}/data && \
     mkdir -p $CONDA_DIR
 
 WORKDIR $HOME
@@ -85,16 +85,17 @@ RUN pip install \
     'kafka-python' \
     'pillow'
 
+RUN chmod 775 -R ${HOME}
 # Add local files as late as possible to avoid cache busting
 COPY start.sh /usr/local/bin/
 COPY start-notebook.sh /usr/local/bin/
 COPY start-singleuser.sh /usr/local/bin/
 COPY jupyter_notebook_config.py /etc/jupyter/
-COPY image_classifier.ipynb /root/work/
-COPY data /root/work/data/
-
-EXPOSE 8888
+COPY image_classifier.ipynb ${HOME}
+COPY data ${HOME}/data/
 
 # Configure container startup
 ENTRYPOINT ["start-notebook.sh","--allow-root"]
-CMD ["/root/work/image_classifier.ipynb"]
+CMD ["/opt/work/image_classifier.ipynb"]
+
+EXPOSE 8080
