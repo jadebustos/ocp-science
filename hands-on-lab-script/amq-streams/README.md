@@ -10,8 +10,8 @@ $ oc new-project amq-streams
 
 Configure cluster operator to watch all namespaces:
 
-- Edit the ´resources/cluster-operator/050-Deployment-strimzi-cluster-operator.yaml´ file.
-- Set the value of the STRIMZI_NAMESPACE environment variable to *
+- Edit the `resources/cluster-operator/050-Deployment-strimzi-cluster-operator.yaml` file.
+- Set the value of the **STRIMZI_NAMESPACE** environment variable to *
 
 Since we have configured the Cluster Operator to watch all namespaces, it's required to configure additional ClusterRoleBindings to grant cluster-wide access to the Cluste Operator.
 
