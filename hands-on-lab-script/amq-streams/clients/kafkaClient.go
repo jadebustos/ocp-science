@@ -12,7 +12,6 @@ import (
 )
 
 var (
-	command     string
 	tlsEnable   bool
 	brokers     string
 	topic       string
@@ -21,7 +20,6 @@ var (
 )
 
 func main() {
-	flag.StringVar(&command, "command", "consumer", "consumer|producer")
 	flag.BoolVar(&tlsEnable, "tls", false, "TLS enable")
 	flag.StringVar(&brokers, "brokers", "localhost:9093", "Common separated kafka brokers")
 	flag.StringVar(&topic, "topic", "test--topic", "Kafka topic")
