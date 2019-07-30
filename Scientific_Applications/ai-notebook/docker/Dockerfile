@@ -1,4 +1,4 @@
-FROM ubuntu:bionic-20190612@sha256:9b1702dcfe32c873a770a32cfd306dd7fc1c4fd134adfb783db68defc8894b3c
+FROM ubuntu:bionic-20190612
 
 LABEL maintainer="RHTE 2019 <github.com@jadebustos/ocp-science.git>" \
       com.redhat.imageowner="Red Hat Services" \
@@ -38,7 +38,7 @@ ENV PATH=$CONDA_DIR/bin:$PATH \
 
 # Enable prompt color in the skeleton .bashrc and create dirs
 RUN sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' /etc/skel/.bashrc && \
-    mkdir ${HOME}/work && \
+    mkdir -p ${HOME}/work/data && \
     mkdir -p $CONDA_DIR
 
 WORKDIR $HOME
@@ -82,7 +82,7 @@ RUN conda install --quiet --yes \
 
 RUN pip install \
     'livelossplot' \
-    'kafka' \
+    'kafka-python' \
     'pillow'
 
 # Add local files as late as possible to avoid cache busting
@@ -91,6 +91,7 @@ COPY start-notebook.sh /usr/local/bin/
 COPY start-singleuser.sh /usr/local/bin/
 COPY jupyter_notebook_config.py /etc/jupyter/
 COPY image_classifier.ipynb /root/work/
+COPY data /root/work/data/
 
 EXPOSE 8888
 
