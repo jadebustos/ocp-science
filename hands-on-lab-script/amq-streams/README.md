@@ -10,7 +10,7 @@ $ oc new-project amq-streams
 
 Configure cluster operator to watch all namespaces:
 
-- Edit the 050-Deployment-strimzi-cluster-operator.yaml file.
+- Edit the ´resources/cluster-operator/050-Deployment-strimzi-cluster-operator.yaml´ file.
 - Set the value of the STRIMZI_NAMESPACE environment variable to *
 
 Since we have configured the Cluster Operator to watch all namespaces, it's required to configure additional ClusterRoleBindings to grant cluster-wide access to the Cluste Operator.
@@ -24,7 +24,7 @@ $ oc adm policy add-cluster-role-to-user strimzi-topic-operator --serviceaccount
 Deploy operator and cluster operator and its related resources with:
 
 ```
-$ oc apply -f install/cluster-opreator/ -n amq-streams
+$ oc apply -f resources/cluster-operator/ -n amq-streams
 ```
 
 ## Create a kafka cluster
@@ -34,7 +34,7 @@ Ephemeral storage is commonly used for testint purposes
 
 ```
 $ oc new-project rhte2019
-$ oc apply -f kafka-cluster.yml -n rhte2019
+$ oc apply -f resources/kafka-cluster.yml -n rhte2019
 ```
 
 A successful deployment should look like:
@@ -49,7 +49,6 @@ rhte-cluster-kafka-2                          2/2       Running   0          80s
 rhte-cluster-zookeeper-0                      2/2       Running   0          111s
 rhte-cluster-zookeeper-1                      2/2       Running   0          111s
 rhte-cluster-zookeeper-2                      2/2       Running   0          111s
-$
 ```
 
 ## Create new topic
@@ -57,7 +56,7 @@ $
 Create a topic with a replication factor of 1 and 1 partition:
 
 ```
-$ oc apply -f topic.yml -n rhte2019
+$ oc apply -f resources/rhte-topic.yml -n rhte2019
 ```
 
 Verify its creation with:
@@ -73,7 +72,6 @@ Topic:rhte      PartitionCount:3        ReplicationFactor:1     Configs:message.
         Topic: rhte     Partition: 0    Leader: 2       Replicas: 2     Isr: 2
         Topic: rhte     Partition: 1    Leader: 0       Replicas: 0     Isr: 0
         Topic: rhte     Partition: 2    Leader: 1       Replicas: 1     Isr: 1
-$
 ```
 
 The traces above shows that a new `rhte` topic is created with a Replication factor of 1 and composed by 3 partitions.
@@ -86,7 +84,6 @@ NAME                           HOST/PORT                                        
 rhte-cluster-kafka-0           rhte-cluster-kafka-0-rhte2019.apps.cluster.testing.com                   rhte-cluster-kafka-0                    9094      passthrough   None
 rhte-cluster-kafka-1           rhte-cluster-kafka-1-rhte2019.apps.cluster.testing.com                   rhte-cluster-kafka-1                    9094      passthrough   None
 rhte-cluster-kafka-2           rhte-cluster-kafka-2-rhte2019.apps.cluster.testing.com                   rhte-cluster-kafka-2                    9094      passthrough   None
-$
 ```
 
 Broker's routes must be used in the steps below
