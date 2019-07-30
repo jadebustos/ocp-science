@@ -3,7 +3,7 @@
 The following Scientific Applications are under consideration to be deployed:
 
 1. [AI image recognition](ai-notebook)
-2. [Shiny apllication](Shiny-app.md)
+2. [Shiny apllication](shiny-app)
 3. [Navier-Stokes equations](cfd-training)
 4. [Pi calculation](Pi.md)
 
