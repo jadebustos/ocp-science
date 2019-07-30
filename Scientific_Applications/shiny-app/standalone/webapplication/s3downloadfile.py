@@ -13,8 +13,11 @@ import boto.s3.connection
 
 def main():
   # put here your access_key and secret_key to access s3 bucket
-  access_key = '9D0Y7J44G5Q9B8H491GA'
-  secret_key = 'lm1g1LrLKUDjKojBQjNfg9iyAU5P68muP0QF70lX'
+  access_key = os.environ['S3_ACCESS_KEY']
+  secret_key = os.environ['S3_SECRET_KEY']
+  s3_host = os.environ['S3_HOST']
+  s3_port= os.environ['S3_PORT']
+  s3_bucket = os.environ['S3_BUCKET']
 
   boto.config.add_section('s3')
 
@@ -22,15 +25,15 @@ def main():
         aws_access_key_id = access_key,
         aws_secret_access_key = secret_key,
         # s3 endpoint
-        host = '192.168.1.121',
+        host = s3_host,
         # s3 port
-        port = 8080,
+        port = int(s3_port),
         is_secure=False,
         calling_format = boto.s3.connection.OrdinaryCallingFormat(),
         )
 
   # bucket where data is stored
-  bucket = conn.get_bucket('redhatforum')
+  bucket = conn.get_bucket(s3_bucket)
 
   key = bucket.get_key(sys.argv[1])
   key.get_contents_to_filename(sys.argv[1])
