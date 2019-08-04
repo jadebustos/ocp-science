@@ -93,6 +93,7 @@ COPY start-singleuser.sh /usr/local/bin/
 COPY jupyter_notebook_config.py /etc/jupyter/
 COPY image_classifier.ipynb ${HOME}
 COPY data ${HOME}/data/
+COPY trained-model.h5 ${HOME}
 
 # Configure container startup
 ENTRYPOINT ["start-notebook.sh","--allow-root"]
