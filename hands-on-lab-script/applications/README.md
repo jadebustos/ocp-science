@@ -1,18 +1,8 @@
 # Applications
 
-## R Shiny Application
+The follwing applications will be deployed:
 
-![R Shiny](imgs/r-shiny.png)
-
-## Binary image classification
-
-![jupyter ai](imgs/jupyter-ai.png)
-
-## Training your employees/students/users
-
-![training](imgs/training.png)
-
-## Getting Pi decimals
-
-![pi](imgs/pi.png)
-
+* [R Shiny workloads](r-shiny.md)
+* [Machine learning/Artificial Inteligence workloads](ml.md)
+* [Training workloads](training.md)
+* [Computing workloads](pi.md)
