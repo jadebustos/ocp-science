@@ -8,7 +8,7 @@
 
 ![jupyter ai](imgs/jupyter-ai.png)
 
-## Training your employees
+## Training your employees/students/users
 
 ![training](imgs/training.png)
 
