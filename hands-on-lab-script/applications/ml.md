@@ -30,3 +30,5 @@ When the application is running you will have to do:
 ## Lab's pupouse
 
 Illustrate how **OCP** + **AMQ Streams** can work together with **Machine learning/Artificial Intelligence** workloads to get the most of them.
+
+## Application deployment

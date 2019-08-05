@@ -15,3 +15,6 @@ These Jupyter Notebooks have been taken from [Lorena Barba github repository](ht
 ## Lab's pupouse
 
 Illustrate how **OCP** can be used to ease personalized training for users avoiding users struggling with software installation, software development life cycle, ...
+
+## Application deployment
+

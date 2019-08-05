@@ -3,3 +3,6 @@
 ## High level pod description
 
 ![R Shiny](imgs/r-shiny.png)
+
+## Application deployment
+
