@@ -15,11 +15,11 @@ When the application is running you will have to do:
 
 * You will have to train the model with a preloaded set of photos included in the notebook for the sake of simplicity.
 
-> WARNING: Training the model with an appropiate set of images (25000) took 35 hours in an **Intel(R) Core(TM) i7-4710HQ CPU @ 2.50GHz** CPU. Due this lab is limited to 2 hours the notebook includes a very reduced set of images and the resulting model will be not much accurate.
+> WARNING: Training the model with an appropiate set of images (25000) took 35 hours in an **Intel(R) Core(TM) i7-4710HQ CPU @ 2.50GHz** CPU. Due this lab is limited to 2 hours the notebook includes a very reduced set of images and the resulting model will be not accurate enough.
 
 * After training the model you will have to configure the notebook with the data of the [kafka broker you configured](../amq-streams/README.md).
 
-* You send an image to kafka.
+* You will send an image to kafka.
 
 * The notebook will read the image from kafka and will guess if the image is a cat or a dog.
 
