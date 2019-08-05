@@ -10,5 +10,7 @@
 
 ## Training your employees
 
+![training](imgs/training.png)
+
 ## Getting Pi decimals
 
