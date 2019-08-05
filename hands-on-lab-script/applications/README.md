@@ -14,3 +14,5 @@
 
 ## Getting Pi decimals
 
+![pi](imgs/pi.png)
+
