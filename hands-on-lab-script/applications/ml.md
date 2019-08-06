@@ -62,3 +62,48 @@ We have two alternatives using **Red Hat** products to solve it:
 Do you dare?
 
 > TIP: Training images for animal type (cat or dog) have to be stored in **data/training/animal** and validation images in **data/validation/animal**.
+
+## A bit of fun
+
+If you are curious about this kind of applications or you only want just a bit of fun you can play a bit.
+
+### Verifying how the well trained model is more accurate than the model you have just trained
+
+* https://img.europapress.es/fotoweb/fotonoticia_20170622121827-17062170019_800.jpg
+* https://images-na.ssl-images-amazon.com/images/I/917iZaaFOgL._SX425_.jpg
+* https://img.europapress.es/fotoweb/fotonoticia_20170622121827-17062170039_125.jpg
+* https://static.boredpanda.com/blog/wp-content/uploads/2019/04/adorable-hairless-sphynx-kittens-fb5-png__700.jpg
+* https://img.europapress.es/fotoweb/fotonoticia_20170622121827-17062170139_125.jpg
+* https://getleashedmag.com/wp-content/uploads/2017/01/spynh-feature.jpg
+* https://img.europapress.es/fotoweb/fotonoticia_20170622121827-17062170079_125.jpg
+* https://i.ytimg.com/vi/zUWlAtat8ww/hqdefault.jpg
+* http://www.arrecal.com/images/1clasificado-collera-de-podencos-los-brincas.JPG
+* https://merchdope-zpq4xnxcq9v.netdna-ssl.com/wp-content/uploads/2018/10/Afghan-Hound-1.jpg
+
+### The well trained model is not performing as well as your model
+
+* https://www.elheraldo.co/sites/default/files/styles/width_860/public/articulo/2018/05/12/perro.jpg?itok=o-V5_DxL
+* https://pictures-of-cats.org/wp-content/uploads/2018/03/Sphynx-cat-by-Helmi-Flick-X.jpg
+* https://media.metrolatam.com/2019/01/29/memeperrodrogado-42777b43147e26a68fab3fd0729b24a3-600x400.jpg
+* https://pics.me.me/hairless-cats-hairless-cats-twitter-49621967.png
+
+### The well trained model is performing quite poorly
+
+* https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/American_Eskimo_Dog_1.jpg/245px-American_Eskimo_Dog_1.jpg el poorly bien, el well dice que es un gato
+* https://img.europapress.es/fotoweb/fotonoticia_20170622121827_260.jpg
+* https://www.dogalize.com/wp-content/uploads/2017/05/551-pdengo-portugues-cerdoso-grande.jpg
+
+### Both models are trolling me?
+
+* https://d17fnq9dkz9hgj.cloudfront.net/uploads/2018/04/Minskin_01.jpg
+* https://img.europapress.es/fotoweb/fotonoticia_20170622121827-17062170159_125.jpg
+* http://www.lifewithcatman.com/wp-content/uploads/2018/03/37023296_208811373306721_2331537861515411456_n.jpg
+* https://img.europapress.es/fotoweb/fotonoticia_20170622121827-17062170069_125.jpg
+* https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2018/12/cat-parody-instagram-removal.jpg
+* https://img.europapress.es/fotoweb/fotonoticia_20170622121827-17062170109_125.jpg
+* http://www.sosgalgos.com/wp-content/uploads/2018/04/Puskas01_620x400.jpg
+
+### Use your imagination
+
+* Have you known any cartoon based on cat or dogs?
+* You could try with your photo or a photo's friend/collegue ...
