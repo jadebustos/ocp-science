@@ -12,7 +12,7 @@ The user will select one of the Red Hat products available:
 
 Depending on the selected product the application will get a file containing words related to the product and create the word cloud. The files used to create the word cloud will be stored in Red Hat Ceph Storage.
 
-![word cloud,role="center"](imgs/word-cloud.png)
+![word cloud](imgs/word-cloud.png)
 
 ## High level pod description
 
