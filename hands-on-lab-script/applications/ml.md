@@ -105,5 +105,5 @@ If you are curious about this kind of applications or you only want to have just
 
 ### Use your imagination
 
-* Have you known any cartoon based on cat or dogs?
+* Have you known any cartoon based on a cat or a dog?
 * You could try with your photo or a photo's friend/collegue ...
