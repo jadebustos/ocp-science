@@ -63,9 +63,9 @@ Do you dare?
 
 > TIP: Training images for animal type (cat or dog) have to be stored in **data/training/animal** and validation images in **data/validation/animal**.
 
-## A bit of fun
+## A bit of fun?
 
-If you are curious about this kind of applications or you only want just a bit of fun you can play a bit.
+If you are curious about this kind of applications or you only want to have just a bit of fun you can play a bit. Here some suggestions.
 
 ### Verifying how the well trained model is more accurate than the model you have just trained
 
@@ -89,7 +89,7 @@ If you are curious about this kind of applications or you only want just a bit o
 
 ### The well trained model is performing quite poorly
 
-* https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/American_Eskimo_Dog_1.jpg/245px-American_Eskimo_Dog_1.jpg el poorly bien, el well dice que es un gato
+* https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/American_Eskimo_Dog_1.jpg/245px-American_Eskimo_Dog_1.jpg
 * https://img.europapress.es/fotoweb/fotonoticia_20170622121827_260.jpg
 * https://www.dogalize.com/wp-content/uploads/2017/05/551-pdengo-portugues-cerdoso-grande.jpg
 
