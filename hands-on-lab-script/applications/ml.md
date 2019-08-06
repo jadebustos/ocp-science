@@ -9,7 +9,7 @@ As an example you are going to deploy a Jupyter notebook that classifies images 
 * Cats
 * Dogs
 
-This notebook is a modified version of the [image_classifier notebook](https://github.com/gsurma/image_classifier).
+This notebook is a modified version of the [image_classifier notebook](https://github.com/gsurma/image_classifier). This notebook is a [Convolutional Neural Network Image classifier](https://en.wikipedia.org/wiki/Convolutional_neural_network).
 
 When the application is running you will have to do:
 
