@@ -1,4 +1,4 @@
-# Machine Learning/Artificial Inteligence workloads
+# Lab02: Machine Learning/Artificial Inteligence workloads
 
 Machine learning and Artificial intelligence are one of technology topics we are used to hear about nowadays.
 
@@ -13,7 +13,7 @@ This notebook is a modified version of the [image_classifier notebook](https://g
 
 > CURIOSITY: This notebook is a [Convolutional Neural Network Image classifier](https://en.wikipedia.org/wiki/Convolutional_neural_network).
 
-When the application is running you will have to do:
+When the application is running your tasks will be:
 
 * You will have to train the model with a preloaded set of photos included in the notebook for the sake of simplicity.
 

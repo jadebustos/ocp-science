@@ -1,4 +1,4 @@
-# Training workloads
+# Lab03: Training workloads
 
 It is quite common to use notebooks to teach about diferent subjects.
 
@@ -15,6 +15,8 @@ These Jupyter Notebooks have been taken from [Lorena Barba github repository](ht
 ## Lab's pupouse
 
 Illustrate how **OCP** can be used to ease personalized training for users avoiding users struggling with software installation, software development life cycle, ...
+
+Although this lab is focused in deploying **Jupyter notebooks** any applications reachable by the http protocol can be used in the same way.
 
 ## Application deployment
 

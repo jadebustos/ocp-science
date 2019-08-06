@@ -1,4 +1,4 @@
-# Computing workloads
+# Lab04: Computing workloads
 
 ## High level pod description
 
