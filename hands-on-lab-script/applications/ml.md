@@ -34,3 +34,23 @@ When the application is running your tasks will be:
 Illustrate how **OCP** + **AMQ Streams** can work together with **Machine learning/Artificial Intelligence** workloads to get the most of them.
 
 ## Application deployment
+
+## Improvements
+
+If the set of images used to train the model are not enough to get a good model then more images will have to be added.
+
+As the container image used for this lab has the images included in it we have the following options:
+
+1. Copy more images to the running container.
+2. Create a new container with more images and redeploy the pod.
+
+As the container is not using persistent storage the new images will be lost after the container ends.
+
+We have two alternatives using **Red Hat** products to solve it:
+
+1. Using a kafka topic to store the images. (**AMQ Streams**)
+2. Store the images in Object Storage. (**Red Hat Ceph Storage**)
+
+Do you dare?
+
+> TIP: Training images for animal type (cat or dog) have to be stored in **data/training/animal** and validation images in **data/validation/animal**.
