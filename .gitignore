@@ -1,2 +1,5 @@
 Scientific_Applications/ai-notebook/docker/.ipynb_checkpoints/
 Scientific_Applications/ai-notebook/docker/.ipynb_checkpoints/*
+model.h5
+model_summary.txt
+training_logs.csv

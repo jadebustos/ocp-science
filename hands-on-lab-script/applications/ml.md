@@ -19,6 +19,14 @@ When the application is running your tasks will be:
 
 > WARNING: Training the model with an appropiate set of images (25000) took 35 hours in an **Intel(R) Core(TM) i7-4710HQ CPU @ 2.50GHz** CPU. Due this lab is limited to 2 hours the notebook includes a very reduced set of images and the resulting model will be not accurate enough.
 
+You should get a similar graph after you train the model (80 training images, 20 validation images):
+
+![poorly trained model](imgs/poorly-trained-model.png)
+
+For a well trained model (20000 training images, 5000 validation images):
+
+![trained model](imgs/trained-model.png)
+
 * After training the model you will have to configure the notebook with the data of the [kafka broker you configured](../amq-streams/README.md).
 
 * You will send an image to kafka.
