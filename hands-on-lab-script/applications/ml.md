@@ -44,7 +44,7 @@ As the container image used for this lab has the images included in it we have t
 1. Copy more images to the running container.
 2. Create a new container with more images and redeploy the pod.
 
-As the container is not using persistent storage the new images will be lost after the container ends.
+The first option has the inconvenient that the container is not using persistent storage the new images will be lost after the container ends. The second option could be time consuming, create a new container image, upload to the registry and redeploy the pod.
 
 We have two alternatives using **Red Hat** products to solve it:
 
