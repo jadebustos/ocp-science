@@ -41,7 +41,31 @@ For a well trained model (20000 training images, 5000 validation images):
 
 Illustrate how **OCP** + **AMQ Streams** can work together with **Machine learning/Artificial Intelligence** workloads to get the most of them.
 
-## Application deployment
+## Notebook deployment
+
+Create notebook:
+```
+$ oc run --image=quay.io/rhte_2019/ai-notebook:latest --port=8080 rhte-notebook
+```
+
+Create service and route
+```
+$ oc expose dc rhte-notebook
+$ oc create route edge --service=rhte-notebook
+```
+
+The notebook should be available at the exposed route:
+
+```
+$ oc get route
+NAME            HOST/PORT                                 PATH      SERVICES        PORT      TERMINATION   WILDCARD
+rhte-notebook   rhte-notebook-rhte2019.apps.example.com             rhte-notebook   <all>     edge          None
+```
+
+Using a browser go to the previous route https://rhte-notebook-rhte2019.apps.example.com
+
+![notebook](imgs/notebook.png)
+
 
 ## Improvements
 
