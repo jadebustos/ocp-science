@@ -9,7 +9,7 @@ import stat
 
 c = get_config()
 c.NotebookApp.ip = '0.0.0.0'
-c.NotebookApp.port = 8888
+c.NotebookApp.port = 8080
 c.NotebookApp.open_browser = False
 
 # https://github.com/jupyter/notebook/issues/3130
@@ -53,3 +53,4 @@ distinguished_name = req_distinguished_name
 # the environment
 if 'NB_UMASK' in os.environ:
     os.umask(int(os.environ['NB_UMASK'], 8))
+

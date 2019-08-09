@@ -85,7 +85,6 @@ RUN pip install \
     'kafka-python' \
     'pillow'
 
-RUN chmod 775 -R ${HOME}
 # Add local files as late as possible to avoid cache busting
 COPY start.sh /usr/local/bin/
 COPY start-notebook.sh /usr/local/bin/
@@ -93,7 +92,11 @@ COPY start-singleuser.sh /usr/local/bin/
 COPY jupyter_notebook_config.py /etc/jupyter/
 COPY image_classifier.ipynb ${HOME}
 COPY data ${HOME}/data/
+<<<<<<< HEAD
 COPY trained-model.h5 ${HOME}
+=======
+RUN chmod 775 -R ${HOME}
+>>>>>>> Improve docs
 
 # Configure container startup
 ENTRYPOINT ["start-notebook.sh","--allow-root"]
