@@ -20,3 +20,42 @@ Although this lab is focused in deploying **Jupyter notebooks** any applications
 
 ## Application deployment
 
+First of all we should create a new project:
+
+```
+oc new-project cdf
+```
+
+To deploy this complex app is as simple as execute the following command:
+
+```
+oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/hands-on-lab-script/applications/cfd-training/openshift/template.yml
+```
+
+After some initialization, assuming that everything is fine we should see our Pod running. Next thing is to expose it (expose containers internally as services and externally via routes):
+
+```
+oc expose pod cdf-apps
+oc expose service cdf-apps
+```
+
+## Application access
+
+How you can access your app ? Is as simple as you deployed it:
+
+```
+oc get route cdf-apps
+```
+
+You should see something like:
+
+```
+NAME              HOST/PORT         PATH      SERVICE        LABELS    TLS TERMINATION
+cdf-apps          www.example.com   /         cdf-apps
+```
+
+Copy the value of the column `HOST/PORT` and put it in your browser:
+
+```
+https://www.example.com
+```

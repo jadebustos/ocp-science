@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: cdf-apps
+metadata:
+  annotations:
+    description: |
+      Template to deploy Computational fluid dynamics.
+    openshift.io/provider-display-name: Red Hat Tech Exchange.
+    tags: cdf
+  name: cdf-apps
+objects:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    name: cdf-apps
+  spec:
+    containers:
+      name: cdf-apps
+      image: quay.io/rhte_2019/cfd-training:latest
+    restartPolicy: Never
