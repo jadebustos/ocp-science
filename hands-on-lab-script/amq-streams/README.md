@@ -90,6 +90,8 @@ rhte-cluster-kafka-bootstrap   rhte-cluster-kafka-bootstrap-rhte2019.apps.cluste
 
 Broker's routes must be used in the steps below
 
+> NOTE: You should take note about the route, and the topic name because you will use in another lab.
+
 ## Send a picture to the previous topic
 
 We can send a picture to the previous created topic using several methods. Some of them are included:
