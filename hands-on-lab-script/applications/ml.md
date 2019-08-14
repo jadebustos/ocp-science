@@ -70,17 +70,17 @@ Using a browser go to the previous route https://rhte-notebook-rhte2019.apps.exa
 
 When you connect to the application you will see:
 
-[01-notebook](imgs/01-ml.png)
+![01-notebook](imgs/01-ml.png)
 
 The Jupyter Notebook has cells, some cells are only text and other are code that you can run. The cells starting with __In [X]:__ are code cells which you can run.
 
 To run a cell you need to put the cursor on the cell and press **Ctrl + Shift**. To train the model you will need to go to the first code cell and run it.
 
-[02-notebook](imgs/02-ml.png)
+![02-notebook](imgs/02-ml.png)
 
 This will take a while because the model has to be trained. When it finised you will have to the following cell and you will have to modifiy some parameters in the cell:
 
-[03-notebook](imgs/03-ml.png)
+![03-notebook](imgs/03-ml.png)
 
 The following parameters will have to be modified to fit your environment:
 
@@ -92,7 +92,7 @@ After you have configured these parameters you will have to run the cell to crea
 
 Once the kafka consumer is started you can run the following cell:
 
-[04-notebook](imgs/04-ml.png)
+![04-notebook](imgs/04-ml.png)
 
 this cell will read an image from kafka and will perform two predictions:
 
@@ -101,7 +101,7 @@ this cell will read an image from kafka and will perform two predictions:
 
 > TIP: Every time you run this cell the notebook will download an image from kafka to make the predictions.
 
-[05-notebook](imgs/05-ml.png)
+![05-notebook](imgs/05-ml.png)
 
 ## Improvements
 
