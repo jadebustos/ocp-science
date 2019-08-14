@@ -12,11 +12,11 @@ import boto.s3.connection
 
 def main():
   # put here your access_key and secret_key to access s3 bucket
-  access_key = 'FKQY387H5NSX077T6KWZ'
-  secret_key = 'Y1CsXS3mxnMS1RjZxjsru1yysiK4gBXQsk6Kxkck'
+  access_key = 'GEIICT90BB597P57B9BB'
+  secret_key = 'pZlzuKquhrBzQ74mXkAOIjpSdzoWRZwqKQzzRQIq'
 
   # your rados host
-  radoshost = 'ceph1.redhatforummad.com'
+  radoshost = '192.168.100.110'
 
   # your rados port
   radosport = 8080
@@ -35,7 +35,7 @@ def main():
     calling_format = boto.s3.connection.OrdinaryCallingFormat(),
     )
 
-  bucket = conn.get_bucket('redhatforum')
+  bucket = conn.get_bucket('putamierda')
 
   for item in files:
     # configure this with your path for the data files

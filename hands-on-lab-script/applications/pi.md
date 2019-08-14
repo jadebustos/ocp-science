@@ -1,4 +1,4 @@
-# Lab04: Computing workloads
+# Lab06: Computing workloads
 
 We can use **OCP** to run non-interactive jobs. For instance pure computing jobs.
 

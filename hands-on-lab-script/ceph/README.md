@@ -1,4 +1,4 @@
-# Ceph
+# Lab02: Ceph-nano deployment
 
 **INCLUDE CEPH NANO DEPLOYMENT CREATION TASKS FOR STUDENTS**
 

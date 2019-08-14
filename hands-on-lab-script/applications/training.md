@@ -1,4 +1,4 @@
-# Lab03: Training workloads
+# Lab05: Training workloads
 
 It is quite common to use notebooks to teach about diferent subjects.
 

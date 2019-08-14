@@ -1,3 +1,1 @@
-# Python S3 code examples
-
-These are some examples about how to use python with the S3 API provided by ceph.
+The content of these files has been taken from [Red Hat web site](https://www.redhat.com) so distribution and usage are restricted to Red Hat policies.

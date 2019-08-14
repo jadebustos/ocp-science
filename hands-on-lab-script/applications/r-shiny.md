@@ -1,4 +1,4 @@
-# Lab01: R Shiny workloads
+# Lab03: R Shiny workloads
 
 This application create words cloud for some Red Hat products.
 
