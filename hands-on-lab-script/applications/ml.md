@@ -72,7 +72,17 @@ When you connect to the application you will see:
 
 ![01-notebook](imgs/01-ml.png)
 
-The Jupyter Notebook has cells, some cells are only text and other are code that you can run. The cells starting with __In [X]:__ are code cells which you can run.
+The Jupyter Notebook has cells, some cells are only text and other are code that you can run. The code cells you can run starts with:
+
+```
+In [X]:
+```
+
+The result of the execution, if any, is stored in other cell:
+
+```
+Out [X]:
+```
 
 To run a cell you need to put the cursor on the cell and press **Ctrl + Shift**. To train the model you will need to go to the first code cell and run it.
 
