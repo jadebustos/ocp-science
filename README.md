@@ -4,6 +4,5 @@ This repository contains stuff for the hands-on lab **How Red Hat OCP can be use
 
 Subjects to cover:
 
-1. [Ceph](Ceph-nano/README.md)
-2. [Scientific Applications](Scientific_Applications/README.md)
-3. [Hands-on lab Script](hands-on-lab-script/README.md)
+1. [Scientific Applications](Scientific_Applications/README.md)
+2. [Hands-on lab Script](hands-on-lab-script/README.md)
