@@ -33,7 +33,8 @@ EOF
 One Ceph-nano has been successfully deployed you will have to:
 
 1. Create a bucket.
-2. <details><summary>Upload these files to the bucket.</summary>
+2. <details>
+<summary>Upload these files to the bucket.</summary>
 <p>[ansible.txt.gz](data/ansible.txt.gz)</p>
 <p>[ceph.txt.gz](data/ceph.txt.gz)</p>
 <p>[ocp.txt.gz](data/ocp.txt.gz)</p>
