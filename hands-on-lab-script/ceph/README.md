@@ -33,14 +33,12 @@ EOF
 One Ceph-nano has been successfully deployed you will have to:
 
 1. Create a bucket.
-2. <details>
-<summary>Upload these files to the bucket.</summary>
-<p>[ansible.txt.gz](data/ansible.txt.gz)</p>
-<p>[ceph.txt.gz](data/ceph.txt.gz)</p>
-<p>[ocp.txt.gz](data/ocp.txt.gz)</p>
-<p>[osp.txt.gz](data/osp.txt.gz)</p>
-<p>[rhv.txt.gz](data/rhv.txt.gz)</p>
-</details>
+2. Upload these files to the bucket:
+** [ansible.txt.gz](data/ansible.txt.gz)
+** [ceph.txt.gz](data/ceph.txt.gz)
+** [ocp.txt.gz](data/ocp.txt.gz)
+** [osp.txt.gz](data/osp.txt.gz)
+** [rhv.txt.gz](data/rhv.txt.gz)
 
 > IMPORTANT: Take note of your S3 bucket and credentials due to you will have to use later.
 
