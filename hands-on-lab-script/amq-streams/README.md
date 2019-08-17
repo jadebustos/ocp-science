@@ -9,7 +9,11 @@ Create `amq-streams` project:
 ```
 $ oc new-project amq-streams
 ```
+Deploy operator and cluster operator and its related resources with:
 
+```
+$ oc apply -f resources/cluster-operator/ -n amq-streams
+```
 This amq-streams cluster operator is Configured to watch to watch all namespaces since the **STRIMZI_NAMESPACE** environment variable from the operator yaml deployment file has the value *
 As we have configured the Cluster Operator to watch all namespaces, it's also required to configure additional ClusterRoleBindings to grant cluster-wide access to the Cluste Operator.
 
@@ -17,12 +21,6 @@ As we have configured the Cluster Operator to watch all namespaces, it's also re
 $ oc adm policy add-cluster-role-to-user strimzi-cluster-operator-namespaced --serviceaccount strimzi-cluster-operator -n amq-streams
 $ oc adm policy add-cluster-role-to-user strimzi-entity-operator --serviceaccount strimzi-cluster-operator -n amq-streams
 $ oc adm policy add-cluster-role-to-user strimzi-topic-operator --serviceaccount strimzi-cluster-operator -n amq-streams
-```
-
-Deploy operator and cluster operator and its related resources with:
-
-```
-$ oc apply -f resources/cluster-operator/ -n amq-streams
 ```
 
 ## Create a new kafka cluster
@@ -64,14 +62,12 @@ Verify its creation with:
 ```
 $ oc get kafkatopics -n rhte2019
 NAME      PARTITIONS   REPLICATION FACTOR
-rhte      5            1
+rhte      1            1
 
 $ oc rsh -n rhte2019 -c kafka rhte-cluster-kafka-0 bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic rhte
 OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
 Topic:rhte      PartitionCount:3        ReplicationFactor:1     Configs:message.format.version=2.2-IV1
-        Topic: rhte     Partition: 0    Leader: 2       Replicas: 2     Isr: 2
-        Topic: rhte     Partition: 1    Leader: 0       Replicas: 0     Isr: 0
-        Topic: rhte     Partition: 2    Leader: 1       Replicas: 1     Isr: 1
+        Topic: rhte	Partition: 0	Leader: 1	Replicas: 1	Isr: 1
 ```
 
 The traces above indicate that a new `rhte` topic is created with a Replication factor of 1 and composed by 1 partition.
