@@ -4,3 +4,4 @@ model.h5
 model_summary.txt
 training_logs.csv
 test_file.txt
+*pyc

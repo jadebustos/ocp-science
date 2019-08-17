@@ -8,22 +8,49 @@ import os
 import sys
 import boto
 import boto.s3.connection
+import argparse
+
+import config
 
 # this file downloads the file passed as first argument from a s3 bucket
 
+# a endpoint.json file with data connections must exist
+#{
+#    "access_key": "foo",
+#    "secret_key": "bar",
+#    "endpoint_url": "ceph.example.com",
+#    "endpoint_port": "80"
+#}
+
+def parse_args():
+  parser = argparse.ArgumentParser(description='Download files from a S3 bucket')
+  parser.add_argument('--bucket', required=True)
+  parser.add_argument('--files', required=True)
+  return parser.parse_args()
+
 def main():
-  # put here your access_key and secret_key to access s3 bucket
-  access_key = 'FKQY387H5NSX077T6KWZ'
-  secret_key = 'Y1CsXS3mxnMS1RjZxjsru1yysiK4gBXQsk6Kxkck'
+  # read configuration
+  myConfig = config.readConfig()
 
-  # your rados host
-  radoshost = 'ceph1.redhatforummad.com'
+  # check that configuration was successfully read
+  if myConfig.getConfigState() == False:
+    print "Error in config."
+    sys.exit(1)
 
-  # your rados port
-  radosport = 8080
+  # configure access data
+  access_key = myConfig.getAccessKey()
+  secret_key = myConfig.getSecretKey()
+  radoshost = myConfig.getRadosHost()
+  radosport = myConfig.getRadosPort()
 
+  # process arguments
+  args = parse_args()
+
+  # files to download
+  files = args.files.split(',')
+
+  # create a S3 connection
   boto.config.add_section('s3')
-
   conn = boto.connect_s3(
     aws_access_key_id = access_key,
     aws_secret_access_key = secret_key,
@@ -33,10 +60,12 @@ def main():
     calling_format = boto.s3.connection.OrdinaryCallingFormat(),
     )
 
-  bucket = conn.get_bucket('redhatforum')
+  bucket = conn.get_bucket(args.bucket)
 
-  key = bucket.get_key(sys.argv[1])
-  key.get_contents_to_filename(sys.argv[1])
+  for item in files:
+    print "Downloading " + item
+    key = bucket.get_key(item)
+    key.get_contents_to_filename(item)
 
 if __name__ == "__main__":
   main()
