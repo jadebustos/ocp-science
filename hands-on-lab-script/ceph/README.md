@@ -28,21 +28,91 @@ sed -i "s/127.0.0.1:8000/$CEPH_ENDPOINT/g" /opt/ceph-container/sree/static/js/ba
 EOF
 ```
 
-## S3 operations
+## Create a bucket and upload data
 
-* Students can use this [script](scripts/s3createbucket.py) to create buckets.
-* Students can use this [script](scripts/s3deletebucket.py) to delete buckets.
-* Students can use this [script](scripts/s3deletefile.py) to delete a file from bucket.
-* Students can use this [script](scripts/s3uploadfiles.py) to upload a file to a bucket.
-* Students can use this [script](scripts/s3downloadfile.py) to download a file from a bucket.
-* Students can use this [script](scripts/s3listbucket.py) to list a bucket's content.
+One Ceph-nano has been successfully deployed you will have to:
 
-## Data to be uploaded
+1. Create a bucket.
+2. <details><summary>Upload these files to the bucket.</summary>
+<p>[ansible.txt.gz](data/ansible.txt.gz)</p>
+<p>[ceph.txt.gz](data/ceph.txt.gz)</p>
+<p>[ocp.txt.gz](data/ocp.txt.gz)</p>
+<p>[osp.txt.gz](data/osp.txt.gz)</p>
+<p>[rhv.txt.gz](data/rhv.txt.gz)</p>
+</details>
 
-Students will have to upload the following data to a bucket:
+> IMPORTANT: Take note of your S3 bucket and credentials due to you will have to use later.
 
-* [ansible.txt.gz](data/ansible.txt.gz)
-* [ceph.txt.gz](data/ceph.txt.gz)
-* [ocp.txt.gz](data/ocp.txt.gz)
-* [osp.txt.gz](data/osp.txt.gz)
-* [rhv.txt.gz](data/rhv.txt.gz)
+## Scritps to perform operations on S3
+
+If you want to use these scripts you will have to create the __endpoint.json__ file with the data to access your S3 endpoint:
+
+```
+{
+    "access_key": "vendoopelcorsa",
+    "secret_key": "enbuenestado",
+    "endpoint_url": "radosgw.example.com",
+    "endpoint_port": "80"
+}
+```
+
+### __list_buckets.py__ script
+
+You can use the [list_buckets.py](scripts/list_buckets.py) script to list the buckets in the S3 endpoint:
+
+```
+$ python list_buckets.py
+```
+
+### __s3createbucket.py__ script
+
+You can use the [s3createbucket.py](scripts/s3createbucket.py) script to create buckets:
+
+```
+$ python s3createbucket.py --bucket BUCKETNAME
+```
+
+### __s3deletebucket.py__ script
+
+You can use the [s3deletebucket.py](scripts/s3deletebucket.py) script to delete a bucket:
+
+```
+$ python s3deletebucket.py --bucket BUCKETNAME
+```
+### __s3uploadfiles.py__ script
+
+You can use the [s3uploadfiles.py](scripts/s3uploadfiles.py) script to upload files to a bucket:
+
+```
+$ python s3uploadfiles.py --bucket BUCKETNAME --files "FILENAME1,FILENAME2,FILENAME3"
+```
+
+> TIP: You can update several files at a time using a "," as a separator.
+
+### __s3deletefiles.py__ script
+
+You can use the [s3deletefiles.py](scripts/s3deletefiles.py) script to delete files from a bucket:
+
+```
+$ python s3deletefiles.py --bucket BUCKETNAME --files "FILENAME1,FILENAME2,FILENAME3"
+```
+
+> TIP: You can delete several files at a time using a "," as a separator.
+
+### __s3downloadfiles.py__ script
+
+You can use the [s3downloadfiles.py](scripts/s3downloadfiles.py) script to download a file from a bucket:
+
+```
+$ python s3downloadfiles.py --bucket BUCKETNAME --files "FILENAME1,FILENAME2,FILENAME3"
+```
+
+> TIP: You can download several files at a time using a "," as a separator.
+
+### __s3listbucket.py__ script
+
+You can use the [s3listbucket.py](scripts/s3listbucket.py) scripts to list a bucket's content:
+
+```
+$ python s3listbucket.py --bucket BUCKETNAME
+```
