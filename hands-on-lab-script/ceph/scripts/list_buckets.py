@@ -4,24 +4,39 @@
 # (c) 2018 Jose Angel de Bustos Perez <jadebustos@redhat.com>
 # Distributed under GPLv3 License (https://www.gnu.org/licenses/gpl-3.0.en.html)
 
+import sys
+import json
 import boto
 import boto.s3.connection
 
+import config
+
 # this scripts shows the buckets in the s3 endpoint
 
+# a endpoint.json file with data connections must exist
+#{
+#    "access_key": "foo",
+#    "secret_key": "bar",
+#    "endpoint_url": "ceph.example.com",
+#    "endpoint_port": "80"
+#}
+
 def main():
-  # put here your access_key and secret_key to access s3 bucket
-  #access_key = 'GEIICT90BB597P57B9BB'
-  #secret_key = 'pZlzuKquhrBzQ74mXkAOIjpSdzoWRZwqKQzzRQIq'
-  access_key = 'foo'
-  secret_key = 'bar'
+  # read configuration
+  myConfig = config.readConfig()
 
-  # your rados host
-  radoshost = 'ceph-nano-services-test-ceph.apps.cluster-2956.sandbox478.opentlc.com'
+  # check that configuration was successfully read
+  if myConfig.getConfigState() == False:
+    print "Error in config."
+    sys.exit(1)
 
-  # your rados port
-  radosport = 8080
+  # configure access data
+  access_key = myConfig.getAccessKey()
+  secret_key = myConfig.getSecretKey()
+  radoshost = myConfig.getRadosHost()
+  radosport = myConfig.getRadosPort()
 
+  # create a S3 connection
   conn = boto.connect_s3(
     aws_access_key_id = access_key,
     aws_secret_access_key = secret_key,

@@ -1,0 +1,6 @@
+{
+    "access_key": "vendoopelcorsa",
+    "secret_key": "enbuenestado",
+    "endpoint_url": "radosgw.example.com",
+    "endpoint_port": "80"
+}
