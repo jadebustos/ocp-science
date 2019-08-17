@@ -1,21 +1,66 @@
 ---
-  apiVersion: v1
-  kind: Service
-  metadata:
-    name: ceph-nano-services
-    labels:
-      app: ceph
-      daemon: nano
-  spec:
-    ports:
-    - name: cn-s3
-      port: 80
-      protocol: TCP
-      targetPort: 8000
-    type: LoadBalancer
-    selector:
-      app: ceph
-      daemon: demo
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ceph-rgw-keys
+type: Opaque
+data:
+  rgw_user_user_key: Zm9v
+  rgw_user_secret_key: YmFy
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ceph-nano
+  labels:
+    app: ceph
+    daemon: nano
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: ceph
+    daemon: nano
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Route
+metadata:
+  name: ceph-nano
+spec:
+  to:
+    kind: Service
+    name: ceph-nano
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ceph-dashboard
+  labels:
+    app: ceph
+    daemon: nano
+spec:
+  ports:
+  - port: 5001
+    protocol: TCP
+    targetPort: 5001
+  selector:
+    app: ceph
+    daemon: nano
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Route
+metadata:
+  name: ceph-dashboard
+spec:
+  to:
+    kind: Service
+    name: ceph-dashboard
 ---
   apiVersion: apps/v1
   kind: StatefulSet
@@ -47,14 +92,16 @@
             protocol: TCP
           resources:
             limits:
-              cpu: "1"
-              memory: 512M
+              cpu: "2"
+              memory: 2Gi
             requests:
-              cpu: "1"
-              memory: 512M
+              cpu: "2"
+              memory: 2Gi
           env:
           - name: NETWORK_AUTO_DETECT
             value: "4"
+          - name: RGW_FRONTEND_PORT
+            value: "8000"
           - name: RGW_CIVETWEB_PORT
             value: "8000"
           - name: SREE_PORT

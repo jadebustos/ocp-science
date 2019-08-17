@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: ceph-rgw-keys
-type: Opaque
-data:
-  rgw_user_user_key: Zm9v
-  rgw_user_secret_key: YmFy
