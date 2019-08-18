@@ -38,7 +38,8 @@ $ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/
     -p S3_SECRET_KEY=${S3_SECRET_KEY} \
     -p S3_HOST=${S3_HOST} \
     -p S3_PORT=${S3_PORT} \
-    -p S3_BUCKET=${S3_BUCKET}
+    -p S3_BUCKET=${S3_BUCKET} \
+    | oc create -f -
 $
 ```
 
