@@ -2,10 +2,10 @@
 
 The following applications will be deployed:
 
-* Lab01: [R Shiny workloads](r-shiny.md)
-* Lab02: [Machine learning/Artificial Inteligence workloads](ml.md)
-* Lab03: [Training workloads](training.md)
-* Lab04: [Computing workloads](pi.md)
+* Lab03: [R Shiny workloads](r-shiny.md)
+* Lab04: [Machine learning/Artificial Inteligence workloads](ml.md)
+* Lab05: [Training workloads](training.md)
+* Lab06: [Computing workloads](pi.md)
 
 ## Training your employees
 
