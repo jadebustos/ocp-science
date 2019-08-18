@@ -2,6 +2,14 @@
 
 All resources used in this section are available under the directory [hands-on-lab-script/amq-streams/](.) of this repository.
 
+## High level pod description
+
+![amq](imgs/amq-streams.png)
+
+## Lab's purpose
+
+Illustrate how **AMQ Streams** is deployed to be later used by applications.
+
 ## Deploying Kafka Cluster operator
 
 Create `amq-streams` project:

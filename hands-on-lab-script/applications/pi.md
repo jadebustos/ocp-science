@@ -14,5 +14,7 @@ You can validate the results using [Pi constant generator](https://www.browserli
 
 ![pi](imgs/pi.png)
 
+## Lab's purpose
+
 ## Application deployment
 

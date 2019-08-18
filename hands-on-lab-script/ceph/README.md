@@ -1,18 +1,5 @@
 # Lab02: Ceph-nano deployment
 
-**INCLUDE CEPH NANO DEPLOYMENT CREATION TASKS FOR STUDENTS**
-
-S3 endpoint must be reachable from the internet.
-
-To buckets have to be created by students:
-
-* one named Red Hat for the R shiny app
-* other named pi
-
-Users need to be crated to access these buckets.
-
-Students must take note for the bucket name and credentials to be used later.
-
 ## Ceph
 
 Ceph provides storage:
@@ -21,15 +8,24 @@ Ceph provides storage:
 * [Object storage](https://docs.ceph.com/docs/master/radosgw/) a RESTful gateway which supports two interfaces: **Swift** and **S3**.
 * [CephFS](https://docs.ceph.com/docs/master/cephfs/) a POSIX-compliant filesystem.
 
-Ceph Storage can be easily used to store and retrieve data from applications.
+Ceph Storage can be easily used to store and retrieve data from any application that implements **Swift** or **S3**.
 
 Installing a Ceph Storage Cluster takes a while and requires resources. For developers it could be complicated to deploy a full Ceph Storage cluster just to tests their applications.
 
-[Ceph-nano](https://github.com/ceph/cn) can be used for developers to test their applications in an easy way. As Ceph-nano can be deployed in containers in this lab you will deploy it in OCP.
+## High level pod description
+
+![ceph-nano](imgs/ceph-nano.png)
+
+## Lab's purpose
+
+[Ceph-nano](https://github.com/ceph/cn) can be used for developers to test their applications in an easy way.
+
+As Ceph-nano can be deployed in containers in this lab you will deploy it inside OCP that illustrate how developers could use it to test their applications with no dependency from external departments.
 
 > IMPORTANT: Ceph-nano is not intended for production purpouses but for testing.
 
 ## Install Ceph-Nano [WIP]
+
 ```
 $ oc new-project ceph
 $ oc adm policy add-scc-to-user anyuid -z default -n ceph
