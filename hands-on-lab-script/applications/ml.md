@@ -96,9 +96,9 @@ This will take a while because the model has to be trained. When it finised you 
 
 The following parameters will have to be modified to fit your environment:
 
-* **topic** you will have to set the topic to the one you created in the [AMQ Streams Lab](../amq-streams/README.md).
-* **kafkaendpoint** you will have to set the endpoint to the one you created in the [AMQ Streams Lab](../amq-streams/README.md). 
-* **kafkaport** you will have to se the kafka port to the one you created in the [AMQ Streams Lab](../amq-streams/README.md).
+* **topic** you will have to set the topic to the one you created in the [Lab01: Deploy AMQ Streams](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams).
+* **kafkaendpoint** you will have to set the endpoint to the one you created in the [Lab01: Deploy AMQ Streams](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams#lab01-deploy-amq-streams). 
+* **kafkaport** you will have to se the kafka port to the one you created in the [Lab01: Deploy AMQ Streams](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams#lab01-deploy-amq-streams).
 
 After you have configured these parameters you will have to run the cell to create the kafka consumer.
 
