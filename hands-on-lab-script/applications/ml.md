@@ -182,3 +182,7 @@ If you are curious about this kind of applications or you only want to have just
 
 * Have you known any cartoon based on a cat or a dog?
 * You could try with your photo or a photo's friend/collegue ...
+
+## Lab resources
+
+You can find all the resources to build the container in [this directory](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/applications/ai-notebook/).
