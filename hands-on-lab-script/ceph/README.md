@@ -44,14 +44,22 @@ sed -i "s/127.0.0.1:8000/$CEPH_ENDPOINT/g" /opt/ceph-container/sree/static/js/ba
 EOF
 ```
 
-## Create a bucket and upload data
+## Create buckets and upload data
 
-One Ceph-nano has been successfully deployed you will have to:
+One Ceph-nano has been successfully deployed you will have to perform some tasks. You will create two buckets that will be used in another labs.
 
+For the [Lab03: R Shiny workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/r-shiny.md) you will have to:
+ 
 1. Create a bucket.
 2. Upload these files to the bucket: [ansible.txt.gz](data/ansible.txt.gz), [ceph.txt.gz](data/ceph.txt.gz), [ocp.txt.gz](data/ocp.txt.gz), [osp.txt.gz](data/osp.txt.gz), [rhv.txt.gz](data/rhv.txt.gz)
 
-> IMPORTANT: Take note of your S3 bucket and credentials due to you will have to use later.
+> IMPORTANT: Take note of your S3 bucket and credentials to use them in the [Lab03: R Shiny workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/r-shiny.md).
+
+For the [Lab06: Computing workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/pi.md) you will have to:
+
+1. Create a bucket.
+
+> IMPORTANT: Take note of your S3 bucket and credentials to use them in the [Lab06: Computing workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/pi	.md).
 
 ## Scritps to perform operations on S3
 
