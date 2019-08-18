@@ -86,7 +86,7 @@ rhte-cluster-kafka-bootstrap   rhte-cluster-kafka-bootstrap-rhte2019.apps.cluste
 
 Broker's routes must be used in the steps below
 
-> NOTE: You should take note about the route, and the topic name because you will use in [Lab04: Machine Learning/Artificial Inteligence workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/ml.md).
+> NOTE: You should take note about the route, and the topic name because you will use them in [Lab04: Machine Learning/Artificial Inteligence workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/ml.md).
 
 ## Send a picture to the previous topic
 

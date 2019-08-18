@@ -59,7 +59,7 @@ For the [Lab06: Computing workloads](https://github.com/jadebustos/ocp-science/b
 
 1. Create a bucket.
 
-> IMPORTANT: Take note of your S3 bucket and credentials to use them in the [Lab06: Computing workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/pi	.md).
+> IMPORTANT: Take note of your S3 bucket and credentials to use them in the [Lab06: Computing workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/pi.md).
 
 ## Scritps to perform operations on S3
 
