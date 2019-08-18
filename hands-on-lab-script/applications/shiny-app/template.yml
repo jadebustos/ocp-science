@@ -28,9 +28,12 @@ objects:
       - name: S3_BUCKET
         value: ${S3_BUCKET}
       name: shiny-app
+      ports:
+        - containerPort: 3838
+          name: shiny
+          protocol: TCP
       image: quay.io/rhte_2019/shiny-app:latest
     restartPolicy: Never
-    
 parameters:
 - description: S3 Access key
   displayName: Access key
