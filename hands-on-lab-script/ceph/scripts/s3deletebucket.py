@@ -14,8 +14,8 @@ import config
 
 # a endpoint.json file with data connections must exist
 #{
-#    "access_key": "foo",
-#    "secret_key": "bar",
+#    "access_key": "vendoopelcorsa",
+#    "secret_key": "enbuenestado",
 #    "endpoint_url": "ceph.example.com",
 #    "endpoint_port": "80"
 #}

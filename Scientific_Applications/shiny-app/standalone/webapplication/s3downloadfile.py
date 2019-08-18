@@ -9,18 +9,37 @@ import sys
 import boto
 import boto.s3.connection
 
+import config
+
 # this scripts download the file passed as first argument from s3 endpoint
 
+# a endpoint.json file with data connections must exist
+#{
+#    "access_key": "vendoopelcorsa",
+#    "secret_key": "enbuenestado",
+#    "endpoint_url": "ceph.example.com",
+#    "endpoint_port": "80"
+#    "bucket": "bucket"
+#}
+
 def main():
-  # put here your access_key and secret_key to access s3 bucket
-  access_key = os.environ['S3_ACCESS_KEY']
-  secret_key = os.environ['S3_SECRET_KEY']
-  s3_host = os.environ['S3_HOST']
-  s3_port= os.environ['S3_PORT']
-  s3_bucket = os.environ['S3_BUCKET']
+  # read configuration
+  myConfig = config.readConfig()
 
+  # check that configuration was successfully read
+  if myConfig.getConfigState() == False:
+    print "Error in config."
+    sys.exit(1)
+
+  # configure access data
+  access_key = myConfig.getAccessKey()
+  secret_key = myConfig.getSecretKey()
+  s3_host = myConfig.getRadosHost()
+  s3_port = myConfig.getRadosPort()
+  s3_bucket = myConfig.getBucket()
+
+  # create a S3 connection
   boto.config.add_section('s3')
-
   conn = boto.connect_s3(
         aws_access_key_id = access_key,
         aws_secret_access_key = secret_key,
@@ -40,4 +59,3 @@ def main():
 
 if __name__ == "__main__":
   main()
-
