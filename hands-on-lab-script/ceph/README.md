@@ -13,6 +13,22 @@ Users need to be crated to access these buckets.
 
 Students must take note for the bucket name and credentials to be used later.
 
+## Ceph
+
+Ceph provides storage:
+
+* [Block](https://docs.ceph.com/docs/master/rbd/).
+* [Object storage](https://docs.ceph.com/docs/master/radosgw/) a RESTful gateway which supports two interfaces: **Swift** and **S3**.
+* [CephFS](https://docs.ceph.com/docs/master/cephfs/) a POSIX-compliant filesystem.
+
+Ceph Storage can be easily used to store and retrieve data from applications.
+
+Installing a Ceph Storage Cluster takes a while and requires resources. For developers it could be complicated to deploy a full Ceph Storage cluster just to tests their applications.
+
+[Ceph-nano](https://github.com/ceph/cn) can be used for developers to test their applications in an easy way. As Ceph-nano can be deployed in containers in this lab you will deploy it in OCP.
+
+> IMPORTANT: Ceph-nano is not intended for production purpouses but for testing.
+
 ## Install Ceph-Nano [WIP]
 ```
 $ oc new-project ceph
