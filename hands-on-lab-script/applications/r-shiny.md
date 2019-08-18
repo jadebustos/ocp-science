@@ -27,7 +27,7 @@ Illustrate how **Red Hat Ceph Storage** can be used as a data backend for applic
 First of all we should create a new project:
 
 ```
-oc new-project r-shiny
+$ oc new-project r-shiny
 ```
 
 To deploy this app is as simple as execute the following command:
@@ -39,6 +39,7 @@ $ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/
     -p S3_HOST=${S3_HOST} \
     -p S3_PORT=${S3_PORT} \
     -p S3_BUCKET=${S3_BUCKET}
+$
 ```
 
 > NOTE: for more info about ceph go to 
@@ -48,6 +49,7 @@ After some initialization, assuming that everything is fine we should see our Po
 ```
 $ oc expose pod shiny-app
 $ oc expose service shiny-app
+$
 ```
 
 ## Application access

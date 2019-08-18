@@ -21,6 +21,7 @@ Deploy operator and cluster operator and its related resources with:
 
 ```
 $ oc apply -f resources/cluster-operator/ -n amq-streams
+$
 ```
 This amq-streams cluster operator is Configured to watch to watch all namespaces since the **STRIMZI_NAMESPACE** environment variable from the operator yaml deployment file has the value *
 As we have configured the Cluster Operator to watch all namespaces, it's also required to configure additional ClusterRoleBindings to grant cluster-wide access to the Cluste Operator.
@@ -29,6 +30,7 @@ As we have configured the Cluster Operator to watch all namespaces, it's also re
 $ oc adm policy add-cluster-role-to-user strimzi-cluster-operator-namespaced --serviceaccount strimzi-cluster-operator -n amq-streams
 $ oc adm policy add-cluster-role-to-user strimzi-entity-operator --serviceaccount strimzi-cluster-operator -n amq-streams
 $ oc adm policy add-cluster-role-to-user strimzi-topic-operator --serviceaccount strimzi-cluster-operator -n amq-streams
+$
 ```
 
 ## Create a new kafka cluster
@@ -41,6 +43,7 @@ To deploy a new kafka cluster, just create a new Kafka resource. The provided Ka
 ```
 $ oc new-project rhte2019
 $ oc apply -f resources/kafka-cluster.yml -n rhte2019
+$
 ```
 
 A successful deployment should look like:
@@ -55,6 +58,7 @@ rhte-cluster-kafka-2                          2/2       Running   0          80s
 rhte-cluster-zookeeper-0                      2/2       Running   0          111s
 rhte-cluster-zookeeper-1                      2/2       Running   0          111s
 rhte-cluster-zookeeper-2                      2/2       Running   0          111s
+$
 ```
 
 ## Create new topic
@@ -63,6 +67,7 @@ Create a topic with a replication factor of 1 and 1 partition:
 
 ```
 $ oc apply -f resources/rhte-topic.yml -n rhte2019
+$
 ```
 
 Verify its creation with:
@@ -71,11 +76,11 @@ Verify its creation with:
 $ oc get kafkatopics -n rhte2019
 NAME      PARTITIONS   REPLICATION FACTOR
 rhte      1            1
-
 $ oc rsh -n rhte2019 -c kafka rhte-cluster-kafka-0 bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic rhte
 OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
 Topic:rhte      PartitionCount:3        ReplicationFactor:1     Configs:message.format.version=2.2-IV1
         Topic: rhte	Partition: 0	Leader: 1	Replicas: 1	Isr: 1
+$
 ```
 
 The traces above indicate that a new `rhte` topic is created with a Replication factor of 1 and composed by 1 partition.
@@ -90,6 +95,7 @@ rhte-cluster-kafka-0           rhte-cluster-kafka-0-rhte2019.apps.cluster.testin
 rhte-cluster-kafka-1           rhte-cluster-kafka-1-rhte2019.apps.cluster.testing.com                   rhte-cluster-kafka-1                    9094      passthrough   None
 rhte-cluster-kafka-2           rhte-cluster-kafka-2-rhte2019.apps.cluster.testing.com                   rhte-cluster-kafka-2                    9094      passthrough   None
 rhte-cluster-kafka-bootstrap   rhte-cluster-kafka-bootstrap-rhte2019.apps.cluster.testing.com           rhte-cluster-kafka-external-bootstrap   9094      passthrough   None
+$
 ```
 
 Broker's routes must be used in the steps below
@@ -105,6 +111,7 @@ We can send a picture to the previous created topic using several methods. Some 
 ```
 $ sudo dnf install python2-kafka
 $ python2 kafka_producer.py  --brokers <kafka_broker_list> --file dog.jpg --use-tls --topic rhte
+$
 ```
 
 - [Golang client](../../hands-on-lab-script/amq-streams/clients/kafkaClient.go):
@@ -113,4 +120,5 @@ $ python2 kafka_producer.py  --brokers <kafka_broker_list> --file dog.jpg --use-
 $ sudo go get github.com/Shopify/sarama
 $ go build kafkaClient.go
 $ ./kafkaClient -tls=true -brokers=<kafka_broker_list> -topic=rhte -file cat.jpg
+$
 ```

@@ -24,12 +24,14 @@ First of all we should create a new project:
 
 ```
 $ oc new-project cdf
+$
 ```
 
 To deploy this complex app is as simple as execute the following command:
 
 ```
 $ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/hands-on-lab-script/applications/cfd-training/template.yml
+$
 ```
 
 After some initialization, assuming that everything is fine we should see our Pod running. Next thing is to expose it (expose containers internally as services and externally via routes):
@@ -37,6 +39,7 @@ After some initialization, assuming that everything is fine we should see our Po
 ```
 $ oc expose pod cdf-apps
 $ oc expose service cdf-apps
+$
 ```
 
 ## Application access
