@@ -46,11 +46,11 @@ objects:
   data:
     endpoint.json: |
       {
-          "access_key": ${S3_ACCESS_KEY},
-          "secret_key": ${S3_SECRET_KEY},
-          "endpoint_url": ${S3_HOST},
-          "endpoint_port": ${S3_PORT},
-          "bucket": ${S3_BUCKET}
+          "access_key": "${S3_ACCESS_KEY}",
+          "secret_key": "${S3_SECRET_KEY}",
+          "endpoint_url": "${S3_HOST}",
+          "endpoint_port": "${S3_PORT}",
+          "bucket": "${S3_BUCKET}"
       }
   kind: ConfigMap
   metadata:
@@ -71,7 +71,7 @@ parameters:
 - description: S3 Port
   displayName: Port
   name: S3_PORT
-  required: true  
+  required: true
 - description: S3 Bucket
   displayName: Bucket
   name: S3_BUCKET
