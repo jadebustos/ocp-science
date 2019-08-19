@@ -9,7 +9,7 @@ class readConfig:
     self.config = True
     # read data json
     try:
-      self.fd = open('endpoint.json', 'r')
+      self.fd = open('endpoint/endpoint.json', 'r')
       self.data = json.load(self.fd)
       self.fd.close()
     except:
