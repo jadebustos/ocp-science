@@ -33,7 +33,28 @@ objects:
           name: shiny
           protocol: TCP
       image: quay.io/rhte_2019/shiny-app:latest
+      volumeMounts:
+      - name: endpoints
+        mountPath: /srv/rhte/endpoint
+    volumes:
+      - name: endpoints
+        configMap:
+          name: shiny-configmap
+          path: endpoint.json
     restartPolicy: Never
+- apiVersion: v1
+  data:
+    endpoint.json: |
+      {
+          "access_key": ${S3_ACCESS_KEY},
+          "secret_key": ${S3_SECRET_KEY},
+          "endpoint_url": ${S3_HOST},
+          "endpoint_port": ${S3_PORT},
+          "bucket": ${S3_BUCKET}
+      }
+  kind: ConfigMap
+  metadata:
+    name: shiny-configmap
 parameters:
 - description: S3 Access key
   displayName: Access key
