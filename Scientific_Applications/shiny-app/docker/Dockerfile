@@ -33,6 +33,7 @@ COPY shiny-server.conf $IMAGE_CFGDIR/
 
 COPY install_packages.R  $IMAGE_WORKDIR/
 RUN mkdir -p ${IMAGE_SRVDIR} && \
+    chown -R ${USER_NAME} ${IMAGE_SRVDIR} && \
     Rscript $IMAGE_WORKDIR/install_packages.R
 
 ### Adding web app
