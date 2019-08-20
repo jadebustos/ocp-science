@@ -19,8 +19,8 @@ objects:
       [default]
       access_key = {S3_ACCESS_KEY}
       secret_key = {S3_SECRET_KEY}
-      host_base = {S3_HOST_BASE}
-      host_bucket = {S3_HOST_BASE}
+      host_base = {S3_HOST}
+      host_bucket = {S3_HOST}
       signurl_use_https = False
       use_http_expect = False
       use_https = False
@@ -59,7 +59,7 @@ parameters:
   required: true
 - description: S3 Host base
   displayName: Host base & Host Bucket
-  name: S3_HOST_BASE
+  name: S3_HOST
   required: true
 - description: S3 Bucket
   displayName: Bucket where you want to upload the file

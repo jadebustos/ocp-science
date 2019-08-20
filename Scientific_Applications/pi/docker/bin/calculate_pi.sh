@@ -33,7 +33,7 @@ main(){
 
   .${BASEDIR}/pi2txt.bin "${decimals}" omp-gmp-pi.dat pi_txt_file
 
-  s3cmd put pi_txt_file $S3_BUCKET
+  s3cmd put pi_txt_file s3://$S3_BUCKET
 
 }
 

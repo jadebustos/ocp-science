@@ -1,6 +1,6 @@
 {
-    "access_key": "vendoopelcorsa",
-    "secret_key": "enbuenestado",
-    "endpoint_url": "radosgw.example.com",
+    "access_key": "foo",
+    "secret_key": "bar",
+    "endpoint_url": "ceph-nano-ceph.apps.cluster-2956.sandbox478.opentlc.com",
     "endpoint_port": "80"
 }

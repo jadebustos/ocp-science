@@ -18,3 +18,41 @@ You can validate the results using [Pi constant generator](https://www.browserli
 
 ## Application deployment
 
+> ![WARNING](imgs/warning-icon.png) **_WARNING_**: you must have the [Ceph lab]() completed and keep it working before start with this one. 
+
+Create a new project:
+
+```
+$ oc new-project pi
+```
+
+To deploy this app is as simple as execute the following command:
+
+```
+$ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/hands-on-lab-script/applications/pi/template.yml \
+    -p S3_ACCESS_KEY=${S3_ACCESS_KEY} \
+    -p S3_SECRET_KEY=${S3_SECRET_KEY} \
+    -p S3_HOST=${S3_HOST} \
+    -p S3_BUCKET=${S3_BUCKET} \
+    | oc create -f -
+$
+```
+
+This will execute the pi calculator with the default values of:
+
+- THREADS: Number of threads/processes to be used to calculate pi (Default: 1 htread)
+- DECIMALS: Number of Pi's decimals (Default: 10 decimals)
+
+You can set both values as follows (or just one of both):
+
+```
+$ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/hands-on-lab-script/applications/pi/template.yml \
+    -p S3_ACCESS_KEY=${S3_ACCESS_KEY} \
+    -p S3_SECRET_KEY=${S3_SECRET_KEY} \
+    -p S3_HOST=${S3_HOST} \
+    -p S3_BUCKET=${S3_BUCKET} \
+    -p DECIMALS=20 \
+    -p THREADS=2 \
+    | oc create -f -
+$
+```
