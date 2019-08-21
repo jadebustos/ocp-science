@@ -134,3 +134,85 @@ You can use the [s3listbucket.py](scripts/s3listbucket.py) scripts to list a buc
 ```
 $ python s3listbucket.py --bucket BUCKETNAME
 ```
+
+## How to Install s3cmd in Linux and Manage s3 Buckets
+
+`s3cmd` is a command line utility used for creating s3 buckets, uploading, retrieving and managing data to s3 storage.
+
+### Install s3cmd on Linux
+
+You can install it simply executing following command on your system.
+
+```
+yum install -y https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/s/s3cmd-2.0.2-1.el7.noarch.rpm
+```
+
+### Configure s3cmd Environment
+
+In order to configure `s3cmd` we can use below command to configure s3cmd in a interactive way:
+
+```
+s3cmd --configure
+```
+
+But we are going to create the config file manually:
+
+1. Edit/create file in the user home path:
+
+    ```
+    vi ~/.s3cfg
+    ```
+
+2. Add the following:
+    ```
+    [default]
+    access_key = foo
+    host_base = ceph-nano-ceph.<your-cluster-apps-domain>
+    host_bucket = ceph-nano-ceph.<your-cluster-apps-domain>
+    secret_key = bar
+    ```
+
+### Uses of s3cmd Command Line
+
+1. List All S3 Bucket: Use the following command to list all s3 buckets in your aws account.
+
+    ```
+    s3cmd ls
+    ```
+
+2. Creating New Bucket: To create a new bucket in Amazon s3 use below command. It will create bucket named tecadmin in S3 account.
+    ```
+    s3cmd mb s3://my-bucket
+    ```
+
+3. Uploading file in Bucket: Below command will upload file file.txt to s3 bucket using s3cmd command.
+
+    ```
+    s3cmd put my-file.txt s3://my-bucket/
+    ```
+
+4. List Data of S3 Bucket: List the objects of s3 bucket using ls switch with s3cmd.
+
+    ```
+    s3cmd ls s3://my-bucket/
+    ```
+
+5. Download Files from Bucket: Sometimes if we need to download files from the s3 bucket, Use following commands to download it.
+
+    ```
+    s3cmd get s3://my-bucket/my-file.txt
+    ```
+
+6. Remove Data of S3 Bucket: To remove files are folder from s3 bucket use following commands.
+
+    ```
+    s3cmd del s3://my-bucket/my-file.txt
+    ```
+
+7. Remove S3 Bucket: If we don’t need s3 bucket anymore, we can simply delete it using the following command.
+
+    ```
+    s3cmd rb s3://my-bucket    
+    ```
+
+    > ![WARNING](../applications/imgs/warning-icon.png) **_WARNING_**: Before removing bucket make sure its empty.
