@@ -11,13 +11,13 @@ As an example you are going to deploy a Jupyter notebook that classifies images 
 
 This notebook is a modified version of the [image_classifier notebook](https://github.com/gsurma/image_classifier). 
 
-> CURIOSITY: This notebook implements a [Convolutional Neural Network Image classifier](https://en.wikipedia.org/wiki/Convolutional_neural_network).
+> ![INFORMATION](../imgs/information-icon.png) **__INFORMATION__**: This notebook implements a [Convolutional Neural Network Image classifier](https://en.wikipedia.org/wiki/Convolutional_neural_network).
 
 When the application is running your tasks will be:
 
 * You will have to train the model with a preloaded set of photos included in the notebook for the sake of simplicity.
 
-> WARNING: Training the model with an appropiate set of images (25000) took 35 hours in an **4-cores Intel(R) Core(TM) i7-4710HQ CPU @ 2.50GHz** CPU. Due this lab is limited to 2 hours the notebook includes a very reduced set of images and the resulting model will be not accurate enough.
+> ![WARNING](../imgs/warning-icon.png) **__WARNING__**: Training the model with an appropiate set of images (25000) took 35 hours in an **4-cores Intel(R) Core(TM) i7-4710HQ CPU @ 2.50GHz** CPU. Due this lab is limited to 2 hours the notebook includes a very reduced set of images and the resulting model will be not accurate enough.
 
 You should get a similar graph after you train the model (80 training images, 20 validation images):
 
@@ -27,7 +27,7 @@ For a well trained model (20000 training images, 5000 validation images):
 
 ![trained model](imgs/trained-model.png)
 
-> NOTE: You can see the differences between the **cost function** and the **accuracy** charts for both trainings.
+> ![NOTE](../imgs/note-icon.png) **__NOTE__**: You can see the differences between the **cost function** and the **accuracy** charts for both trainings.
 
 * After training the model you will have to configure the notebook with the data of the [kafka broker you configured in Lab01: Deploy AMQ Streams](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams).
 
@@ -136,7 +136,7 @@ We have two alternatives using **Red Hat** products to solve it:
 
 Do you dare?
 
-> TIP: Training images for animal type (cat or dog) have to be stored in **data/training/animal** and validation images in **data/validation/animal**.
+> ![TIP](../imgs/tip-icon.png) **__TIP__**: Training images for animal type (cat or dog) have to be stored in **data/training/animal** and validation images in **data/validation/animal**.
 
 ## A bit of fun?
 
