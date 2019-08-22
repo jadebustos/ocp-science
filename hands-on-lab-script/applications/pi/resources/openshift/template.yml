@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: pi-calculator
+metadata:
+  annotations:
+    description: |
+      Template to deploy pi calculator pod and its related resources.
+    openshift.io/provider-display-name: Red Hat Tech Exchange.
+    tags: pi,s3
+  name: pi-calculator
+objects:
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: s3cfg
+  data:
+    .s3cfg: |-
+      [default]
+      access_key = ${S3_ACCESS_KEY}
+      secret_key = ${S3_SECRET_KEY}
+      host_base = ${S3_HOST}
+      host_bucket = ${S3_HOST}
+      signurl_use_https = False
+      use_http_expect = False
+      use_https = False
+      verbosity = WARNING
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    name: pi
+  spec:
+    containers:
+    - env:
+      - name: S3_BUCKET
+        value: ${S3_BUCKET}
+      args: ["${THREADS}", "${DECIMALS}"]
+      name: pi
+      image: quay.io/rhte_2019/pi:latest
+      volumeMounts:
+      - name: config-volume
+        mountPath: /root/.s3cfg
+        subPath: .s3cfg
+    volumes:
+      - name: config-volume
+        configMap:
+          name: s3cfg
+    restartPolicy: Never
+
+parameters:
+- description: S3 Access key
+  displayName: Access key
+  name: S3_ACCESS_KEY
+  required: true
+- description: S3 Secret key
+  displayName: Secret key
+  name: S3_SECRET_KEY
+  required: true
+- description: S3 Host base
+  displayName: Host base & Host Bucket
+  name: S3_HOST
+  required: true
+- description: S3 Bucket
+  displayName: Bucket where you want to upload the file
+  name: S3_BUCKET
+  required: true  
+- description: Number of threads to be used to calculate pi
+  displayName: Number of Threads
+  name: THREADS
+  value: "1"
+- description: Number of decimals to be used to calculate pi
+  displayName: Number of decimals
+  name: DECIMALS
+  value: "10"

@@ -8,7 +8,7 @@ You can validate the results using [Pi constant generator](https://www.browserli
 
 **Pi** will be calculated using the [Chudnovsky algorithm](https://en.wikipedia.org/wiki/Chudnovsky_algorithm). The implementation used in this lab is the [GMP](https://gmplib.org/) and [OMP](https://www.openmp.org/) version taken from (https://github.com/jadebustos/science/tree/master/pi).
 
-> NOTE: This code was originally writen to check how a Fujitsu Primergy server scales when additional boards were added. This code is not intended to be an efficient code to get pi digits but to stress the CPUs.
+> ![NOTE](../imgs/note-icon.png): This code was originally writen to check how a Fujitsu Primergy server scaled when additional boards were added to the server. This code is not intended to be an efficient code to get pi digits but to stress the CPUs.
 
 ## High level pod description
 
@@ -16,9 +16,13 @@ You can validate the results using [Pi constant generator](https://www.browserli
 
 ## Lab's purpose
 
+Massive computing workloads can be adapted to run in OCP.
+
+In this lab a code that was originally created to check how a Fujitsu Primergy server scaled when additonal boards were added to the server (more cpu cores) has been adapted to run in OCP and upload a file containing the pi computed number to Ceph Storage.
+
 ## Application deployment
 
-> ![WARNING](imgs/warning-icon.png) **_WARNING_**: you must have the [Ceph lab]() completed and keep it working before start with this one. 
+> ![WARNING](../imgs/warning-icon.png) **_WARNING_**: you must have the [Ceph lab](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/ceph) completed and keep it working before start with this one. 
 
 Create a new project:
 
