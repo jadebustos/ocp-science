@@ -74,12 +74,12 @@ If you want to use these scripts you will have to create the __endpoint.json__ f
 }
 ```
 
-### __list_buckets.py__ script
+### __s3listbuckets.py__ script
 
-You can use the [list_buckets.py](scripts/list_buckets.py) script to list the buckets in the S3 endpoint:
+You can use the [list_buckets.py](scripts/s3listbuckets.py) script to list the buckets in the S3 endpoint:
 
 ```
-$ python list_buckets.py
+$ python s3listbuckets.py
 ```
 
 ### __s3createbucket.py__ script
@@ -127,12 +127,12 @@ $ python s3downloadfiles.py --bucket BUCKETNAME --files "FILENAME1,FILENAME2,FIL
 
 > TIP: You can download several files at a time using a "," as a separator.
 
-### __s3listbucket.py__ script
+### __s3listfiles.py__ script
 
-You can use the [s3listbucket.py](scripts/s3listbucket.py) scripts to list a bucket's content:
+You can use the [s3listbucket.py](scripts/s3listfiles.py) scripts to list a bucket's content:
 
 ```
-$ python s3listbucket.py --bucket BUCKETNAME
+$ python s3listfiles.py --bucket BUCKETNAME
 ```
 
 ## How to Install s3cmd in Linux and Manage s3 Buckets
