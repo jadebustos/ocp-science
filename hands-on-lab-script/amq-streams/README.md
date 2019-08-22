@@ -8,7 +8,7 @@ All resources used in this section are available under the directory [hands-on-l
 
 ## Lab's purpose
 
-Illustrate how **AMQ Streams** is deployed to be later used by applications.
+Illustrate how **AMQ Streams** is deployed to be used by applications later.
 
 ## Deploying Kafka Cluster operator
 
@@ -35,7 +35,7 @@ $
 
 ## Create a new kafka cluster
 
-> **Disclaimer:** The goal of this lab is not focused on creating a valid production architecture, so we'll use ephemeral backed volumes (emptyDir) for our kafka cluster.
+> ![WARNING](../imgs/warning-icon.png) **WARNING**: The goal of this lab is not focused on creating a valid production architecture, so we'll use ephemeral backed volumes (emptyDir) for our kafka cluster.
 Ephemeral storage is commonly used for testing purposes
 
 To deploy a new kafka cluster, just create a new Kafka resource. The provided Kafka resource will deploy 3 kafka brokers + 3 zookeeper nodes. The entity operator is also automatically deployed by the cluster operator, is responsible for managing different entities in a running Kafka cluster such as users and topics.
@@ -100,7 +100,7 @@ $
 
 Broker's routes must be used in the steps below
 
-> NOTE: You should take note about the route, and the topic name because you will use them in the [Lab04: Machine Learning/Artificial Inteligence workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/ml.md).
+> ![note](../imgs/note-icon.png) **NOTE**: You should take note about the route, and the topic name because you will use them in the [Lab04: Machine Learning/Artificial Inteligence workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/ml.md).
 
 ## Send a picture to the previous topic
 
