@@ -20,9 +20,7 @@ Massive computing workloads can be adapted to run in OCP.
 
 In this lab a code that was originally created to check how a Fujitsu Primergy server scaled when additonal boards were added to the server (more cpu cores) has been adapted to run in OCP. When computing finishes a file with the pi number will be uploaded to a S3 bucket in Ceph Storage.
 
-No changes were made to the original code. The code runs as it was designed.
-
-> ![NOTE](../imgs/note-icon.png) **__NOTE__**:
+> ![NOTE](../imgs/note-icon.png) **__NOTE__**: No changes were made to the original code. The code runs as it was designed.
 
 ## Application deployment
 
