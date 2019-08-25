@@ -93,7 +93,7 @@ To run a cell you need to put the cursor on the cell and press **Ctrl + Shift**.
 
 ![02-notebook](imgs/02-ml.png)
 
-This will take a while because the model has to be trained. When it finised you will have to the following cell and you will have to modifiy some parameters in the cell:
+This will take a while because the model has to be trained. When it finised you will have to go to the following cell and you will have to modifiy some parameters in the cell:
 
 ![03-notebook](imgs/03-ml.png)
 
@@ -114,7 +114,7 @@ this cell will read an image from kafka and will perform two predictions:
 * First prediction: Using the model you have just trained (poorly trained model)
 * Second prediction: Using a well-trained model.
 
-> TIP: Every time you run this cell the notebook will download an image from kafka to make the predictions.
+> ![TIP](../imgs/tip-icon.png) **__TIP__**: Every time you run this cell the notebook will download an image from kafka to make the predictions.
 
 ![05-notebook](imgs/05-ml.png)
 

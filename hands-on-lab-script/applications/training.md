@@ -4,7 +4,7 @@ It is quite common to use notebooks to teach about diferent subjects.
 
 As an example you will deploy a pod containing several Jupyter notebooks to learn about the [Navier-Stokes equations](https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations).
 
-These Jupyter Notebooks have been taken from [Lorena Barba github repository](https://github.com/barbagroup/CFDPython)
+These Jupyter Notebooks have been taken from [Lorena Barba github repository](https://github.com/barbagroup/CFDPython):
 
 > Barba, Lorena A., and Forsyth, Gilbert F. (2018). CFD Python: the 12 steps to Navier-Stokes equations. Journal of Open Source Education, 1(9), 21, https://doi.org/10.21105/jose.00021
 
@@ -30,7 +30,7 @@ $
 To deploy this complex app is as simple as execute the following command:
 
 ```
-$ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/hands-on-lab-script/applications/cfd-training/template.yml
+$ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/hands-on-lab-script/applications/resources/openshift/template.yml
 $
 ```
 
@@ -44,7 +44,7 @@ $
 
 ## Application access
 
-How you can access your app ? Is as simple as you deployed it and run:
+How you can access your app? Is as simple as you deployed it and run:
 
 ```
 $ oc get route cdf-apps
@@ -58,3 +58,8 @@ Copy the value of the column `HOST/PORT` and put it in your browser:
 ```
 https://www.example.com
 ```
+
+## Lab resources
+
+You can find all the resources to build the container in [this directory](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/applications/cfd-training/resources).
+

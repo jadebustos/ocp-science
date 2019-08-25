@@ -1,9 +1,0 @@
----
-- include: merge_vars.yml
-  tags:
-    - always
-
-- include: setup_repos.yml
-  tags:
-    - packages
-    - repos

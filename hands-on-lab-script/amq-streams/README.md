@@ -1,6 +1,6 @@
 # Lab01: Deploy AMQ Streams
 
-All resources used in this section are available under the directory [hands-on-lab-script/amq-streams/](.) of this repository.
+All resources used in this section are available under the directory [hands-on-lab-script/amq-streams/resources](resources/) of this repository.
 
 ## High level pod description
 
@@ -23,8 +23,8 @@ Deploy operator and cluster operator and its related resources with:
 $ oc apply -f resources/cluster-operator/ -n amq-streams
 $
 ```
-This amq-streams cluster operator is Configured to watch to watch all namespaces since the **STRIMZI_NAMESPACE** environment variable from the operator yaml deployment file has the value *
-As we have configured the Cluster Operator to watch all namespaces, it's also required to configure additional ClusterRoleBindings to grant cluster-wide access to the Cluste Operator.
+This amq-streams Cluster Operator is configured to watch all namespaces since the **STRIMZI_NAMESPACE** environment variable from the operator yaml deployment file has the value *
+As we have configured the Cluster Operator to watch all namespaces, it's also required to configure additional __ClusterRoleBindings__ to grant cluster-wide access to the Cluster Operator.
 
 ```
 $ oc adm policy add-cluster-role-to-user strimzi-cluster-operator-namespaced --serviceaccount strimzi-cluster-operator -n amq-streams
@@ -42,7 +42,7 @@ To deploy a new kafka cluster, just create a new Kafka resource. The provided Ka
 
 ```
 $ oc new-project rhte2019
-$ oc apply -f resources/kafka-cluster.yml -n rhte2019
+$ oc apply -f resources/openshift/kafka-cluster.yml -n rhte2019
 $
 ```
 
@@ -66,7 +66,7 @@ $
 Create a topic with a replication factor of 1 and 1 partition:
 
 ```
-$ oc apply -f resources/rhte-topic.yml -n rhte2019
+$ oc apply -f resources/openshift/rhte-topic.yml -n rhte2019
 $
 ```
 
@@ -83,7 +83,7 @@ Topic:rhte      PartitionCount:3        ReplicationFactor:1     Configs:message.
 $
 ```
 
-The traces above indicate that a new `rhte` topic is created with a Replication factor of 1 and composed by 1 partition.
+The traces above indicate that a new `rhte` topic is created with a replication factor of 1 and composed by 1 partition.
 As stated previously, this environment is being created for learning purposes thus the previous topic was created as simple as possible: 1 replica + 1 partition
 
 The provided kafka-cluster resource includes an option to make the operator create a route that will be be used for access kafka brokers from outside OCP cluster:
@@ -122,3 +122,7 @@ $ go build kafkaClient.go
 $ ./kafkaClient -tls=true -brokers=<kafka_broker_list> -topic=rhte -file cat.jpg
 $
 ```
+
+## Lab resources
+
+You can find all the resources to build the container in [this directory](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams/resources).
