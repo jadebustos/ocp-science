@@ -1,6 +1,6 @@
 # Lab01: Deploy AMQ Streams
 
-All resources used in this section are available under the directory [hands-on-lab-script/amq-streams/resources](resources/) of this repository.
+In this lab **AMQ Streams** will be deployed.
 
 ## High level pod description
 

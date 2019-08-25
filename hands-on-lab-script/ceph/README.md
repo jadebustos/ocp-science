@@ -105,7 +105,7 @@ You can use the [s3uploadfiles.py](resources/scripts/s3uploadfiles.py) script to
 $ python s3uploadfiles.py --bucket BUCKETNAME --files "FILENAME1,FILENAME2,FILENAME3"
 ```
 
-> TIP: You can update several files at a time using a "," as a separator.
+> ![TIP](../imgs/tip-icon.png) **TIP**: You can update several files at a time using a "," as a separator.
 
 ### __s3deletefiles.py__ script
 
@@ -115,7 +115,7 @@ You can use the [s3deletefiles.py](resources/scripts/s3deletefiles.py) script to
 $ python s3deletefiles.py --bucket BUCKETNAME --files "FILENAME1,FILENAME2,FILENAME3"
 ```
 
-> TIP: You can delete several files at a time using a "," as a separator.
+> ![TIP](../imgs/tip-icon.png) **TIP**: You can delete several files at a time using a "," as a separator.
 
 ### __s3downloadfiles.py__ script
 
@@ -125,7 +125,7 @@ You can use the [s3downloadfiles.py](resources/scripts/s3downloadfiles.py) scrip
 $ python s3downloadfiles.py --bucket BUCKETNAME --files "FILENAME1,FILENAME2,FILENAME3"
 ```
 
-> TIP: You can download several files at a time using a "," as a separator.
+> ![TIP](../imgs/tip-icon.png) **TIP**: You can download several files at a time using a "," as a separator.
 
 ### __s3listfiles.py__ script
 
@@ -215,4 +215,4 @@ But we are going to create the config file manually:
     $ s3cmd rb s3://my-bucket    
     ```
 
-    > ![WARNING](../applications/imgs/warning-icon.png) **WARNING**: Before removing bucket make sure its empty.
+    > ![WARNING](../imgs/warning-icon.png) **WARNING**: Before removing bucket make sure its empty.
