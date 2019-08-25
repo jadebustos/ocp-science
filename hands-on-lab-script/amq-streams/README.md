@@ -1,8 +1,8 @@
 # Lab01: Deploy AMQ Streams
 
-In this lab **AMQ Streams** will be deployed.
+In this lab we will use **AMQ Streams** operator to deploy and configure kafka.
 
-## High level pod description
+## High level architecture
 
 ![amq](imgs/amq-streams.png)
 
@@ -12,7 +12,7 @@ Illustrate how **AMQ Streams** is deployed to be used by applications later.
 
 ## Deploying Kafka Cluster operator
 
-Create `amq-streams` project:
+Create the `amq-streams` project:
 
 ```
 $ oc new-project amq-streams
@@ -36,7 +36,7 @@ $
 ## Create a new kafka cluster
 
 > ![WARNING](../imgs/warning-icon.png) **WARNING**: The goal of this lab is not focused on creating a valid production architecture, so we'll use ephemeral backed volumes (emptyDir) for our kafka cluster.
-Ephemeral storage is commonly used for testing purposes
+Ephemeral storage is commonly used for testing purposes.
 
 To deploy a new kafka cluster, just create a new Kafka resource. The provided Kafka resource will deploy 3 kafka brokers + 3 zookeeper nodes. The entity operator is also automatically deployed by the cluster operator, is responsible for managing different entities in a running Kafka cluster such as users and topics.
 
@@ -104,25 +104,16 @@ Broker's routes must be used in the steps below
 
 ## Send a picture to the previous topic
 
-We can send a picture to the previous created topic using several methods. Some of them are included:
-
-- [python2 client](../../hands-on-lab-script/amq-streams/clients/kafka_producer.py) (kafka module is required):
-
-```
-$ sudo dnf install python2-kafka
-$ python2 kafka_producer.py  --brokers <kafka_broker_list> --file dog.jpg --use-tls --topic rhte
-$
-```
-
-- [Golang client](../../hands-on-lab-script/amq-streams/clients/kafkaClient.go):
+We can send a picture to the previous created topic using the provided containerized client.
+In the example below, the _data_ directory is a host directory holding several pictures like _cat.jpg_
 
 ```
-$ sudo go get github.com/Shopify/sarama
-$ go build kafkaClient.go
-$ ./kafkaClient -tls=true -brokers=<kafka_broker_list> -topic=rhte -file cat.jpg
+$ podman run -v ./data:/data --rm quay.io/rhte_2019/ocp-science-clients kafkaClient \
+ -tls -brokers=rhte-cluster-kafka-rhte2019.apps.cluster-apps.sandbox45.examlple.com:443 \
+ -topic=rhte -insecure-skip-verify -file /data/cat.jpg
 $
 ```
 
 ## Lab resources
 
-You can find all the resources to build the container in [this directory](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams/resources).
+You can find all the resources to build the container [here](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/intro/aio-client).
