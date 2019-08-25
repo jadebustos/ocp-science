@@ -28,23 +28,21 @@ func checkError(err error) {
 
 func main() {
 	flag.BoolVar(&tlsEnable, "tls", false, "TLS enable")
-	flag.StringVar(&brokers, "brokers", "localhost:9093", "Common separated kafka brokers")
-	flag.StringVar(&topic, "topic", "test-topic", "Kafka topic")
+	flag.StringVar(&brokers, "brokers", "localhost:9093", "Comma separated list of kafka brokers")
+	flag.StringVar(&topic, "topic", "rhte-topic", "Kafka topic")
 	flag.BoolVar(&insecureTLS, "insecure-skip-verify", false, "Skip TLS verification")
-	flag.StringVar(&file, "file", "kafkafile", "File to send to kafka")
+	flag.StringVar(&file, "file", "kafkafile", "File to send to brokers")
 	flag.Parse()
 	cfg := sarama.NewConfig()
-	cfg.Producer.Return.Successes = true
-	cfg.Producer.Partitioner = sarama.NewRandomPartitioner
 	genConfig(cfg)
 	hostList := strings.Split(brokers, ",")
-	prod, err := sarama.NewSyncProducer(hostList, cfg)
-	checkError(err)
 	f, err := os.Open(file)
 	checkError(err)
 	b, err := ioutil.ReadAll(f)
 	checkError(err)
 	fmt.Println(len(b), "bytes read from", file)
+	prod, err := sarama.NewSyncProducer(hostList, cfg)
+	checkError(err)
 	msg := sarama.ProducerMessage{
 		Topic: topic,
 		Value: sarama.StringEncoder(string(b)),
@@ -59,7 +57,10 @@ func genConfig(cfg *sarama.Config) {
 		tlsConfig := tls.Config{
 			InsecureSkipVerify: insecureTLS,
 		}
+		cfg.Producer.Return.Successes = true
+		cfg.Producer.Partitioner = sarama.NewRandomPartitioner
 		cfg.Net.TLS.Enable = true
 		cfg.Net.TLS.Config = &tlsConfig
+		cfg.Producer.MaxMessageBytes = 10485760
 	}
 }

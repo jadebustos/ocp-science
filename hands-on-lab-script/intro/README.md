@@ -13,3 +13,13 @@ We will be focused on using the following Red Hat Technologies:
 ## Lab infrastructure description
 
 **INCLUDE DESCRIPTION OF LAB NETWORKS, NODES, CPU, ...**
+
+### Clients
+
+Kafka producer and S3 clients are shipped as a container image, available at quay.io/rhte_2019/ocp-science-clients
+Send a picture to a kafka topic using this container:
+
+```
+$ podman run -v pictures:/data --rm quay.io/rhte_2019/ocp-science-clients kafkaClient -tls -brokers=rhte-cluster-kafka-rhte2019.apps.cluster-apps.sandbox45.example.com:443  -topic=rhte -insecure-skip-verify -file /data/cat.jpg
+```
+
