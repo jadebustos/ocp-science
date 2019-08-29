@@ -28,12 +28,13 @@ main(){
 
   local threads="${1}"
   local decimals="${2}"
+  local timestamp=$(date +%Y%m%d%H%M%S)
 
   .${BASEDIR}/chudnovsky-gmp-omp.bin "${threads}" "${decimals}"
 
-  .${BASEDIR}/pi2txt.bin "${decimals}" omp-gmp-pi.dat pi_txt_file
+  .${BASEDIR}/pi2txt.bin "${decimals}" omp-gmp-pi.dat pi_txt_file"."$"{timestamp}"
 
-  s3cmd put pi_txt_file s3://$S3_BUCKET
+  s3cmd put pi_txt_file"."$"{timestamp}" s3://$S3_BUCKET
 
 }
 
