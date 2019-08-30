@@ -7,15 +7,20 @@ In this lab we will illustrate how to deploy Scientific workloads in Red Hat Ope
 We will be focused on using the following Red Hat Technologies:
 
 * Red Hat Openshift 4
-* Kafka
+* Kafka (Through AMQ Streams operator)
 * Red Hat Ceph Storage
 
 ### Clients
 
-Kafka producer and S3 clients are shipped as a container image, available at quay.io/rhte_2019/ocp-science-clients
-Send a picture to a kafka topic using this container:
+Kafka producer and S3 clients are shipped as a container image, available at quay.io/rhte_2019/ocp-science-clients.
+Detailed instructions about how to use these clients will be described when needed.
+
+As prerequisite to use the containerized clients. Install podman and pull the container image in the **workstation** machine:
 
 ```
+$ yum -y install podman
+$ podman pull quay.io/rhte_2019/ocp-science-clients:latest
+```
+
 $ podman run -v pictures:/data --rm quay.io/rhte_2019/ocp-science-clients kafkaClient -tls -brokers=rhte-cluster-kafka-rhte2019.apps.cluster-apps.sandbox45.example.com:443  -topic=rhte -insecure-skip-verify -file /data/cat.jpg
 ```
-

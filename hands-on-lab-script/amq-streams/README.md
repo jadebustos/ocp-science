@@ -8,7 +8,7 @@ In this lab we will use **AMQ Streams** operator to deploy and configure kafka.
 
 ## Lab's purpose
 
-Illustrate how **AMQ Streams** is deployed to be used by applications later.
+Illustrate how deploy **AMQ Streams** to be used by applications later.
 
 ## Deploying Kafka Cluster operator
 
@@ -17,13 +17,16 @@ Create the `amq-streams` project:
 ```
 $ oc new-project amq-streams
 ```
+
 Deploy operator and cluster operator and its related resources with:
 
 ```
 $ oc apply -f resources/cluster-operator/ -n amq-streams
-$
+
 ```
+
 This amq-streams Cluster Operator is configured to watch all namespaces since the **STRIMZI_NAMESPACE** environment variable from the operator yaml deployment file has the value *
+
 As we have configured the Cluster Operator to watch all namespaces, it's also required to configure additional __ClusterRoleBindings__ to grant cluster-wide access to the Cluster Operator.
 
 ```
@@ -102,18 +105,21 @@ Broker's routes must be used in the steps below
 
 > ![TIP](../imgs/tip-icon.png) **TIP**: You should take note about the route, and the topic name because you will use them in the [Lab04: Machine Learning/Artificial Inteligence workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/ml.md).
 
-## Send a picture to the previous topic
+## Send a picture to the topic
 
 We can send a picture to the previous created topic using the provided containerized client.
-In the example below, the _data_ directory is a host directory holding several pictures like _cat.jpg_
+In the example below, we used the containerized client to send to kafka a cat and a dog pictures.
 
 ```
-$ podman run -v ./data:/data --rm quay.io/rhte_2019/ocp-science-clients kafkaClient \
- -tls -brokers=rhte-cluster-kafka-rhte2019.apps.cluster-apps.sandbox45.examlple.com:443 \
- -topic=rhte -insecure-skip-verify -file /data/cat.jpg
-$
+$ podman run -it -v ./resources/pictures:/pictures:z quay.io/rhte_2019/ocp-science-clients bash
+
+$ kafkaClient -tls -brokers=rhte-cluster-kafka-rhte2019.apps.cluster-apps.sandbox45.examlple.com:443 \
+-topic=rhte -insecure-skip-verify -file /pictures/cat.jpg
+
+$ kafkaClient -tls -brokers=rhte-cluster-kafka-rhte2019.apps.cluster-apps.sandbox45.examlple.com:443 \
+ -topic=rhte -insecure-skip-verify -file /pictures/dog.jpg
 ```
 
-## Lab resources
+### Lab resources
 
-You can find all the resources to build the container [here](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/intro/aio-client).
+You can find all the resources used to build the client container [here](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/intro/aio-client).
