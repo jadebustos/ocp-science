@@ -21,6 +21,3 @@ As prerequisite to use the containerized clients. Install podman and pull the co
 $ yum -y install podman
 $ podman pull quay.io/rhte_2019/ocp-science-clients:latest
 ```
-
-$ podman run -v pictures:/data --rm quay.io/rhte_2019/ocp-science-clients kafkaClient -tls -brokers=rhte-cluster-kafka-rhte2019.apps.cluster-apps.sandbox45.example.com:443  -topic=rhte -insecure-skip-verify -file /data/cat.jpg
-```
