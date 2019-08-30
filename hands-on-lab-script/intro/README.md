@@ -10,10 +10,6 @@ We will be focused on using the following Red Hat Technologies:
 * Kafka
 * Red Hat Ceph Storage
 
-## Lab infrastructure description
-
-**INCLUDE DESCRIPTION OF LAB NETWORKS, NODES, CPU, ...**
-
 ### Clients
 
 Kafka producer and S3 clients are shipped as a container image, available at quay.io/rhte_2019/ocp-science-clients
