@@ -20,7 +20,7 @@ Depending on the selected product the application will get a file containing wor
 
 ![R Shiny](imgs/r-shiny.png)
 
-## Lab's pupouse
+## Lab's purpouse
 
 Illustrate how **Red Hat Ceph Storage** can be used as a data backend for applications running in **OCP**.
 
