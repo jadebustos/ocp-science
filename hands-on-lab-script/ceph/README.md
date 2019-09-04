@@ -26,7 +26,17 @@ As Ceph-nano can be deployed in containers in this lab you will deploy it inside
 
 ## Install Ceph-Nano
 
+If you have not cloned the repository clone it:
+
 ```
+$ git clone https://github.com/jadebustos/ocp-science.git
+$ cd ocp-science
+```
+
+Create the ``ceph`` project and deploy it:
+
+```
+$ cd ceph
 $ oc new-project ceph
 $ oc adm policy add-scc-to-user anyuid -z default -n ceph
 $ oc create -f ceph-nano.yaml -n ceph
