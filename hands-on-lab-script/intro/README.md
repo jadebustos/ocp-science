@@ -18,6 +18,6 @@ Detailed instructions about how to use these clients will be described when need
 As prerequisite to use the containerized clients. Install podman and pull the container image in the **workstation** machine:
 
 ```
-$ yum -y install podman
+$ sudo -i yum -y install podman
 $ podman pull quay.io/rhte_2019/ocp-science-clients:latest
 ```
