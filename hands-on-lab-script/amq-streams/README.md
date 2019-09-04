@@ -18,11 +18,19 @@ Create the `amq-streams` project:
 $ oc new-project amq-streams
 ```
 
+If you have not clone the repository clone it:
+
+```
+$ git clone https://github.com/jadebustos/ocp-science.git
+$ cd ocp-science
+```
+
 Deploy operator and cluster operator and its related resources with:
 
 ```
+$ cd hands-on-lab-script/amq-streams/
 $ oc apply -f resources/cluster-operator/ -n amq-streams
-
+$
 ```
 
 This amq-streams Cluster Operator is configured to watch all namespaces since the **STRIMZI_NAMESPACE** environment variable from the operator yaml deployment file has the value *
@@ -49,6 +57,8 @@ $ oc apply -f resources/openshift/kafka-cluster.yml -n rhte2019
 $
 ```
 
+> ![TIP](../imgs/tip-icon.png) **TIP**: Be certain you execute the above command in the directory **hands-on-lab-script/amq-streams** in the repository clone directory.
+
 A successful deployment should look like:
 
 ```
@@ -72,6 +82,8 @@ Create a topic with a replication factor of 1 and 1 partition:
 $ oc apply -f resources/openshift/rhte-topic.yml -n rhte2019
 $
 ```
+
+> ![TIP](../imgs/tip-icon.png) **TIP**: Be certain you execute the above command in the directory **hands-on-lab-script/amq-streams** in the repository clone directory.
 
 Verify its creation with:
 
@@ -119,6 +131,8 @@ $ kafkaClient -tls -brokers=rhte-cluster-kafka-rhte2019.apps.cluster-apps.sandbo
 $ kafkaClient -tls -brokers=rhte-cluster-kafka-rhte2019.apps.cluster-apps.sandbox45.examlple.com:443 \
  -topic=rhte -insecure-skip-verify -file /pictures/dog.jpg
 ```
+
+> ![TIP](../imgs/tip-icon.png) **TIP**: Be certain you execute the above command in the directory **hands-on-lab-script/amq-streams** in the repository clone directory.
 
 ### Lab resources
 
