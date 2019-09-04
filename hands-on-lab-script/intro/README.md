@@ -19,5 +19,5 @@ As prerequisite to use the containerized clients. Install podman and pull the co
 
 ```
 $ sudo -i yum -y install podman
-$ podman pull quay.io/rhte_2019/ocp-science-clients:latest
+$ sudo -i podman pull quay.io/rhte_2019/ocp-science-clients:latest
 ```

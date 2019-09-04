@@ -36,7 +36,7 @@ $ cd ocp-science
 Create the ``ceph`` project and deploy it:
 
 ```
-$ cd ceph
+$ cd hands-on-lab-script/ceph/
 $ oc new-project ceph
 $ oc adm policy add-scc-to-user anyuid -z default -n ceph
 $ oc create -f ceph-nano.yaml -n ceph
@@ -71,26 +71,31 @@ For the [Lab06: Computing workloads](https://github.com/jadebustos/ocp-science/b
 
 > ![IMPORTANT](../imgs/important-icon.png) **IMPORTANT**: Take note of your S3 bucket and credentials to use them in the [Lab06: Computing workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/pi.md).
 
-## How to Install s3cmd in Linux and Manage s3 Buckets
+> ![TIP](../imgs/tip-icon.png) **TIP**: Credentials for accessing the S3 endpoing are in file **ceph-nano.yaml** in base64 to decode __base64 -d <<< STRING__.
+
+## How to use the clients container
 
 `s3cmd` is a command line utility used for creating s3 buckets, uploading, retrieving and managing data to s3 storage.
 
-### Use the clients container
+You need to create a directory to work with the clients container:
+
+```
+mkdir ~/clients-container
+```
+
+Copy the data you need to upload to this directory:
+
+```
+$ pwd
+/home/lab-user/ocp-science/hands-on-lab-script/ceph
+$ cp resources/data/* ~/clients-container/
+$ 
+```
 
 You need to run the containers client:
 
 ```
-$ podman run -it quay.io/rhte_2019/ocp-science-clients bash
-```
-
-And then configure the s3cmd environment as shown below. 
-
-### Install s3cmd on Linux
-
-You can install it simply executing the following command on your system.
-
-```
-yum install -y https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/s/s3cmd-2.0.2-1.el7.noarch.rpm
+$ sudo -i podman run -v ~/clients-container:/srv:z -it quay.io/rhte_2019/ocp-science-clients bash
 ```
 
 ### Configure s3cmd Environment
@@ -98,7 +103,7 @@ yum install -y https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/s/s3cmd-2
 In order to configure `s3cmd` we can use the below command to configure s3cmd in a interactive way:
 
 ```
-$ s3cmd --configure
+$ s3cmd --configure  --no-check-certificate
 ```
 
 But we are going to create the config file manually:
@@ -116,7 +121,12 @@ But we are going to create the config file manually:
     host_base = ceph-nano-ceph.<your-cluster-apps-domain>
     host_bucket = ceph-nano-ceph.<your-cluster-apps-domain>
     secret_key = bar
+    check_ssl_certificate = False
+    check_ssl_hostname = True
+    use_https = False
     ```
+
+> ![TIP](../imgs/tip-icon.png) **TIP**: You can upload the files from the directory **/srv**.
 
 ### Uses of s3cmd Command Line
 
