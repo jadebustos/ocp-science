@@ -12,7 +12,7 @@ These Jupyter Notebooks have been taken from [Lorena Barba github repository](ht
 
 ![training](imgs/training.png)
 
-## Lab's pupouse
+## Lab's purpouse
 
 Illustrate how **OCP** can be used to ease personalized training for users avoiding users struggling with software installation, software development life cycle, ...
 
