@@ -92,7 +92,7 @@ $ cp resources/data/* ~/clients-container/
 $ 
 ```
 
-You need to run the containers client:
+You need to run the clients container:
 
 ```
 $ sudo -i podman run -v ~/clients-container:/srv:z -it quay.io/rhte_2019/ocp-science-clients bash
