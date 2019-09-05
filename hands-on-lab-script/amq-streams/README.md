@@ -123,7 +123,7 @@ We can send a picture to the previous created topic using the provided container
 In the example below, we used the containerized client to send to kafka a cat and a dog pictures.
 
 ```
-$ podman run -it -v ./resources/pictures:/pictures:z quay.io/rhte_2019/ocp-science-clients bash
+$ sudo -i podman run -it -v ./resources/pictures:/pictures:z quay.io/rhte_2019/ocp-science-clients bash
 
 $ kafkaClient -tls -brokers=rhte-cluster-kafka-rhte2019.apps.cluster-apps.sandbox45.examlple.com:443 \
 -topic=rhte -insecure-skip-verify -file /pictures/cat.jpg
