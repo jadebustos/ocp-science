@@ -45,13 +45,15 @@ Illustrate how **OCP** + **AMQ Streams** can work together with **Machine learni
 
 ## Notebook deployment
 
-Create notebook:
+Create notebook on project ```rhte2019```:
+
 ```
 $ oc run --image=quay.io/rhte_2019/ai-notebook:latest --port=8080 rhte-notebook
 $
 ```
 
 Create service and route
+
 ```
 $ oc expose dc rhte-notebook
 $ oc create route edge --service=rhte-notebook
@@ -70,6 +72,27 @@ $
 Using a browser go to the previous route https://rhte-notebook-rhte2019.apps.example.com
 
 ![notebook](imgs/notebook.png)
+
+You can get the token to access the jupyter notebook from the pod logs:
+
+```
+$ oc logs rhte-notebook-1-nst7j
+[I 17:10:45.042 NotebookApp] Writing notebook server cookie secret to /opt/work/.local/share/jupyter/runtime/notebook_cookie_secret
+[I 17:10:45.274 NotebookApp] JupyterLab extension loaded from /opt/conda/lib/python3.7/site-packages/jupyterlab
+[I 17:10:45.274 NotebookApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
+[I 17:10:45.276 NotebookApp] Serving notebooks from local directory: /opt/work
+[I 17:10:45.276 NotebookApp] The Jupyter Notebook is running at:
+[I 17:10:45.276 NotebookApp] http://(rhte-notebook-1-nst7j or 127.0.0.1):8080/?token=1e23954e436211604ec37e0c869827e3ed6db8098f20481a
+[I 17:10:45.276 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 17:10:45.279 NotebookApp] No web browser found: could not locate runnable browser.
+[C 17:10:45.280 NotebookApp] 
+    
+    To access the notebook, open this file in a browser:
+        file:///opt/work/.local/share/jupyter/runtime/nbserver-8-open.html
+    Or copy and paste one of these URLs:
+        http://(rhte-notebook-1-nst7j or 127.0.0.1):8080/?token=1e23954e436211604ec37e0c869827e3ed6db8098f20481a
+$ 
+```
 
 ## Using the application
 
@@ -92,6 +115,8 @@ Out [X]:
 To run a cell you need to put the cursor on the cell and press **Ctrl + Shift**. To train the model you will need to go to the first code cell and run it.
 
 ![02-notebook](imgs/02-ml.png)
+
+> ![NOTE](../imgs/note-icon.png) **__NOTE__**: Train a model will take seven minutes (approx).
 
 This will take a while because the model has to be trained. When it finised you will have to go to the following cell and you will have to modifiy some parameters in the cell:
 
