@@ -1,4 +1,4 @@
-FROM ubuntu:bionic-20190612@sha256:9b1702dcfe32c873a770a32cfd306dd7fc1c4fd134adfb783db68defc8894b3c
+FROM ubuntu:bionic-20190612
 
 LABEL maintainer="RHTE 2019 <github.com@jadebustos/ocp-science.git>" \
       com.redhat.imageowner="Red Hat Services" \
@@ -8,8 +8,8 @@ LABEL maintainer="RHTE 2019 <github.com@jadebustos/ocp-science.git>" \
 # OpenShift Labels
 LABEL io.k8s.description="Jupyter notebooks for Jupyter training" \
       io.k8s.display-name="Shiny Server" \
-      io.openshift.expose-services="8888" \
-      io.openshift.tags="Jupyter"
+      io.openshift.expose-services="8080/tcp:http" \
+      io.openshift.tags="jupyter,notebook"
 
 # Install all OS dependencies for notebook server that starts but lacks all
 # features (e.g., download as all possible file formats)
@@ -34,11 +34,11 @@ ENV CONDA_DIR=/opt/conda \
     LANG=en_US.UTF-8 \
     LANGUAGE=en_US.UTF-8
 ENV PATH=$CONDA_DIR/bin:$PATH \
-    HOME=/root
+    HOME=/opt/work
 
 # Enable prompt color in the skeleton .bashrc and create dirs
 RUN sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' /etc/skel/.bashrc && \
-    mkdir ${HOME}/work && \
+    mkdir ${HOME}/ && \
     mkdir ${HOME}/styles && \
     mkdir -p $CONDA_DIR
 
@@ -92,25 +92,26 @@ COPY start.sh /usr/local/bin/
 COPY start-notebook.sh /usr/local/bin/
 COPY start-singleuser.sh /usr/local/bin/
 COPY jupyter_notebook_config.py /etc/jupyter/
-COPY styles/custom.css /root/styles/
-COPY 00_Quick_Python_Intro.ipynb /root/work/
-COPY 01_Step_1.ipynb /root/work/
-COPY 02_Step_2.ipynb /root/work/
-COPY 03_CFL_Condition.ipynb /root/work/
-COPY 04_Step_3.ipynb /root/work/
-COPY 05_Step_4.ipynb /root/work/
-COPY 06_Array_Operations_with_NumPy.ipynb /root/work/
-COPY 07_Step_5.ipynb /root/work/
-COPY 08_Step_6.ipynb /root/work/
-COPY 09_Step_7.ipynb /root/work/
-COPY 10_Step_8.ipynb /root/work/
-COPY 11_Defining_Function_in_Python.ipynb /root/work/
-COPY 12_Step_9.ipynb /root/work/
-COPY 13_Step_10.ipynb /root/work/
-COPY 14_Step_11.ipynb /root/work/
-COPY 15_Step_12.ipynb /root/work/
+COPY styles/custom.css ${HOME}/styles/
+COPY 00_Quick_Python_Intro.ipynb ${HOME}
+COPY 01_Step_1.ipynb ${HOME}
+COPY 02_Step_2.ipynb ${HOME}
+COPY 03_CFL_Condition.ipynb ${HOME}
+COPY 04_Step_3.ipynb ${HOME}
+COPY 05_Step_4.ipynb ${HOME}
+COPY 06_Array_Operations_with_NumPy.ipynb ${HOME}
+COPY 07_Step_5.ipynb ${HOME}
+COPY 08_Step_6.ipynb ${HOME}
+COPY 09_Step_7.ipynb ${HOME}
+COPY 10_Step_8.ipynb ${HOME}
+COPY 11_Defining_Function_in_Python.ipynb ${HOME}
+COPY 12_Step_9.ipynb ${HOME}
+COPY 13_Step_10.ipynb ${HOME}
+COPY 14_Step_11.ipynb ${HOME}
+COPY 15_Step_12.ipynb ${HOME}
+RUN chmod 775 -R ${HOME}
 
-EXPOSE 8888
+EXPOSE 8080
 
 # Configure container startup
 ENTRYPOINT ["start-notebook.sh","--allow-root"]
