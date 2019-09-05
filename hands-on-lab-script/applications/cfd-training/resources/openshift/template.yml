@@ -16,6 +16,6 @@ objects:
     name: cdf-apps
   spec:
     containers:
-      name: cdf-apps
-      image: quay.io/rhte_2019/cfd-training:latest
+      - name: cdf-apps
+        image: quay.io/rhte_2019/cfd-training:latest
     restartPolicy: Never
