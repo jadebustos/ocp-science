@@ -16,7 +16,7 @@ BASEDIR=${FILEPATH%/*}
 ### FUNCTIONS
 # Funtion that shows the common usage options
 main_usage(){
-    echo "# Usage: $0 [threads] [decimals]"
+    echo "# Usage: $0 [threads] [pidigits]"
     echo "#"
     echo "# - example: $0 1 10"    
 }
@@ -27,14 +27,14 @@ main_usage(){
 main(){
 
   local threads="${1}"
-  local decimals="${2}"
+  local pidigits="${2}"
   local timestamp=$(date +%Y%m%d%H%M%S)
 
-  .${BASEDIR}/chudnovsky-gmp-omp.bin "${threads}" "${decimals}"
+  .${BASEDIR}/chudnovsky-gmp-omp.bin "${threads}" "${pidigits}"
 
-  .${BASEDIR}/pi2txt.bin "${decimals}" "omp-gmp-pi.dat pi_txt_file.${timestamp}"
+  .${BASEDIR}/pi2txt.bin "${pidigits}" omp-gmp-pi.dat "${BASEDIR}/pi_txt_file.${timestamp}"
 
-  s3cmd put pi_txt_"file.${timestamp}" s3://$S3_BUCKET
+  s3cmd put "${BASEDIR}/pi_txt_file.${timestamp}" s3://$S3_BUCKET
 
 }
 
