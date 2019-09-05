@@ -63,6 +63,8 @@ $ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/
 $
 ```
 
+> ![TIP](../imgs/tip-icon.png) **__TIP__**: When the pod finished upload a file to the bucket with the number pi so you can access the bucket to retrieve it.
+
 ## Lab resources
 
 You can find all the resources to build the container in [this directory](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/applications/pi/resources).
