@@ -30,7 +30,8 @@ $
 To deploy this complex app is as simple as execute the following command:
 
 ```
-$ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/hands-on-lab-script/applications/cfd-training/resources/openshift/template.yml
+$ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/hands-on-lab-script/applications/cfd-training/resources/openshift/template.yml \
+     | oc create -f -
 $
 ```
 
