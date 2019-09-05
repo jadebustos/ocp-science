@@ -27,37 +27,47 @@ $ oc new-project cdf
 $
 ```
 
-To deploy this complex app is as simple as execute the following command:
+To deploy and expose through an edge route this complex app is as simple as execute the following commands:
 
 ```
-$ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/hands-on-lab-script/applications/cfd-training/resources/openshift/template.yml \
-     | oc apply -f -
+$ oc run --port=8080 --expose --image=quay.io/rhte_2019/cfd-training:latest cdf-apps
+$ oc create route edge --service=cdf-apps
 $
 ```
-
-After some initialization, assuming that everything is fine we should see our Pod running. Next thing is to expose it (expose containers internally as services and externally via routes):
-
-```
-$ oc expose pod cdf-apps
-$ oc expose service cdf-apps
-$
-```
-
 ## Application access
 
 How you can access your app? Is as simple as you deployed it and run:
 
 ```
 $ oc get route cdf-apps
-NAME              HOST/PORT         PATH      SERVICE        LABELS    TLS TERMINATION
-cdf-apps          www.example.com   /         cdf-apps
+NAME       HOST/PORT                       PATH      SERVICES   PORT      TERMINATION   WILDCARD
+cdf-apps   cdf-apps-cdf.apps.example.com             cdf-apps   <all>     edge          None
 $
 ```
 
 Copy the value of the column `HOST/PORT` and put it in your browser:
 
 ```
-https://www.example.com
+https://cdf-apps-cdf.apps.example.com
+```
+
+Notebook's Login token should be available in the pod logs:
+
+```
+ oc logs cdf-apps-1-k6pj6
+[I 10:38:15.023 NotebookApp] Writing notebook server cookie secret to /opt/work/.local/share/jupyter/runtime/notebook_cookie_secret
+[I 10:38:15.263 NotebookApp] JupyterLab extension loaded from /opt/conda/lib/python3.7/site-packages/jupyterlab
+[I 10:38:15.263 NotebookApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
+[I 10:38:15.265 NotebookApp] Serving notebooks from local directory: /opt/work
+[I 10:38:15.265 NotebookApp] The Jupyter Notebook is running at:
+[I 10:38:15.265 NotebookApp] http://(cdf-apps-1-k6pj6 or 127.0.0.1):8080/?token=1f0c932f85b58dc559c96f136d2ea9f356b5faec771f2253
+[I 10:38:15.265 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 10:38:15.269 NotebookApp]
+
+    To access the notebook, open this file in a browser:
+        file:///opt/work/.local/share/jupyter/runtime/nbserver-8-open.html
+    Or copy and paste one of these URLs:
+        http://(cdf-apps-1-k6pj6 or 127.0.0.1):8080/?token=1f0c932f85b58dc559c96f136d2ea9f356b5faec771f2253
 ```
 
 ## Lab resources
