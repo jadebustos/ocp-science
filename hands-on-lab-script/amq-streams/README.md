@@ -123,13 +123,13 @@ We can send a picture to the previous created topic using the provided container
 In the example below, we used the containerized client to send to kafka a cat and a dog pictures.
 
 ```
-$ sudo -i podman run -it -v ./resources/pictures:/pictures:z quay.io/rhte_2019/ocp-science-clients bash
+$ sudo -i podman run -v ~/ocp-science/hands-on-lab-script/amq-streams/resources/pictures:/srv:z -it quay.io/rhte_2019/ocp-science-clients bash
 
 $ kafkaClient -tls -brokers=rhte-cluster-kafka-rhte2019.apps.cluster-apps.sandbox45.examlple.com:443 \
--topic=rhte -insecure-skip-verify -file /pictures/cat.jpg
+-topic=rhte -insecure-skip-verify -file /srv/cat.jpg
 
 $ kafkaClient -tls -brokers=rhte-cluster-kafka-rhte2019.apps.cluster-apps.sandbox45.examlple.com:443 \
- -topic=rhte -insecure-skip-verify -file /pictures/dog.jpg
+ -topic=rhte -insecure-skip-verify -file /srv/dog.jpg
 ```
 
 > ![TIP](../imgs/tip-icon.png) **TIP**: Be certain you execute the above command in the directory **hands-on-lab-script/amq-streams** in the repository clone directory.
