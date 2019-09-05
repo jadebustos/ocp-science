@@ -54,7 +54,7 @@ https://cdf-apps-cdf.apps.example.com
 Notebook's Login token should be available in the pod logs:
 
 ```
- oc logs cdf-apps-1-k6pj6
+$ oc logs cdf-apps-1-k6pj6
 [I 10:38:15.023 NotebookApp] Writing notebook server cookie secret to /opt/work/.local/share/jupyter/runtime/notebook_cookie_secret
 [I 10:38:15.263 NotebookApp] JupyterLab extension loaded from /opt/conda/lib/python3.7/site-packages/jupyterlab
 [I 10:38:15.263 NotebookApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
@@ -68,6 +68,7 @@ Notebook's Login token should be available in the pod logs:
         file:///opt/work/.local/share/jupyter/runtime/nbserver-8-open.html
     Or copy and paste one of these URLs:
         http://(cdf-apps-1-k6pj6 or 127.0.0.1):8080/?token=1f0c932f85b58dc559c96f136d2ea9f356b5faec771f2253
+$
 ```
 
 ## Lab resources
