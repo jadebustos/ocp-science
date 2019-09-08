@@ -45,7 +45,16 @@ $ oc set env sts ceph-nano RGW_NAME=$CEPH_ENDPOINT
 $
 ```
 
-Wait until the pod ```ceph-nano-0``` is running, then:
+Wait until the pod ```ceph-nano-0``` is running:
+
+```
+$ oc get pods
+NAME                   READY     STATUS    RESTARTS   AGE
+ceph-nano-0            1/1       Running   0          80s
+$
+```
+
+then:
 
 ```
 $ oc exec -i ceph-nano-0 bash <<EOF
