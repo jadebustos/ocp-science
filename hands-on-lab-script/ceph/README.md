@@ -115,18 +115,19 @@ But we are going to create the config file manually:
     ```
 
 2. Add the following:
+
     ```
     [default]
     access_key = foo
-    host_base = ceph-nano-ceph.<your-cluster-apps-domain>
-    host_bucket = ceph-nano-ceph.<your-cluster-apps-domain>
+    host_base = <S3 Endpoint>
+    host_bucket = <bucket-name>
     secret_key = bar
     check_ssl_certificate = False
     check_ssl_hostname = True
     use_https = False
     ```
 
-> ![TIP](../imgs/tip-icon.png) **TIP**: You can upload the files from the directory **/srv**.
+> ![TIP](../imgs/tip-icon.png) **TIP**: You can upload the files from the directory **/srv** to the bucket you created for the [Lab03: R Shiny workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/r-shiny.md). Remember to put the data for the bucket you want to work with in this file.
 
 ### Uses of s3cmd Command Line
 
