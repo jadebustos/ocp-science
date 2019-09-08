@@ -84,7 +84,9 @@ For the [Lab06: Computing workloads](https://github.com/jadebustos/ocp-science/b
 
 ## How to use the clients container
 
-`s3cmd` is a command line utility used for creating s3 buckets, uploading, retrieving and managing data to s3 storage.
+`s3cmd` is a command line utility used for creating s3 buckets, uploading, retrieving and managing data to s3 storage and it has included in the [clients container](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/intro).
+
+> ![TIP](../imgs/tip-icon.png) **TIP**: If you have not installed the clients container you can do it now.
 
 You need to create a directory to work with the clients container:
 
@@ -182,77 +184,3 @@ But we are going to create the config file manually:
     ```
 
     > ![WARNING](../imgs/warning-icon.png) **WARNING**: Before removing bucket make sure its empty.
-
-## Scritps to perform operations on S3
-
-If you want to use these scripts you will have to create the __endpoint.json__ file with the data to access your S3 endpoint:
-
-```
-{
-    "access_key": "vendoopelcorsa",
-    "secret_key": "enbuenestado",
-    "endpoint_url": "radosgw.example.com",
-    "endpoint_port": "80"
-}
-```
-
-### __s3listbuckets.py__ script
-
-You can use the [s3listbuckets.py](resources/scripts/s3listbuckets.py) script to list the buckets in the S3 endpoint:
-
-```
-$ python s3listbuckets.py
-```
-
-### __s3createbucket.py__ script
-
-You can use the [s3createbucket.py](resources/scripts/s3createbucket.py) script to create buckets:
-
-```
-$ python s3createbucket.py --bucket BUCKETNAME
-```
-
-### __s3deletebucket.py__ script
-
-You can use the [s3deletebucket.py](resources/scripts/s3deletebucket.py) script to delete a bucket:
-
-```
-$ python s3deletebucket.py --bucket BUCKETNAME
-```
-### __s3uploadfiles.py__ script
-
-You can use the [s3uploadfiles.py](resources/scripts/s3uploadfiles.py) script to upload files to a bucket:
-
-```
-$ python s3uploadfiles.py --bucket BUCKETNAME --files "FILENAME1,FILENAME2,FILENAME3"
-```
-
-> ![TIP](../imgs/tip-icon.png) **TIP**: You can update several files at a time using a "," as a separator.
-
-### __s3deletefiles.py__ script
-
-You can use the [s3deletefiles.py](resources/scripts/s3deletefiles.py) script to delete files from a bucket:
-
-```
-$ python s3deletefiles.py --bucket BUCKETNAME --files "FILENAME1,FILENAME2,FILENAME3"
-```
-
-> ![TIP](../imgs/tip-icon.png) **TIP**: You can delete several files at a time using a "," as a separator.
-
-### __s3downloadfiles.py__ script
-
-You can use the [s3downloadfiles.py](resources/scripts/s3downloadfiles.py) script to download a file from a bucket:
-
-```
-$ python s3downloadfiles.py --bucket BUCKETNAME --files "FILENAME1,FILENAME2,FILENAME3"
-```
-
-> ![TIP](../imgs/tip-icon.png) **TIP**: You can download several files at a time using a "," as a separator.
-
-### __s3listfiles.py__ script
-
-You can use the [s3listfiles.py](resources/scripts/s3listfiles.py) scripts to list a bucket's content:
-
-```
-$ python s3listfiles.py --bucket BUCKETNAME
-```
