@@ -45,6 +45,8 @@ $ oc set env sts ceph-nano RGW_NAME=$CEPH_ENDPOINT
 $
 ```
 
+> ![TIP](../imgs/tip-icon.png) **TIP**: **CEPH_ENDPOINT** variable contains the S3 endpoint for the Ceph service that you will use in other labs so you should remember how to get it. You can also get it using ``oc get route``.
+
 Wait until the pod ```ceph-nano-0``` is running:
 
 ```
