@@ -60,7 +60,7 @@ then:
 
 ```
 $ oc exec -i ceph-nano-0 bash <<EOF
-sed -i "s/127.0.0.1:8000/S3_ENDPOINT/g" /opt/ceph-container/sree/static/js/base.js
+sed -i "s/127.0.0.1:8000/$S3_ENDPOINT/g" /opt/ceph-container/sree/static/js/base.js
 EOF
 $
 ```
