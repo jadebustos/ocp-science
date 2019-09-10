@@ -142,6 +142,10 @@ But we are going to create the config file manually:
 
 > ![TIP](../imgs/tip-icon.png) **TIP**: You can upload the files from the directory **/srv** to the bucket you created for the [Lab03: R Shiny workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/r-shiny.md). Remember to put the data for the bucket you want to work with in this file.
 
+> ![TIP](../imgs/tip-icon.png) **TIP**: Due to https is being used the port used for the S3 endpoint will be **443**.
+
+> ![TIP](../imgs/tip-icon.png) **TIP**: The __access_key__ and __secret_key__ to access the S3 endpoint are set to the above values **foo** and **val**.
+
 ### Uses of s3cmd Command Line
 
 1. List all S3 bucket: Use the following command to list all s3 buckets in your aws account.
