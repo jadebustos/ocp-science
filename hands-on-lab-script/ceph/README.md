@@ -40,12 +40,12 @@ $ cd hands-on-lab-script/ceph/
 $ oc new-project ceph
 $ oc adm policy add-scc-to-user anyuid -z default -n ceph
 $ oc create -f ceph-nano.yaml -n ceph
-$ export CEPH_ENDPOINT=$(oc get route ceph-nano -n ceph | awk 'NR>1{print $2;exit;}')
-$ oc set env sts ceph-nano RGW_NAME=$CEPH_ENDPOINT
+$ export S3_ENDPOINT=$(oc get route ceph-nano -n ceph | awk 'NR>1{print $2;exit;}')
+$ oc set env sts ceph-nano RGW_NAME=$S3_ENDPOINT
 $
 ```
 
-> ![TIP](../imgs/tip-icon.png) **TIP**: **CEPH_ENDPOINT** variable contains the S3 endpoint for the Ceph service that you will use in other labs so you should remember how to get it. You can also get it using ``oc get route``.
+> ![TIP](../imgs/tip-icon.png) **TIP**: **S3_ENDPOINT** variable contains the S3 endpoint for the Ceph service that you will use in other labs so you should remember how to get it. You can also get it using ``oc get route``.
 
 Wait until the pod ```ceph-nano-0``` is running:
 
@@ -60,7 +60,7 @@ then:
 
 ```
 $ oc exec -i ceph-nano-0 bash <<EOF
-sed -i "s/127.0.0.1:8000/$CEPH_ENDPOINT/g" /opt/ceph-container/sree/static/js/base.js
+sed -i "s/127.0.0.1:8000/S3_ENDPOINT/g" /opt/ceph-container/sree/static/js/base.js
 EOF
 $
 ```
