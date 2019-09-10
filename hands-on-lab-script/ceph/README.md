@@ -144,7 +144,7 @@ But we are going to create the config file manually:
 
 > ![TIP](../imgs/tip-icon.png) **TIP**: Due to https is being used the port used for the S3 endpoint will be **443**.
 
-> ![TIP](../imgs/tip-icon.png) **TIP**: The __access_key__ and __secret_key__ to access the S3 endpoint are set to the above values **foo** and **val**.
+> ![TIP](../imgs/tip-icon.png) **TIP**: The __access_key__ and __secret_key__ to access the S3 endpoint are set to the above values **foo** and **bar**.
 
 ### Uses of s3cmd Command Line
 
