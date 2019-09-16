@@ -165,11 +165,11 @@ In order to configure `s3cmd`, we are going to create the config file manually:
   ```
   $ s3cmd mb s3://my-bucket
   ```
- Create two different buckets with the name you want (one for the lab03 and the other one for the lab06). For example:
- ```
- $ s3cmd mb s3://bucket-lab03
- $ s3cmd mb s3://bucket-lab06
- ```
+  Create two different buckets with the name you want (one for the lab03 and the other one for the lab06). For example:
+  ```
+  $ s3cmd mb s3://bucket-lab03
+  $ s3cmd mb s3://bucket-lab06
+  ```
 
 * Uploading file in bucket: The below command will upload file **file.txt** to s3 bucket using **s3cmd** command.
   ```
@@ -188,13 +188,13 @@ In order to configure `s3cmd`, we are going to create the config file manually:
   ```
   $ s3cmd ls s3://bucket-lab03
   ```
-More info about s3cmd Command Line options can be found [here]()
+More info about s3cmd Command Line options can be found [here](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/ceph/s3cmd.md)
 
 ### Sree web client
-* Open sree web client. Check the route with the following command:
+* Just open the sree web client (check the route with the following command):
 ```
 oc get route -n ceph
 ```
 
 ### Next Lab
-Go to [Applications](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/ceph/s3cmd.md)
+Go to [Applications](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/README.md)
