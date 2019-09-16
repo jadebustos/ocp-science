@@ -32,14 +32,21 @@ First of all we should create a new project:
 $ oc new-project r-shiny
 ```
 
-To deploy this app is as simple as execute the following command:
+To deploy this app is as simple as execute the following commands:
 
 ```
+$ export S3_ENDPOINT=$(oc get route ceph-nano -n ceph | awk 'NR>1{print $2;exit;}')
+
+$ export S3_BUCKET=<name_of_the_bucket_created_for_lab03>
+for example
+$ export S3_BUCKET=bucket-lab03
+```
+```
 $ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/hands-on-lab-script/applications/shiny-app/resources/openshift/template.yml \
-    -p S3_ACCESS_KEY=${S3_ACCESS_KEY} \
-    -p S3_SECRET_KEY=${S3_SECRET_KEY} \
+    -p S3_ACCESS_KEY=foo \
+    -p S3_SECRET_KEY=bar \
     -p S3_HOST=${S3_ENDPOINT} \
-    -p S3_PORT=${S3_PORT} \
+    -p S3_PORT=80 \
     -p S3_BUCKET=${S3_BUCKET} \
     | oc create -f -
 ```
@@ -55,19 +62,24 @@ $ oc expose service shiny-app
 
 ## Application access
 
-How you can access your app ? Is as simple as you deployed it and run:
+How you can access your app ? Check the created route:
 
 ```
 $ oc get route shiny-app
-NAME              HOST/PORT         PATH      SERVICE        LABELS    TLS TERMINATION
-shiny-app         www.example.com   /         shiny-app
-```
-
-Copy the value of the column `HOST/PORT` and put it in your browser:
+NAME        HOST/PORT                                                         PATH   SERVICES    PORT   TERMINATION   WILDCARD
+shiny-app   shiny-app-r-shiny.apps.cluster-4b5f.4b5f.sandbox255.opentlc.com          shiny-app   3838                 None
 
 ```
-https://www.example.com
+
+Copy the value of the column `HOST` and put it in your browser. For example:
+
 ```
+http://shiny-app-r-shiny.apps.cluster-4b5f.4b5f.sandbox255.opentlc.com
+```
+
+Once opened, select a product from the drop-down menu (Red Hat Ceph Storage, Red Hat Ceph Storage, Red Hat Ceph Storage, Red Hat Virtualization, Red Hat Virtualization). For each product, **containing words related to the product, which are served by Ceph, are shown**.
+
+"Play" with **Minimum word frequency** and **Maximum number of words**.
 
 ## Lab resources
 

@@ -86,10 +86,12 @@ Verify its creation with:
 $ oc get kafkatopics -n rhte2019
 NAME      PARTITIONS   REPLICATION FACTOR
 rhte      1            1
+```
+```
 $ oc rsh -n rhte2019 -c kafka rhte-cluster-kafka-0 bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic rhte
 OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
-Topic:rhte      PartitionCount:3        ReplicationFactor:1     Configs:message.format.version=2.2-IV1
-        Topic: rhte	Partition: 0	Leader: 1	Replicas: 1	Isr: 1
+Topic:rhte	PartitionCount:1	ReplicationFactor:1	Configs:message.format.version=2.2-IV1
+
 ```
 
 The traces above indicate that a new `rhte` topic is created with a replication factor of 1 and composed by 1 partition.
@@ -118,10 +120,12 @@ In the example below, we used the containerized client to send to kafka a cat an
 ```
 $ sudo -i podman run -v ~/ocp-science/hands-on-lab-script/amq-streams/resources/pictures:/srv:z -it quay.io/rhte_2019/ocp-science-clients bash
 
-$ kafkaClient -tls -brokers=rhte-cluster-kafka-rhte2019.apps.cluster-apps.sandbox45.examlple.com:443 \
+$ kafkaClient -tls -brokers=rhte-cluster-kafka-0-rhte2019.apps.cluster-$GUID.$GUID.sandbox255.opentlc.com:443 \
 -topic=rhte -insecure-skip-verify -file /srv/cat.jpg
 
-$ kafkaClient -tls -brokers=rhte-cluster-kafka-rhte2019.apps.cluster-apps.sandbox45.examlple.com:443 \
+** Replace $GUID with the value of your assigned GUID
+
+$ kafkaClient -tls -brokers=rhte-cluster-kafka-0-rhte2019.apps.cluster-$GUID.$GUID.sandbox255.opentlc.com:443 \
  -topic=rhte -insecure-skip-verify -file /srv/dog.jpg
 ```
 

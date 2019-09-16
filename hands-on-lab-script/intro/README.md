@@ -14,8 +14,7 @@ We will be focused on using the following Red Hat Technologies:
 
 * One administration server (bastion.$GUID.$SANDBOX.opentlc.com, bastion.$GUID.internal)
 * One OCP Master.
-* One OCP Worker.
-* One OCP Infra/Worker.
+* Three OCP Workers.
 
 
 ### Clients

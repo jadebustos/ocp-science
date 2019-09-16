@@ -59,6 +59,8 @@ ceph-nano-0            1/1       Running   0          80s
 $ oc rsh ceph-nano-0
 radosgw-admin user info --uid=nano
 radosgw-admin bucket list
+...
+exit
 ```
   More info about the available radosgw-admin commands and options can be found [here](https://docs.ceph.com/docs/giant/man/8/radosgw-admin/)
 
@@ -104,7 +106,7 @@ mkdir ~/clients-container
 Copy the data you need to upload to this directory:
 
 ```
-$ pwd
+$ cd
 /home/lab-user/ocp-science/hands-on-lab-script/ceph
 $ cp resources/data/* ~/clients-container/
 ```
@@ -119,37 +121,37 @@ $ sudo -i podman run -v ~/clients-container:/srv:z -it quay.io/rhte_2019/ocp-sci
 
 In order to configure `s3cmd`, we are going to create the config file manually:
 
-1. Edit/create file in the user home path:
+1. Create file in the user home path:
 
-  ```
-  $ vi ~/.s3cfg
-  ```
+```
+$ vi ~/.s3cfg
+```
 
 2. Add the following:
 
-  ```
-  [default]
-  access_key = foo
-  host_base = <S3 Endpoint>**
-  host_bucket = <S3 Endpoint>**
-  secret_key = bar
-  check_ssl_certificate = False
-  check_ssl_hostname = True
-  use_https = False
-  ```
+```
+[default]
+access_key = foo
+host_base = <S3 Endpoint>**
+host_bucket = <S3 Endpoint>**
+secret_key = bar
+check_ssl_certificate = False
+check_ssl_hostname = True
+use_https = False
+```
 
-** The vale of ```<S3 Endpoint>``` must be the S3_ENDPOINT obtained in the previous steps. If you don't remember it, you can run ```oc get route ceph-nano -n ceph | awk 'NR>1{print $2;exit;}'``` to obtained it. An example of the config file is described below:
+** The vale of ```<S3 Endpoint>``` must be the S3_ENDPOINT obtained in the previous steps. If you don't remember it, you can exit from the container, run ```oc get route ceph-nano -n ceph | awk 'NR>1{print $2;exit;}'``` to obtained it, and run again the container with ```podman``` command showed above. An example of the config file is described below:
 
-  ```
-  [default]
-  access_key = foo
-  host_base = ceph-nano-ceph.apps.cluster-2956.sandbox478.opentlc.com
-  host_bucket = ceph-nano-ceph.apps.cluster-2956.sandbox478.opentlc.com
-  secret_key = bar
-  check_ssl_certificate = False
-  check_ssl_hostname = True
-  use_https = False
-  ```
+```
+[default]
+access_key = foo
+host_base = ceph-nano-ceph.apps.cluster-2956.sandbox478.opentlc.com
+host_bucket = ceph-nano-ceph.apps.cluster-2956.sandbox478.opentlc.com
+secret_key = bar
+check_ssl_certificate = False
+check_ssl_hostname = True
+use_https = False
+```
 
 > ![TIP](../imgs/tip-icon.png) **TIP**: You can upload the files from the directory **/srv** to the bucket you created for the [Lab03: R Shiny workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/r-shiny.md). Remember to put the data for the bucket you want to work with in this file.
 
@@ -161,30 +163,18 @@ In order to configure `s3cmd`, we are going to create the config file manually:
 
 #### Create Bucket and upload files
 
-* Creating new bucket: To create a new bucket in Amazon s3 use the below command. It will create a bucket named **my-bucket** in S3 account.
-  ```
-  $ s3cmd mb s3://my-bucket
-  ```
-  Create two different buckets with the name you want (one for the lab03 and the other one for the lab06). For example:
+* Create two different buckets with the name you want (one for the lab03 and the other one for the lab06). For example:
   ```
   $ s3cmd mb s3://bucket-lab03
   $ s3cmd mb s3://bucket-lab06
   ```
 
-* Uploading file in bucket: The below command will upload file **file.txt** to s3 bucket using **s3cmd** command.
+* Upload the files ansible.txt.gz, ceph.txt.gz, ocp.txt.gz, osp.txt.gz, rhv.txt.gz white are in the folder /srv/ to the lab03 bucket. For example:
   ```
-  $ s3cmd put my-file.txt s3://my-bucket/
-  ```
-  Upload the files ansible.txt.gz, ceph.txt.gz, ocp.txt.gz, osp.txt.gz, rhv.txt.gz to the lab03 bucket. For example:
-  ```
-  $ s3cmd put my-file.txt s3://my-bucket/
+  $ s3cmd put /srv/* s3://bucket-lab03
   ```
 
-* List Data of S3 bucket: List the objects of s3 bucket using **ls** switch with **s3cmd**.
-  ```
-  $ s3cmd ls s3://my-bucket/
-  ```
-  Check the files have been correctly uploaded:
+* Check the files have been correctly uploaded:
   ```
   $ s3cmd ls s3://bucket-lab03
   ```
@@ -193,8 +183,10 @@ More info about s3cmd Command Line options can be found [here](https://github.co
 ### Sree web client
 * Just open the sree web client in a browser (check the route with the following command):
 ```
-oc get route ceph-dashboard -n ceph
+oc get route ceph-dashboard -n ceph | awk 'NR>1{print $2;exit;}'
 ```
+* Click on "Create Bucket" button and enter a name for your bucket.
+* Click on the created Bucket and click on "Upload" button to upload the files you want.
 
 ### Next Lab
 Go to [Applications](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/README.md)
