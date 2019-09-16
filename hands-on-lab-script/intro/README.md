@@ -1,4 +1,4 @@
-# 1. Lab introduction
+# Lab introduction
 
 In this lab we will illustrate how to deploy Scientific workloads in Red Hat Openshift 4.
 
