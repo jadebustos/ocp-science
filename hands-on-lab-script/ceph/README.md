@@ -84,7 +84,7 @@ Once Ceph-nano has been successfully deployed you will have to perform some task
 
   1. Create a new bucket.
 
-So **¿How can I create the buckets and upload data?** There are many ways you can create s3 buckets and upload data. In this lab, two methods are described. Select the one you prefer (or even try to create one bucket with each method). The two available methods are:
+So, **How can I create the buckets and upload data?** There are many ways you can create s3 buckets and upload data. In this lab, two methods are described. Select the one you prefer (or even try to create one bucket with each method). The two available methods are:
 
   1. s3cmd command utility.
   2. sree web client.
@@ -191,9 +191,9 @@ In order to configure `s3cmd`, we are going to create the config file manually:
 More info about s3cmd Command Line options can be found [here](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/ceph/s3cmd.md)
 
 ### Sree web client
-* Just open the sree web client (check the route with the following command):
+* Just open the sree web client in a browser (check the route with the following command):
 ```
-oc get route -n ceph
+oc get route ceph-dashboard -n ceph
 ```
 
 ### Next Lab
