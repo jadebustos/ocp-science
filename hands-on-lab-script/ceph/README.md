@@ -42,7 +42,6 @@ $ oc adm policy add-scc-to-user anyuid -z default -n ceph
 $ oc create -f ceph-nano.yaml -n ceph
 $ export S3_ENDPOINT=$(oc get route ceph-nano -n ceph | awk 'NR>1{print $2;exit;}')
 $ oc set env sts ceph-nano RGW_NAME=$S3_ENDPOINT
-$
 ```
 
 > ![TIP](../imgs/tip-icon.png) **TIP**: **S3_ENDPOINT** variable contains the S3 endpoint for the Ceph service that you will use in other labs so you should remember how to get it. You can also get it using ``oc get route``.
@@ -53,7 +52,6 @@ Wait until the pod ```ceph-nano-0``` is running:
 $ oc get pods
 NAME                   READY     STATUS    RESTARTS   AGE
 ceph-nano-0            1/1       Running   0          80s
-$
 ```
 
 then:
@@ -62,7 +60,6 @@ then:
 $ oc exec -i ceph-nano-0 bash <<EOF
 sed -i "s/127.0.0.1:8000/$S3_ENDPOINT/g" /opt/ceph-container/sree/static/js/base.js
 EOF
-$
 ```
 
 ## Create buckets and upload data
@@ -70,7 +67,7 @@ $
 Once Ceph-nano has been successfully deployed you will have to perform some tasks. You will create two buckets that will be used in another labs.
 
 For the [Lab03: R Shiny workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/r-shiny.md) you will have to:
- 
+
 1. Create a bucket.
 2. Upload these files to the bucket: [ansible.txt.gz](data/ansible.txt.gz), [ceph.txt.gz](data/ceph.txt.gz), [ocp.txt.gz](data/ocp.txt.gz), [osp.txt.gz](data/osp.txt.gz), [rhv.txt.gz](data/rhv.txt.gz)
 
@@ -102,7 +99,7 @@ Copy the data you need to upload to this directory:
 $ pwd
 /home/lab-user/ocp-science/hands-on-lab-script/ceph
 $ cp resources/data/* ~/clients-container/
-$ 
+$
 ```
 
 You need to run the clients container:
@@ -190,3 +187,6 @@ But we are going to create the config file manually:
     ```
 
     > ![WARNING](../imgs/warning-icon.png) **WARNING**: Before removing bucket make sure its empty.
+
+### Next Lab
+Go to [Applications](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/README.md)

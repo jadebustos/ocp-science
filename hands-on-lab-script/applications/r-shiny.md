@@ -42,7 +42,6 @@ $ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/
     -p S3_PORT=${S3_PORT} \
     -p S3_BUCKET=${S3_BUCKET} \
     | oc create -f -
-$
 ```
 
 > ![TIP](../imgs/tip-icon.png) **TIP**: You need configure the above variables with the values from [Lab02: Ceph-nano deployment](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/ceph/README.md).
@@ -52,7 +51,6 @@ After some initialization, assuming that everything is fine we should see our Po
 ```
 $ oc expose pod shiny-app
 $ oc expose service shiny-app
-$
 ```
 
 ## Application access
@@ -63,7 +61,6 @@ How you can access your app ? Is as simple as you deployed it and run:
 $ oc get route shiny-app
 NAME              HOST/PORT         PATH      SERVICE        LABELS    TLS TERMINATION
 shiny-app         www.example.com   /         shiny-app
-$
 ```
 
 Copy the value of the column `HOST/PORT` and put it in your browser:
@@ -76,3 +73,5 @@ https://www.example.com
 
 You can find all the resources to build the container in [this directory](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/applications/shiny-app/resources).
 
+## Next Lab
+Go to [Lab04: Machine Learning/Artificial Inteligence workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/ml.md)

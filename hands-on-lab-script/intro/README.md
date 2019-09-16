@@ -1,4 +1,4 @@
-# Lab introduction
+# 1. Lab introduction
 
 In this lab we will illustrate how to deploy Scientific workloads in Red Hat Openshift 4.
 
@@ -9,6 +9,14 @@ We will be focused on using the following Red Hat Technologies:
 * Red Hat Openshift 4
 * Kafka (Through AMQ Streams operator)
 * Red Hat Ceph Storage
+
+### Class Environment
+
+* One administration server (bastion.$GUID.$SANDBOX.opentlc.com, bastion.$GUID.internal)
+* One OCP Master.
+* One OCP Worker.
+* One OCP Infra/Worker.
+
 
 ### Clients
 
@@ -21,3 +29,6 @@ As prerequisite to use the containerized clients. Install podman and pull the co
 $ sudo -i yum -y install podman
 $ sudo -i podman pull quay.io/rhte_2019/ocp-science-clients:latest
 ```
+
+### Next Lab
+Go to [Lab01: Deploy AMQ Streams](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/amq-streams/README.md)

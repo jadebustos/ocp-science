@@ -24,7 +24,6 @@ First of all we should create a new project:
 
 ```
 $ oc new-project cdf
-$
 ```
 
 To deploy and expose through an edge route this complex app is as simple as execute the following commands:
@@ -32,7 +31,6 @@ To deploy and expose through an edge route this complex app is as simple as exec
 ```
 $ oc run --port=8080 --expose --image=quay.io/rhte_2019/cfd-training:latest cdf-apps
 $ oc create route edge --service=cdf-apps
-$
 ```
 ## Application access
 
@@ -42,7 +40,6 @@ How you can access your app? Is as simple as you deployed it and run:
 $ oc get route cdf-apps
 NAME       HOST/PORT                       PATH      SERVICES   PORT      TERMINATION   WILDCARD
 cdf-apps   cdf-apps-cdf.apps.example.com             cdf-apps   <all>     edge          None
-$
 ```
 
 Copy the value of the column `HOST/PORT` and put it in your browser:
@@ -68,10 +65,11 @@ $ oc logs cdf-apps-1-k6pj6
         file:///opt/work/.local/share/jupyter/runtime/nbserver-8-open.html
     Or copy and paste one of these URLs:
         http://(cdf-apps-1-k6pj6 or 127.0.0.1):8080/?token=1f0c932f85b58dc559c96f136d2ea9f356b5faec771f2253
-$
 ```
 
 ## Lab resources
 
 You can find all the resources to build the container in [this directory](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/applications/cfd-training/resources).
 
+## Next Lab
+Go to [Lab06: Computing workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/pi.md)

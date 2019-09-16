@@ -9,7 +9,7 @@ As an example you are going to deploy a Jupyter notebook that classifies images 
 * Cats
 * Dogs
 
-This notebook is a modified version of the [image_classifier notebook](https://github.com/gsurma/image_classifier). 
+This notebook is a modified version of the [image_classifier notebook](https://github.com/gsurma/image_classifier).
 
 > ![INFORMATION](../imgs/information-icon.png) **__INFORMATION__**: This notebook implements a [Convolutional Neural Network Image classifier](https://en.wikipedia.org/wiki/Convolutional_neural_network).
 
@@ -49,7 +49,6 @@ Create notebook on project ```rhte2019```:
 
 ```
 $ oc run --image=quay.io/rhte_2019/ai-notebook:latest --port=8080 rhte-notebook
-$
 ```
 
 Create service and route
@@ -57,7 +56,6 @@ Create service and route
 ```
 $ oc expose dc rhte-notebook
 $ oc create route edge --service=rhte-notebook
-$
 ```
 
 The notebook should be available at the exposed route:
@@ -66,7 +64,6 @@ The notebook should be available at the exposed route:
 $ oc get route
 NAME            HOST/PORT                                 PATH      SERVICES        PORT      TERMINATION   WILDCARD
 rhte-notebook   rhte-notebook-rhte2019.apps.example.com             rhte-notebook   <all>     edge          None
-$
 ```
 
 Using a browser go to the previous route https://rhte-notebook-rhte2019.apps.example.com
@@ -85,13 +82,13 @@ $ oc logs rhte-notebook-1-nst7j
 [I 17:10:45.276 NotebookApp] http://(rhte-notebook-1-nst7j or 127.0.0.1):8080/?token=1e23954e436211604ec37e0c869827e3ed6db8098f20481a
 [I 17:10:45.276 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
 [W 17:10:45.279 NotebookApp] No web browser found: could not locate runnable browser.
-[C 17:10:45.280 NotebookApp] 
-    
+[C 17:10:45.280 NotebookApp]
+
     To access the notebook, open this file in a browser:
         file:///opt/work/.local/share/jupyter/runtime/nbserver-8-open.html
     Or copy and paste one of these URLs:
         http://(rhte-notebook-1-nst7j or 127.0.0.1):8080/?token=1e23954e436211604ec37e0c869827e3ed6db8098f20481a
-$ 
+
 ```
 
 ## Using the application
@@ -125,7 +122,7 @@ This will take a while because the model has to be trained. When it finised you 
 The following parameters will have to be modified to fit your environment:
 
 * **topic** you will have to set the topic to the one you created in the [Lab01: Deploy AMQ Streams](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams).
-* **kafkaendpoint** you will have to set the endpoint to the one you created in the [Lab01: Deploy AMQ Streams](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams#lab01-deploy-amq-streams). 
+* **kafkaendpoint** you will have to set the endpoint to the one you created in the [Lab01: Deploy AMQ Streams](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams#lab01-deploy-amq-streams).
 * **kafkaport** you will have to se the kafka port to the one you created in the [Lab01: Deploy AMQ Streams](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams#lab01-deploy-amq-streams).
 
 After you have configured these parameters you will have to run the cell to create the kafka consumer.
@@ -211,3 +208,6 @@ If you are curious about this kind of applications or you only want to have just
 ## Lab resources
 
 You can find all the resources to build the container in [this directory](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/applications/ai-notebook/).
+
+## Next Lab
+Go to [Lab05: Training workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/training.md)

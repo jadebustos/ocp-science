@@ -30,7 +30,6 @@ Deploy operator and cluster operator and its related resources with:
 ```
 $ cd hands-on-lab-script/amq-streams/
 $ oc apply -f resources/cluster-operator/ -n amq-streams
-$
 ```
 
 This amq-streams Cluster Operator is configured to watch all namespaces since the **STRIMZI_NAMESPACE** environment variable from the operator yaml deployment file has the value *
@@ -41,7 +40,6 @@ As we have configured the Cluster Operator to watch all namespaces, it's also re
 $ oc adm policy add-cluster-role-to-user strimzi-cluster-operator-namespaced --serviceaccount strimzi-cluster-operator -n amq-streams
 $ oc adm policy add-cluster-role-to-user strimzi-entity-operator --serviceaccount strimzi-cluster-operator -n amq-streams
 $ oc adm policy add-cluster-role-to-user strimzi-topic-operator --serviceaccount strimzi-cluster-operator -n amq-streams
-$
 ```
 
 ## Create a new kafka cluster
@@ -54,7 +52,6 @@ To deploy a new kafka cluster, just create a new Kafka resource. The provided Ka
 ```
 $ oc new-project rhte2019
 $ oc apply -f resources/openshift/kafka-cluster.yml -n rhte2019
-$
 ```
 
 > ![TIP](../imgs/tip-icon.png) **TIP**: Be certain you execute the above command in the directory **hands-on-lab-script/amq-streams** in the repository clone directory.
@@ -71,7 +68,6 @@ rhte-cluster-kafka-2                          2/2       Running   0          80s
 rhte-cluster-zookeeper-0                      2/2       Running   0          111s
 rhte-cluster-zookeeper-1                      2/2       Running   0          111s
 rhte-cluster-zookeeper-2                      2/2       Running   0          111s
-$
 ```
 
 ## Create new topic
@@ -80,7 +76,6 @@ Create a topic with a replication factor of 1 and 1 partition:
 
 ```
 $ oc apply -f resources/openshift/rhte-topic.yml -n rhte2019
-$
 ```
 
 > ![TIP](../imgs/tip-icon.png) **TIP**: Be certain you execute the above command in the directory **hands-on-lab-script/amq-streams** in the repository clone directory.
@@ -95,7 +90,6 @@ $ oc rsh -n rhte2019 -c kafka rhte-cluster-kafka-0 bin/kafka-topics.sh --describ
 OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
 Topic:rhte      PartitionCount:3        ReplicationFactor:1     Configs:message.format.version=2.2-IV1
         Topic: rhte	Partition: 0	Leader: 1	Replicas: 1	Isr: 1
-$
 ```
 
 The traces above indicate that a new `rhte` topic is created with a replication factor of 1 and composed by 1 partition.
@@ -110,7 +104,6 @@ rhte-cluster-kafka-0           rhte-cluster-kafka-0-rhte2019.apps.cluster.testin
 rhte-cluster-kafka-1           rhte-cluster-kafka-1-rhte2019.apps.cluster.testing.com                   rhte-cluster-kafka-1                    9094      passthrough   None
 rhte-cluster-kafka-2           rhte-cluster-kafka-2-rhte2019.apps.cluster.testing.com                   rhte-cluster-kafka-2                    9094      passthrough   None
 rhte-cluster-kafka-bootstrap   rhte-cluster-kafka-bootstrap-rhte2019.apps.cluster.testing.com           rhte-cluster-kafka-external-bootstrap   9094      passthrough   None
-$
 ```
 
 Broker's routes must be used in the steps below
@@ -137,3 +130,6 @@ $ kafkaClient -tls -brokers=rhte-cluster-kafka-rhte2019.apps.cluster-apps.sandbo
 ### Lab resources
 
 You can find all the resources used to build the client container [here](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/intro/aio-client).
+
+### Next Lab
+Go to [Lab02: Ceph-nano deployment](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/ceph/README.md)

@@ -24,7 +24,7 @@ In this lab a code that was originally created to check how a Fujitsu Primergy s
 
 ## Application deployment
 
-> ![WARNING](../imgs/warning-icon.png) **__WARNING__**: you must have the [Ceph lab](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/ceph) completed and keep it working before start with this one. 
+> ![WARNING](../imgs/warning-icon.png) **__WARNING__**: you must have the [Ceph lab](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/ceph) completed and keep it working before start with this one.
 
 Create a new project:
 
@@ -41,7 +41,6 @@ $ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/
     -p S3_HOST=${S3_HOST} \
     -p S3_BUCKET=${S3_BUCKET} \
     | oc create -f -
-$
 ```
 
 This will execute the pi calculator with the default values of:
@@ -60,7 +59,6 @@ $ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/
     -p DECIMALS=20 \
     -p THREADS=2 \
     | oc create -f -
-$
 ```
 
 > ![TIP](../imgs/tip-icon.png) **__TIP__**: When the pod finished upload a file to the bucket with the number pi so you can access the bucket to retrieve it.
