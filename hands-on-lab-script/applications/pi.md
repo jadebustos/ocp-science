@@ -35,12 +35,20 @@ $ oc new-project pi
 To deploy this app is as simple as execute the following command:
 
 ```
+$ export S3_ENDPOINT=$(oc get route ceph-nano -n ceph | awk 'NR>1{print $2;exit;}')
+
+$ export S3_BUCKET=<name_of_the_bucket_created_for_lab06>
+for example
+$ export S3_BUCKET=bucket-lab06
+```
+
+```
 $ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/hands-on-lab-script/applications/pi/resources/openshift/template.yml \
-    -p S3_ACCESS_KEY=${S3_ACCESS_KEY} \
-    -p S3_SECRET_KEY=${S3_SECRET_KEY} \
-    -p S3_HOST=${S3_HOST} \
-    -p S3_BUCKET=${S3_BUCKET} \
-    | oc create -f -
+  -p S3_ACCESS_KEY=foo \
+  -p S3_SECRET_KEY=bar \
+  -p S3_HOST=${S3_ENDPOINT} \
+  -p S3_BUCKET=${S3_BUCKET} \
+  | oc create -f -
 ```
 
 This will execute the pi calculator with the default values of:
@@ -48,20 +56,34 @@ This will execute the pi calculator with the default values of:
 - THREADS: Number of threads/processes to be used to calculate pi (Default: 1 thread)
 - DECIMALS: Number of Pi's decimals (Default: 10 decimals)
 
-You can set both values as follows (or just one of both):
+> ![TIP](../imgs/tip-icon.png) **__TIP__**: When the pod finished upload a file to the bucket with the number pi so you can access the bucket to retrieve it.
+
+To check the content of the output:
+```
+$ oc logs pi
+upload: '/root/bin/pi_txt_file.20190917153454' -> 's3://bucket-lab06/pi_txt_file.20190917153454' (21 bytes in 0.1 seconds, 415.41 B/s) [1 of 1]
+
+$ s3cmd get s3://bucket-lab06/pi_txt_file.20190917153454
+
+$  cat pi_txt_file.20190917153454
+3.1415926535
+```
+
+You can also set different values for both THREADS and DECIMILAS as follows (or just one of both):
 
 ```
+$ oc delete pod pi
 $ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/hands-on-lab-script/applications/pi/resources/openshift/template.yml \
-    -p S3_ACCESS_KEY=${S3_ACCESS_KEY} \
-    -p S3_SECRET_KEY=${S3_SECRET_KEY} \
-    -p S3_HOST=${S3_HOST} \
+    -p S3_ACCESS_KEY=foo \
+    -p S3_SECRET_KEY=bar \
+    -p S3_HOST=${S3_ENDPOINT} \
     -p S3_BUCKET=${S3_BUCKET} \
     -p DECIMALS=20 \
     -p THREADS=2 \
-    | oc create -f -
+    | oc apply -f -
 ```
 
-> ![TIP](../imgs/tip-icon.png) **__TIP__**: When the pod finished upload a file to the bucket with the number pi so you can access the bucket to retrieve it.
+
 
 ## Lab resources
 

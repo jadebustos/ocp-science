@@ -120,10 +120,10 @@ In the example below, we used the containerized client to send to kafka a cat an
 ```
 $ sudo -i podman run -v ~/ocp-science/hands-on-lab-script/amq-streams/resources/pictures:/srv:z -it quay.io/rhte_2019/ocp-science-clients bash
 
-$ kafkaClient -tls -brokers=rhte-cluster-kafka-0-rhte2019.apps.cluster-$GUID.$GUID.sandbox255.opentlc.com:443 \
+$ kafkaClient -tls -brokers=rhte-cluster-kafka-0-rhte2019.apps.cluster-$GUID.$GUID.$SANDBOX.opentlc.com:443 \
 -topic=rhte -insecure-skip-verify -file /srv/cat.jpg
 
-** Replace $GUID with the value of your assigned GUID, and replace "sandbox255" with your subdomain.
+** Replace $GUID with the value of your assigned GUID, and $SANDBOX with your subdomain.
 
 $ kafkaClient -tls -brokers=rhte-cluster-kafka-0-rhte2019.apps.cluster-$GUID.$GUID.sandbox255.opentlc.com:443 \
  -topic=rhte -insecure-skip-verify -file /srv/dog.jpg
