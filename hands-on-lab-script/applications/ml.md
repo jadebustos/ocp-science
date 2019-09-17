@@ -48,6 +48,7 @@ Illustrate how **OCP** + **AMQ Streams** can work together with **Machine learni
 Create notebook on project ```rhte2019```:
 
 ```
+$ oc project rhte2019
 $ oc run --image=quay.io/rhte_2019/ai-notebook:latest --port=8080 rhte-notebook
 ```
 
@@ -93,7 +94,7 @@ $ oc logs rhte-notebook-1-nst7j
 
 ## Using the application
 
-When you connect to the application you will see:
+When you connect to the application, click on "**image_classifier.ipynb**", then, you will see:
 
 ![01-notebook](imgs/01-ml.png)
 
@@ -109,25 +110,48 @@ The result of the execution, if any, is stored in other cell:
 Out [X]:
 ```
 
-To run a cell you need to put the cursor on the cell and press **Ctrl + Shift**. To train the model you will need to go to the first code cell and run it.
+To run a cell you need to put the cursor on the cell and press Shift + Enter. **The first step is to train the model, so you only have to click in the first Cell and then, press Shift + Enter**
+
+The first cell (where you have to click on and press Shift + Enter) is shown below:
 
 ![02-notebook](imgs/02-ml.png)
 
 > ![NOTE](../imgs/note-icon.png) **__NOTE__**: Train a model will take seven minutes (approx).
 
-This will take a while because the model has to be trained. When it finised you will have to go to the following cell and you will have to modifiy some parameters in the cell:
 
+This will start the model training and in the bottom of the cell you could see two charts:
+
+    Log-loss (cost function)
+    Accuracy
+
+This will take a while because the model has to be trained. To know the progression, look at the "Epoch" status. In the next example, Epoch has completed 17 of 32.
+
+```
+Log-loss (cost function):
+training   (min:    0.685, max:    0.700, cur:    0.687)
+validation (min:    0.688, max:    0.725, cur:    0.725)
+
+Accuracy:
+training   (min:    0.450, max:    0.625, cur:    0.625)
+validation (min:    0.167, max:    0.688, cur:    0.375)
+Epoch 17/32
+ 5/10 [==============>...............] - ETA: 5s - loss: 0.6849 - acc: 0.5250
+```
+
+When it finised you will have to go to the following cell and you will have to modify some parameters in that cell:
+
+```
 ![03-notebook](imgs/03-ml.png)
 
 The following parameters will have to be modified to fit your environment:
 
-* **topic** you will have to set the topic to the one you created in the [Lab01: Deploy AMQ Streams](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams).
-* **kafkaendpoint** you will have to set the endpoint to the one you created in the [Lab01: Deploy AMQ Streams](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams#lab01-deploy-amq-streams).
-* **kafkaport** you will have to se the kafka port to the one you created in the [Lab01: Deploy AMQ Streams](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams#lab01-deploy-amq-streams).
+* **topic** you will have to set the topic to the one you created in the [Lab01: Deploy AMQ Streams](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams). By default: **rhte**
+* **kafkaendpoint** you will have to set the endpoint to the one you created in the [Lab01: Deploy AMQ Streams](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams#lab01-deploy-amq-streams). By default: **rhte-cluster-kafka-0-rhte2019.apps.cluster-$GUID.$GUID.$SANDBOX.opentlc.com** (Replace $GUID with the value of your assigned GUID, and $SANDBOX with your subdomain). You can run ```oc get route rhte-cluster-kafka-0 -n rhte2019 | awk 'NR>1{print $2;exit;}'```  to know the exact vuale.
+* **kafkaport** you will have to se the kafka port to the one you created in the [Lab01: Deploy AMQ Streams](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/amq-streams#lab01-deploy-amq-streams). By default: **443**
 
-After you have configured these parameters you will have to run the cell to create the kafka consumer.
+After you have configured these parameters you will have to run the cell (**shift** + **Enter**) to create the kafka consumer.
 
-Once the kafka consumer is started you can run the following cell:
+Once the kafka consumer is started you can run (**shift** + **Enter**) the following cell:
 
 ![04-notebook](imgs/04-ml.png)
 

@@ -123,7 +123,7 @@ $ sudo -i podman run -v ~/ocp-science/hands-on-lab-script/amq-streams/resources/
 $ kafkaClient -tls -brokers=rhte-cluster-kafka-0-rhte2019.apps.cluster-$GUID.$GUID.sandbox255.opentlc.com:443 \
 -topic=rhte -insecure-skip-verify -file /srv/cat.jpg
 
-** Replace $GUID with the value of your assigned GUID
+** Replace $GUID with the value of your assigned GUID, and replace "sandbox255" with your subdomain.
 
 $ kafkaClient -tls -brokers=rhte-cluster-kafka-0-rhte2019.apps.cluster-$GUID.$GUID.sandbox255.opentlc.com:443 \
  -topic=rhte -insecure-skip-verify -file /srv/dog.jpg
