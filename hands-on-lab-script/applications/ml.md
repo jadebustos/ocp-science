@@ -140,7 +140,6 @@ Epoch 17/32
 
 When it finised you will have to go to the following cell and you will have to modify some parameters in that cell:
 
-```
 ![03-notebook](imgs/03-ml.png)
 
 The following parameters will have to be modified to fit your environment:
