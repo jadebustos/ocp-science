@@ -12,7 +12,7 @@ Illustrate how deploy **AMQ Streams** to be used by applications later.
 
 ## Deploying Kafka Cluster operator
 
-Create the `amq-streams` project:
+Log in to bastion host. Then, create the `amq-streams` project:
 
 ```
 $ oc new-project amq-streams
@@ -114,7 +114,7 @@ Broker's routes must be used in the steps below
 
 ## Send a picture to the topic
 
-We can send a picture to the previous created topic using the provided containerized client.
+Send a picture to the previous created topic using the provided containerized client.
 In the example below, we used the containerized client to send to kafka a cat and a dog pictures.
 
 ```
@@ -125,7 +125,7 @@ $ kafkaClient -tls -brokers=rhte-cluster-kafka-0-rhte2019.apps.cluster-$GUID.$GU
 
 ** Replace $GUID with the value of your assigned GUID, and $SANDBOX with your subdomain.
 
-$ kafkaClient -tls -brokers=rhte-cluster-kafka-0-rhte2019.apps.cluster-$GUID.$GUID.sandbox255.opentlc.com:443 \
+$ kafkaClient -tls -brokers=rhte-cluster-kafka-0-rhte2019.apps.cluster-$GUID.$GUID.$SANDBOX.opentlc.com:443 \
  -topic=rhte -insecure-skip-verify -file /srv/dog.jpg
 ```
 

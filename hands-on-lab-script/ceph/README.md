@@ -169,7 +169,7 @@ use_https = False
   $ s3cmd mb s3://bucket-lab06
   ```
 
-* Upload the files ansible.txt.gz, ceph.txt.gz, ocp.txt.gz, osp.txt.gz, rhv.txt.gz white are in the folder /srv/ to the lab03 bucket. For example:
+* Upload the files ansible.txt.gz, ceph.txt.gz, ocp.txt.gz, osp.txt.gz, rhv.txt.gz that are in the folder /srv/ to the lab03 bucket. For example:
   ```
   $ s3cmd put /srv/* s3://bucket-lab03
   ```

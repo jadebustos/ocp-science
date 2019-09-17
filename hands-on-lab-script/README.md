@@ -5,7 +5,7 @@
 The following is needed:
 
 * One OCP4 cluster per student with administrative privileges.
-* A workstation.
+* One administration server.
 
 ## Student work
 

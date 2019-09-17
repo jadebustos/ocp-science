@@ -69,7 +69,7 @@ $  cat pi_txt_file.20190917153454
 3.1415926535
 ```
 
-You can also set different values for both THREADS and DECIMILAS as follows (or just one of both):
+You can also set different values for both THREADS and DECIMALS as follows (or just one of both):
 
 ```
 $ oc delete pod pi

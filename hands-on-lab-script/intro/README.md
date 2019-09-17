@@ -16,6 +16,7 @@ We will be focused on using the following Red Hat Technologies:
 * One OCP Master.
 * Three OCP Workers.
 
+**Remember**, all the tasks/labs should be done from the administration server (bastion host). So, log in to the bastion host before running any command.
 
 ### Clients
 
