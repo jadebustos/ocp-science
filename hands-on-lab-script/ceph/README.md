@@ -94,7 +94,7 @@ So, **How can I create the buckets and upload data?** There are many ways you ca
 ### s3cmd command utility
 
 `s3cmd` is a command line utility used for creating s3 buckets, uploading, retrieving and managing data to s3 storage.
-o use s3cmd, follow the next steps:
+To use s3cmd, follow the next steps:
 
 1. Install s3cmd:
 
@@ -121,7 +121,7 @@ check_ssl_hostname = True
 use_https = False
 ```
 
-** The vale of ```<S3 Endpoint>``` must be the S3_ENDPOINT obtained in the previous steps. If you don't remember it, you can exit from the container, run ```oc get route ceph-nano -n ceph | awk 'NR>1{print $2;exit;}'``` to obtained it, and run again the container with ```podman``` command showed above. An example of the config file is described below:
+** The vale of ```<S3 Endpoint>``` must be the S3_ENDPOINT obtained in the previous steps. If you don't remember it, run ```oc get route ceph-nano -n ceph | awk 'NR>1{print $2;exit;}'``` to obtained it. An example of the config file is described below:
 
 ```
 [default]
@@ -145,9 +145,9 @@ use_https = False
   $ s3cmd mb s3://bucket-lab06
   ```
 * Check the buckets have been correctly created:
-```
-$ s3cmd ls
-```
+  ```
+  $ s3cmd ls
+  ```
 
 * Upload the files ansible.txt.gz, ceph.txt.gz, ocp.txt.gz, osp.txt.gz, rhv.txt.gz that are in the folder ~/ocp-science/hands-on-lab-script/ceph/resources/data/ to the lab03 bucket. For example:
   ```
@@ -172,7 +172,7 @@ oc get route ceph-dashboard -n ceph | awk 'NR>1{print $2;exit;}'
 ### Next Lab
 Go to [Applications](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/README.md)
 
-## Extra. Using s3cmd from the clients container.
+### Extra. Using s3cmd from the clients container.
 Just for your information, s3cmd is included in the clients container, so if you want to use it through the container (instead of installing it with ```yum install```) you should follow the next steps:
 
 Create the following directory:
