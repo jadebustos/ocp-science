@@ -64,7 +64,7 @@ exit
 ```
   More info about the available radosgw-admin commands and options can be found [here](https://docs.ceph.com/docs/giant/man/8/radosgw-admin/)
 
-### Configure Sree web client
+## Configure Sree web client
 [Sree](https://github.com/cannium/Sree) enables you to easily manage your files through Amazon S3 protocol. Ceph-nano automatically deploys sree client, but the following additional step is necessary to make it work:
 
 ```
@@ -93,41 +93,22 @@ So, **How can I create the buckets and upload data?** There are many ways you ca
 
 ### s3cmd command utility
 
-`s3cmd` is a command line utility used for creating s3 buckets, uploading, retrieving and managing data to s3 storage and it has included in the [clients container](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/intro).
+`s3cmd` is a command line utility used for creating s3 buckets, uploading, retrieving and managing data to s3 storage.
+o use s3cmd, follow the next steps:
 
-> ![TIP](../imgs/tip-icon.png) **TIP**: If you have not installed the clients container you can do it now.
+1. Install s3cmd:
 
-You need to create a directory to work with the clients container:
+  ```sh
+  $ sudo yum install s3cmd -y
+  ```
 
-```
-mkdir ~/clients-container
-```
+2. Create file in the user home path:
 
-Copy the data you need to upload to this directory:
+  ```sh
+  $ vi ~/.s3cfg
+  ```
 
-```
-$ cd
-/home/lab-user/ocp-science/hands-on-lab-script/ceph
-$ cp resources/data/* ~/clients-container/
-```
-
-You need to run the clients container:
-
-```
-$ sudo -i podman run -v ~/clients-container:/srv:z -it quay.io/rhte_2019/ocp-science-clients bash
-```
-
-#### Configure s3cmd Environment
-
-In order to configure `s3cmd`, we are going to create the config file manually:
-
-1. Create file in the user home path:
-
-```
-$ vi ~/.s3cfg
-```
-
-2. Add the following:
+3. Add the following:
 
 ```
 [default]
@@ -153,13 +134,8 @@ check_ssl_hostname = True
 use_https = False
 ```
 
-> ![TIP](../imgs/tip-icon.png) **TIP**: You can upload the files from the directory **/srv** to the bucket you created for the [Lab03: R Shiny workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/r-shiny.md). Remember to put the data for the bucket you want to work with in this file.
-
-> ![TIP](../imgs/tip-icon.png) **TIP**: Due to https is being used the port used for the S3 endpoint will be **443**.
-
 > ![TIP](../imgs/tip-icon.png) **TIP**: The __access_key__ and __secret_key__ to access the S3 endpoint are set to the above values **foo** and **bar**.
 
-> ![TIP](../imgs/tip-icon.png) To configure automatically the tool, you could run: ```$ s3cmd --configure  --no-check-certificate```
 
 #### Create Bucket and upload files
 
@@ -168,10 +144,14 @@ use_https = False
   $ s3cmd mb s3://bucket-lab03
   $ s3cmd mb s3://bucket-lab06
   ```
+* Check the buckets have been correctly created:
+```
+$ s3cmd ls
+```
 
-* Upload the files ansible.txt.gz, ceph.txt.gz, ocp.txt.gz, osp.txt.gz, rhv.txt.gz that are in the folder /srv/ to the lab03 bucket. For example:
+* Upload the files ansible.txt.gz, ceph.txt.gz, ocp.txt.gz, osp.txt.gz, rhv.txt.gz that are in the folder ~/ocp-science/hands-on-lab-script/ceph/resources/data/ to the lab03 bucket. For example:
   ```
-  $ s3cmd put /srv/* s3://bucket-lab03
+  $ s3cmd put /home/lab-user/ocp-science/hands-on-lab-script/ceph/resources/data/* s3://bucket-lab03
   ```
 
 * Check the files have been correctly uploaded:
@@ -188,5 +168,26 @@ oc get route ceph-dashboard -n ceph | awk 'NR>1{print $2;exit;}'
 * Click on "Create Bucket" button and enter a name for your bucket.
 * Click on the created Bucket and click on "Upload" button to upload the files you want.
 
+
 ### Next Lab
 Go to [Applications](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/README.md)
+
+## Extra. Using s3cmd from the clients container.
+Just for your information, s3cmd is included in the clients container, so if you want to use it through the container (instead of installing it with ```yum install```) you should follow the next steps:
+
+Create the following directory:
+```
+mkdir ~/clients-container
+```
+
+Copy the data you need to upload to this directory:
+```
+$ cd
+/home/lab-user/ocp-science/hands-on-lab-script/ceph
+$ cp resources/data/* ~/clients-container/
+```
+
+Run the clients container:
+```
+$ sudo -i podman run -v ~/clients-container:/srv:z -it quay.io/rhte_2019/ocp-science-clients bash
+```
