@@ -121,7 +121,9 @@ check_ssl_hostname = True
 use_https = False
 ```
 
-** The vale of ```<S3 Endpoint>``` must be the S3_ENDPOINT obtained in the previous steps. If you don't remember it, run ```oc get route ceph-nano -n ceph | awk 'NR>1{print $2;exit;}'``` to obtained it. An example of the config file is described below:
+> ![TIP](../imgs/tip-icon.png) **TIP**: The value of ```<S3 Endpoint>``` must be the S3_ENDPOINT obtained in the previous steps. If you don't remember it, run ```oc get route ceph-nano -n ceph | awk 'NR>1{print $2;exit;}'``` to obtained it. 
+
+An example of the config file is described below:
 
 ```
 [default]
