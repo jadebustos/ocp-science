@@ -54,7 +54,7 @@ $ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/
 This will execute the pi calculator with the default values of:
 
 - THREADS: Number of threads/processes to be used to calculate pi (Default: 1 thread)
-- DECIMALS: Number of Pi's decimals (Default: 10 decimals)
+- DIGITS: Number of Pi's digits (Default: 10 digits)
 
 > ![TIP](../imgs/tip-icon.png) **__TIP__**: When the pod finished upload a file to the bucket with the number pi so you can access the bucket to retrieve it.
 
@@ -69,7 +69,7 @@ $  cat pi_txt_file.20190917153454
 3.1415926535
 ```
 
-You can also set different values for both THREADS and DECIMALS as follows (or just one of both):
+You can also set different values for both THREADS and DECIMALS (DIGITS) as follows (or just one of both):
 
 ```
 $ oc delete pod pi
@@ -82,8 +82,6 @@ $ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/
     -p THREADS=2 \
     | oc apply -f -
 ```
-
-
 
 ## Lab resources
 

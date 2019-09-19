@@ -193,3 +193,8 @@ Run the clients container:
 ```
 $ sudo -i podman run -v ~/clients-container:/srv:z -it quay.io/rhte_2019/ocp-science-clients bash
 ```
+
+## Next Labs
+
+Go to [Application Labs](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/applications)
+

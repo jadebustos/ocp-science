@@ -138,7 +138,7 @@ Epoch 17/32
  5/10 [==============>...............] - ETA: 5s - loss: 0.6849 - acc: 0.5250
 ```
 
-When it finised you will have to go to the following cell and you will have to modify some parameters in that cell:
+When it finished you will have to go to the following cell and you will have to modify some parameters in that cell:
 
 ![03-notebook](imgs/03-ml.png)
 
@@ -233,4 +233,5 @@ If you are curious about this kind of applications or you only want to have just
 You can find all the resources to build the container in [this directory](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/applications/ai-notebook/).
 
 ## Next Lab
+
 Go to [Lab05: Training workloads](https://github.com/jadebustos/ocp-science/blob/master/hands-on-lab-script/applications/training.md)
