@@ -35,7 +35,7 @@ $ oc new-project pi
 To deploy this app is as simple as execute the following command:
 
 ```
-$ export S3_ENDPOINT=$(oc get route ceph-nano -n ceph | awk 'NR>1{print $2;exit;}')
+$ export S3_ENDPOINT=$(oc get route ceph-nano -n ceph -o jsonpath="{.spec.host}")
 
 $ export S3_BUCKET=<name_of_the_bucket_created_for_lab06>
 for example
@@ -43,11 +43,11 @@ $ export S3_BUCKET=bucket-lab06
 ```
 
 ```
-$ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/hands-on-lab-script/applications/pi/resources/openshift/template.yml \
+$ oc process -f ~/ocp-science/hands-on-lab-script/applications/pi/resources/openshift/template.yml \
   -p S3_ACCESS_KEY=foo \
   -p S3_SECRET_KEY=bar \
   -p S3_HOST=${S3_ENDPOINT} \
-  -p S3_BUCKET=${S3_BUCKET} \
+  -p S3_BUCKET=${S3_BUCKET}
   | oc create -f -
 ```
 

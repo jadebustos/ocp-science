@@ -40,7 +40,7 @@ $ cd hands-on-lab-script/ceph/
 $ oc new-project ceph
 $ oc adm policy add-scc-to-user anyuid -z default -n ceph
 $ oc create -f ceph-nano.yaml -n ceph
-$ export S3_ENDPOINT=$(oc get route ceph-nano -n ceph | awk 'NR>1{print $2;exit;}')
+$ export S3_ENDPOINT=$(oc get route ceph-nano -o jsonpath="{.spec.host}")
 $ oc set env sts ceph-nano RGW_NAME=$S3_ENDPOINT
 ```
 
@@ -121,7 +121,7 @@ check_ssl_hostname = True
 use_https = False
 ```
 
-> ![TIP](../imgs/tip-icon.png) **TIP**: The value of ```<S3 Endpoint>``` must be the S3_ENDPOINT obtained in the previous steps. If you don't remember it, run ```oc get route ceph-nano -n ceph | awk 'NR>1{print $2;exit;}'``` to obtained it. 
+> ![TIP](../imgs/tip-icon.png) **TIP**: The value of ```<S3 Endpoint>``` must be the S3_ENDPOINT obtained in the previous steps. If you don't remember it, run ```oc get route ceph-nano -o jsonpath="{.spec.host}"``` to get it.
 
 An example of the config file is described below:
 
@@ -153,7 +153,7 @@ use_https = False
 
 * Upload the files ansible.txt.gz, ceph.txt.gz, ocp.txt.gz, osp.txt.gz, rhv.txt.gz that are in the folder ~/ocp-science/hands-on-lab-script/ceph/resources/data/ to the lab03 bucket. For example:
   ```
-  $ s3cmd put /home/lab-user/ocp-science/hands-on-lab-script/ceph/resources/data/* s3://bucket-lab03
+  $ s3cmd put ~/ocp-science/hands-on-lab-script/ceph/resources/data/* s3://bucket-lab03
   ```
 
 * Check the files have been correctly uploaded:
@@ -165,7 +165,7 @@ More info about s3cmd Command Line options can be found [here](https://github.co
 ### Sree web client
 * Just open the sree web client in a browser (check the route with the following command):
 ```
-oc get route ceph-dashboard -n ceph | awk 'NR>1{print $2;exit;}'
+oc get route ceph-dashboard -n ceph -o jsonpath="{.spec.host}"
 ```
 * Click on "Create Bucket" button and enter a name for your bucket.
 * Click on the created Bucket and click on "Upload" button to upload the files you want.
