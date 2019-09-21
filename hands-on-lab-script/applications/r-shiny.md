@@ -38,9 +38,16 @@ To deploy this app is as simple as execute the following commands:
 $ export S3_ENDPOINT=$(oc get route ceph-nano -n ceph | awk 'NR>1{print $2;exit;}')
 
 $ export S3_BUCKET=<name_of_the_bucket_created_for_lab03>
-for example
+```
+
+for example:
+
+```
 $ export S3_BUCKET=bucket-lab03
 ```
+
+To deploy:
+
 ```
 $ oc process -f https://raw.githubusercontent.com/jadebustos/ocp-science/master/hands-on-lab-script/applications/shiny-app/resources/openshift/template.yml \
     -p S3_ACCESS_KEY=foo \
