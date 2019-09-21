@@ -36,7 +36,6 @@ To deploy this app is as simple as execute the following commands:
 
 ```
 $ export S3_ENDPOINT=$(oc get route ceph-nano -n ceph -o jsonpath="{.spec.host}")
-
 $ export S3_BUCKET=<name_of_the_bucket_created_for_lab03>
 ```
 
