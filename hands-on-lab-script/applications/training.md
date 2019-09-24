@@ -4,6 +4,8 @@ It is quite common to use notebooks to teach about diferent subjects.
 
 As an example you will deploy a pod containing several Jupyter notebooks to learn about the [Navier-Stokes equations](https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations).
 
+> ![INFORMATION](../imgs/information-icon.png) **__INFORMATION__**: [Navier Stokes equations](https://www.claymath.org/millennium-problems/navier%E2%80%93stokes-equation) is one of the [Millenium Problems](https://www.claymath.org/millennium-problems) for the [Clay Mathematics Institute](https://www.claymath.org/) and the person that resolves the Navier Stokes could be awarded with a [$1 millon prize](http://www.claymath.org/sites/default/files/millennium_prize_rules.pdf). Please do not forget the 3% commission for the speakers when you get the prize!!!!
+
 These Jupyter Notebooks have been taken from [Lorena Barba github repository](https://github.com/barbagroup/CFDPython):
 
 > ![INFORMATION](../imgs/information-icon.png) **INFORMATION**: Barba, Lorena A., and Forsyth, Gilbert F. (2018). CFD Python: the 12 steps to Navier-Stokes equations. Journal of Open Source Education, 1(9), 21, https://doi.org/10.21105/jose.00021
@@ -68,8 +70,6 @@ $ oc logs cdf-apps-1-k6pj6
 ```
 
 > ![INFORMATION](../imgs/information-icon.png) **__INFORMATION__**: A password to access the notebook can be configured using a json file and starting the notebook using ```--config```. You can get more information in [Jupyter Notebooks Security](https://jupyter-notebook.readthedocs.io/en/latest/security.html#server-security) and [Jupyter configuration files](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/config.html).
-
-> ![INFORMATION](../imgs/information-icon.png) **__INFORMATION__**: [Navier Stokes equations](https://www.claymath.org/millennium-problems/navier%E2%80%93stokes-equation) is one of the [Millenium Problems](https://www.claymath.org/millennium-problems) for the [Clay Mathematics Institute](https://www.claymath.org/) and the person that resolves the Navier Stokes could be awarded with a [$1 millon prize](http://www.claymath.org/sites/default/files/millennium_prize_rules.pdf). Please do not forget the 3% commission for the speakers when you get the prize!!!!
 
 ## Lab resources
 
