@@ -69,6 +69,8 @@ $ oc logs cdf-apps-1-k6pj6
 
 > ![INFORMATION](../imgs/information-icon.png) **__INFORMATION__**: A password to access the notebook can be configured using a json file and starting the notebook using ```--config```. You can get more information in [Jupyter Notebooks Security](https://jupyter-notebook.readthedocs.io/en/latest/security.html#server-security) and [Jupyter configuration files](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/config.html).
 
+> ![INFORMATION](../imgs/information-icon.png) **__INFORMATION__**: [Navier Stokes equations](https://www.claymath.org/millennium-problems/navier%E2%80%93stokes-equation) is one of the [Millenium Problems](https://www.claymath.org/millennium-problems) for the [Clay Mathematics Institute](https://www.claymath.org/) and the person that resolves the Navier Stokes could be awarded with a [$1 millon prize](http://www.claymath.org/sites/default/files/millennium_prize_rules.pdf). Please do not forget the 3% commission for the speakers when you get the prize!!!!
+
 ## Lab resources
 
 You can find all the resources to build the container in [this directory](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/applications/cfd-training/resources).
