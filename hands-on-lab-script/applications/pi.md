@@ -52,7 +52,7 @@ $ oc process -f ~/ocp-science/hands-on-lab-script/applications/pi/resources/open
   -p S3_ACCESS_KEY=foo \
   -p S3_SECRET_KEY=bar \
   -p S3_HOST=${S3_ENDPOINT} \
-  -p S3_BUCKET=${S3_BUCKET}
+  -p S3_BUCKET=${S3_BUCKET} \
   | oc create -f -
 ```
 
