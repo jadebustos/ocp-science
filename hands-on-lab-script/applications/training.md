@@ -67,6 +67,8 @@ $ oc logs cdf-apps-1-k6pj6
         http://(cdf-apps-1-k6pj6 or 127.0.0.1):8080/?token=1f0c932f85b58dc559c96f136d2ea9f356b5faec771f2253
 ```
 
+> ![INFORMATION](../imgs/information-icon.png) **__INFORMATION__**: A password to access the notebook can be configured using a json file and starting the notebook using ```--config```. You can get more information in [Jupyter Notebooks Security](https://jupyter-notebook.readthedocs.io/en/latest/security.html#server-security) and [Jupyter configuration files](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/config.html).
+
 ## Lab resources
 
 You can find all the resources to build the container in [this directory](https://github.com/jadebustos/ocp-science/tree/master/hands-on-lab-script/applications/cfd-training/resources).
