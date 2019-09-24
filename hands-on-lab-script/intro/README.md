@@ -23,7 +23,7 @@ We will be focused on using the following Red Hat Technologies:
 Kafka producer and S3 clients are shipped as a container image, available at quay.io/rhte_2019/ocp-science-clients.
 Detailed instructions about how to use these clients will be described when needed.
 
-As prerequisite to use the containerized clients. Install podman and pull the container image in the **workstation** machine:
+As prerequisite to use the containerized clients. Install podman and pull the container image in the **bastion** machine:
 
 ```
 $ sudo -i yum -y install podman
