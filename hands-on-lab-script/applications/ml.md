@@ -89,8 +89,11 @@ $ oc logs rhte-notebook-1-nst7j
         file:///opt/work/.local/share/jupyter/runtime/nbserver-8-open.html
     Or copy and paste one of these URLs:
         http://(rhte-notebook-1-nst7j or 127.0.0.1):8080/?token=1e23954e436211604ec37e0c869827e3ed6db8098f20481a
-
 ```
+
+> ![INFORMATION](../imgs/information-icon.png) **__INFORMATION__**: A password to access the notebook can be configured using a json file and starting the notebook using ```--config```. You can get more information in [Jupyter Notebooks Security](https://jupyter-notebook.readthedocs.io/en/latest/security.html#server-security) and [Jupyter configuration files](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/config.html).
+
+https://jupyter-notebook.readthedocs.io/en/latest/security.html#server-security
 
 ## Using the application
 
